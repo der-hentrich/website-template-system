@@ -1,0 +1,54 @@
+---
+import SectionHeader from '../components/SectionHeader.astro';
+
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    eyebrow: string;
+    title: string;
+    description?: string;
+    items: FAQItem[];
+    id?: string;
+}
+
+const { eyebrow, title, description, items, id = 'faq-section' } = Astro.props;
+---
+
+<section class="w-full bg-surface-bright py-3xl lg:py-4xl" id={id}>
+    <div class="mx-auto max-w-[var(--container-site)] px-lg">
+        <div class="mx-auto max-w-[860px]">
+            <SectionHeader eyebrow={eyebrow} eyebrowIcon="help" title={title} description={description} width="narrow" />
+
+            <div class="hs-accordion-group divide-y divide-border">
+                {items.map((item, index) => {
+                    const headingId = `${id}-heading-${index}`;
+                    const contentId = `${id}-content-${index}`;
+
+                    return (
+                            <div class="hs-accordion py-lg first:pt-0 last:pb-0">
+                                <button id={headingId} type="button" class="hs-accordion-toggle group flex w-full items-center justify-between gap-base text-left font-heading text-card-title text-text-primary transition-colors hover:text-primary-container hs-accordion-active:text-primary-container" aria-expanded="false" aria-controls={contentId}>
+                                    <span>{item.question}</span>
+
+                                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-surface-container text-primary-container transition-colors group-hover:bg-surface-container-low">
+                                        <svg class="hs-accordion-active:hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="m6 9 6 6 6-6"></path>
+                                        </svg>
+                                        <svg class="hs-accordion-active:block hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="m18 15-6-6-6 6"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+
+                                <div id={contentId} class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby={headingId}>
+                                    <p class="max-w-[760px] pt-sm pr-12 font-body text-body leading-relaxed text-text-secondary">{item.answer}</p>
+                                </div>
+                            </div>
+                    );
+                })}
+            </div>
+        </div>
+    </div>
+</section>

@@ -40,6 +40,11 @@ const galleryImageSchema = z.strictObject({
     caption: localizedText
 });
 
+const faqItemSchema = z.strictObject({
+    question: localizedText,
+    answer: localizedText
+});
+
 const statSchema = z.strictObject({
     icon: requiredText,
     title: localizedText,
@@ -118,6 +123,12 @@ const hotelSchema = z.strictObject({
         description: localizedText.optional(),
         images: z.array(galleryImageSchema)
     }),
+    faq: z.strictObject({
+        eyebrow: localizedText,
+        title: localizedText,
+        description: localizedText.optional(),
+        items: z.array(faqItemSchema).min(1)
+    }).optional(),
     location: z.strictObject({
         eyebrow: localizedText.optional(),
         title: localizedText.optional(),

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../site/Layout.astro';
+import FAQ from '../../sections/FAQ.astro';
 import Navbar from './sections/Navbar.astro';
 import Hero from './sections/Hero.astro';
 import Intro from './sections/Intro.astro';
@@ -32,6 +33,7 @@ const navigation = isEnglish ? [
     ...(data.intro ? [{ label: 'About us', href: '#about-section' }] : []),
     { label: 'Gallery', href: '#gallery-section' },
     { label: 'Location', href: '#location-section' },
+    ...(data.faq ? [{ label: 'FAQ', href: '#faq-section' }] : []),
     { label: 'Contact', href: '#contact-section' }
 ] : [
     { label: 'Habitaciones', href: '#rooms-section' },
@@ -39,6 +41,7 @@ const navigation = isEnglish ? [
     ...(data.intro ? [{ label: 'Nosotros', href: '#about-section' }] : []),
     { label: 'Galería', href: '#gallery-section' },
     { label: 'Ubicación', href: '#location-section' },
+    ...(data.faq ? [{ label: 'FAQ', href: '#faq-section' }] : []),
     { label: 'Contacto', href: '#contact-section' }
 ];
 const heroMetas = [
@@ -68,6 +71,7 @@ const rntCertificateHref = '/rnt.pdf';
             {data.googleRating && <GoogleRating {...data.googleRating} lang={lang} roomCount={hotel.roomCount} location={hotel.location} />}
             <Gallery {...data.gallery} lang={lang} />
             <Location {...data.location} lang={lang} location={hotel.location} region={hotel.region} hotelName={hotel.name} address={hotel.address} whatsappHref={getWhatsAppHref(data.location.whatsappText)} />
+            {data.faq && <FAQ {...data.faq} />}
             <Contact lang={lang} name={hotel.name} location={hotel.location} region={hotel.region} roomCount={hotel.roomCount} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref(data.contact?.whatsappText)} />
         </div>
     </main>
