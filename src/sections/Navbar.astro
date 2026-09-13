@@ -24,12 +24,26 @@ const { name, location, items, whatsappHref, whatsappLabel = 'Contactar por What
             <span class="font-heading text-card-title tracking-tight text-text-primary transition-colors group-hover:text-primary-container">{name}</span>
             <span class="-mt-1 text-[11px] font-medium uppercase tracking-wider text-text-secondary">{location}</span>
         </a>
+
         <nav class="hidden items-center gap-base lg:flex" aria-label="Navegación principal">
             {items.map((item) => <a class="px-sm py-xs font-body text-label text-on-surface-variant transition-colors hover:text-on-surface" href={item.href}>{item.label}</a>)}
         </nav>
+
         <div class="flex items-center gap-base">
-            <Button variant="whatsapp" size="sm" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="chat">{whatsappLabel}</Button>
-            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary"><Icon name="person" size="sm" tone="inverse" /></div>
+            <Button variant="whatsapp" size="sm" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="chat" ariaLabel={whatsappLabel}>
+                <span class="hidden lg:inline">{whatsappLabel}</span>
+            </Button>
+
+            <details class="group relative lg:hidden">
+                <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-ui-sm bg-surface text-primary-container shadow-sm transition-colors hover:bg-surface-container" aria-label="Abrir menú de navegación">
+                    <span class="group-open:hidden"><Icon name="menu" size="lg" tone="primary" /></span>
+                    <span class="hidden group-open:inline-flex"><Icon name="close" size="lg" tone="primary" /></span>
+                </summary>
+
+                <nav class="absolute right-0 top-[calc(100%+8px)] w-64 overflow-hidden rounded-ui-md border border-border bg-surface p-sm shadow-lg" aria-label="Navegación móvil">
+                    {items.map((item) => <a class="block rounded-ui-sm px-base py-md font-body text-label text-on-surface-variant transition-colors hover:bg-surface-container hover:text-on-surface" href={item.href}>{item.label}</a>)}
+                </nav>
+            </details>
         </div>
     </div>
 </header>
