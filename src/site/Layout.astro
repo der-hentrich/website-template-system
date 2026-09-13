@@ -11,8 +11,8 @@ interface Props {
 const { lang = 'es', title, description, noIndex = false } = Astro.props;
 const site = Astro.site;
 const currentPath = Astro.url.pathname;
-const spanishPath = lang === 'en' ? currentPath.replace(/^\/en(?=\/|$)/, '') || '/' : currentPath;
-const englishPath = lang === 'en' ? currentPath : currentPath === '/' ? '/en/' : `/en${currentPath}`;
+const spanishPath = currentPath.replace(/^\/(?:es|en)(?=\/|$)/, '/es');
+const englishPath = currentPath.replace(/^\/(?:es|en)(?=\/|$)/, '/en');
 const canonicalUrl = site ? new URL(currentPath, site).href : undefined;
 const spanishUrl = site ? new URL(spanishPath, site).href : undefined;
 const englishUrl = site ? new URL(englishPath, site).href : undefined;

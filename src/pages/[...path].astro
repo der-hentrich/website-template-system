@@ -3,7 +3,7 @@ import Site from '../site/Site.astro';
 
 export function getStaticPaths() {
     return [
-        { params: { path: undefined }, props: { lang: 'es' } },
+        { params: { path: 'es' }, props: { lang: 'es' } },
         { params: { path: 'en' }, props: { lang: 'en' } }
     ];
 }

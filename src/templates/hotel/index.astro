@@ -23,7 +23,7 @@ const isDemo = data.demo === true;
 const whatsappNumber = hotel.whatsapp.replace(/\D/g, '');
 const getWhatsAppHref = (message?: string) => message ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}` : `https://wa.me/${whatsappNumber}`;
 const locationLabel = `${hotel.region}, Colombia`;
-const languageHref = isEnglish ? '/' : '/en/';
+const languageHref = isEnglish ? '/es/' : '/en/';
 const seoTitle = data.seo?.title ?? `${hotel.name} | ${isEnglish ? 'Accommodation in' : 'Alojamiento en'} ${hotel.location}`;
 const seoDescription = data.seo?.description ?? data.hero.description;
 const navigation = isEnglish ? [
