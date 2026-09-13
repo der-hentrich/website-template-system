@@ -11,8 +11,9 @@ interface Props {
 }
 
 const { name, size = 'md', tone = 'current', filled = false, label } = Astro.props;
-const sizeClasses: Record<IconSize, string> = { xs: 'text-[16px]', sm: 'text-[18px]', md: 'text-[20px]', lg: 'text-[24px]', xl: 'text-[26px]', '2xl': 'text-[28px]' };
+const sizeValues: Record<IconSize, number> = { xs: 16, sm: 18, md: 20, lg: 24, xl: 26, '2xl': 28 };
 const toneClasses: Record<IconTone, string> = { current: 'text-current', primary: 'text-primary-container', primaryFixed: 'text-primary-fixed', secondary: 'text-text-secondary', inverse: 'text-on-primary', whatsapp: 'text-whatsapp', amber: 'text-amber-500', amberStrong: 'text-amber-600', muted: 'text-outline-variant' };
+const iconStyle = `font-size:${sizeValues[size]}px;line-height:1;font-variation-settings:'FILL' ${filled ? 1 : 0},'wght' 400,'GRAD' 0,'opsz' 24;`;
 ---
 
-<span class:list={['material-symbols-outlined', sizeClasses[size], toneClasses[tone]]} style={filled ? "font-variation-settings: 'FILL' 1;" : undefined} aria-hidden={label ? undefined : 'true'} aria-label={label}>{name}</span>
+<span class:list={['material-symbols-outlined', toneClasses[tone]]} style={iconStyle} aria-hidden={label ? undefined : 'true'} aria-label={label}>{name}</span>
