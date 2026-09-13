@@ -43,21 +43,22 @@ const { title, description, image, imageAlt, imageEyebrow, imageTitle, imageLoca
         <div class="grid grid-cols-1 items-center gap-xl lg:grid-cols-12 lg:gap-2xl">
             <div class="flex flex-col items-start lg:col-span-7">
                 {rating !== undefined && reviewCount !== undefined && (
-                    <div class="mb-lg inline-flex items-center gap-xs rounded-full bg-surface px-md py-xs shadow-sm">
-                        <Rating value={rating} />
-                        <span class="font-body text-label text-text-primary">{rating.toFixed(1).replace('.', ',')} / 5 en Google</span>
-                        <span class="text-outline-variant">•</span>
-                        <span class="font-body text-label text-text-secondary">{reviewCount} reseñas verificadas</span>
-                    </div>
+                        <div class="mb-lg inline-flex items-center gap-xs rounded-full bg-surface px-md py-xs shadow-sm">
+                            <Rating value={rating} />
+                            <span class="font-body text-label text-text-primary">{rating.toFixed(1).replace('.', ',')} / 5 en Google</span>
+                            <span class="text-outline-variant">•</span>
+                            <span class="font-body text-label text-text-secondary">{reviewCount} reseñas verificadas</span>
+                        </div>
                 )}
                 <h1 class="mb-md font-heading text-display tracking-tight text-text-primary">{title}</h1>
                 <p class="mb-xl max-w-[580px] font-body text-body-lg leading-relaxed text-text-secondary">{description}</p>
                 <div class="flex w-full flex-wrap items-center gap-base sm:w-auto">
                     <Button variant="whatsapp" size="lg" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="chat">{whatsappLabel}</Button>
-                    <Button variant="secondary" size="lg" href={secondaryHref} icon="arrow_downward">{secondaryLabel}</Button>
+                    <Button variant="secondary" size="lg" href={secondaryHref} icon="arrow_downward" iconPosition="end">{secondaryLabel}</Button>
                 </div>
                 {metas.length > 0 && <div class="mt-2xl flex flex-wrap items-center gap-xl pt-lg font-body text-label text-text-secondary">{metas.map((item) => <div class="flex items-center gap-xs"><Icon name={item.icon} size="md" tone="primary" /><span>{item.text}</span></div>)}</div>}
             </div>
+
             <div class="relative lg:col-span-5">
                 <div class="relative mx-auto max-w-[480px] lg:max-w-none">
                     <div class="relative z-10 aspect-[4/5] overflow-hidden rounded-ui-2xl bg-surface-variant shadow-xl">
@@ -69,7 +70,9 @@ const { title, description, image, imageAlt, imageEyebrow, imageTitle, imageLoca
                             <p class="font-body text-body text-primary-fixed-dim">{imageLocation}</p>
                         </div>
                     </div>
+
                     {floatingCard && <div class="absolute -bottom-6 -left-6 z-20 hidden max-w-[280px] items-center gap-base rounded-ui-md bg-surface p-base shadow-xl sm:flex"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-container/10"><Icon name={floatingCard.icon} size="lg" tone="primary" /></div><div><p class="font-body text-label text-text-primary">{floatingCard.title}</p><p class="font-body text-[13px] leading-snug text-text-secondary">{floatingCard.description}</p></div></div>}
+
                     {availabilityLabel && <div class="absolute -right-4 -top-4 z-20 flex items-center gap-xs rounded-full bg-surface-alt px-base py-sm shadow-md"><span class="h-2.5 w-2.5 animate-pulse rounded-full bg-whatsapp"></span><span class="font-body text-label text-text-primary">{availabilityLabel}</span></div>}
                 </div>
             </div>

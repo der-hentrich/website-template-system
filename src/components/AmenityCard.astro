@@ -12,8 +12,8 @@ const { icon, title, description } = Astro.props;
 ---
 
 <Card variant="soft" radius="md" shadow="sm" padding="xl">
-    <div class="mb-base flex h-12 w-12 items-center justify-center rounded-xl bg-surface text-primary-container shadow-sm">
-        <Icon name={icon} size="xl" />
+    <div class="mb-base flex h-12 w-12 items-center justify-center rounded-xl bg-surface shadow-sm">
+        <Icon name={icon} size="xl" tone="primary" />
     </div>
     <div>
         <h3 class="mb-xs font-heading text-card-title text-text-primary">{title}</h3>

@@ -1,27 +1,43 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import SiteTemplate from '@siteTemplate';
+import data from '@siteData/data.json';
+
+const imageModules = import.meta.glob('@siteData/images/*', {
+	eager: true,
+	query: '?url',
+	import: 'default'
+}) as Record<string, string>;
+
+const images = Object.fromEntries(
+	Object.entries(imageModules).map(([path, url]) => [path.split('/').pop(), url])
+);
+
+function resolveImages(value: unknown): unknown {
+	if (Array.isArray(value)) {
+		return value.map(resolveImages);
+	}
+
+	if (value !== null && typeof value === 'object') {
+		return Object.fromEntries(
+			Object.entries(value as Record<string, unknown>).map(([key, item]) => [key, resolveImages(item)])
+		);
+	}
+
+	if (typeof value === 'string' && value.startsWith('images/')) {
+		const filename = value.substring('images/'.length);
+		const url = images[filename];
+
+		if (!url) {
+			throw new Error(`Bild nicht gefunden: ${value}`);
+		}
+
+		return url;
+	}
+
+	return value;
+}
+
+const resolvedData = resolveImages(data);
 ---
 
-<Layout>
-	<main class="mx-auto max-w-3xl px-6 py-16">
-		<h1 class="mb-8 text-4xl font-bold text-slate-900">Astro + Tailwind + Preline Test</h1>
-
-		<button class="mb-10 rounded-lg bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700">
-			Tailwind funktioniert
-		</button>
-
-		<div class="hs-accordion-group">
-			<div class="hs-accordion active" id="test-accordion">
-				<button class="hs-accordion-toggle flex w-full items-center gap-x-3 rounded-lg py-3 text-left font-semibold text-slate-900" aria-expanded="true" aria-controls="test-accordion-content">
-					Preline Accordion
-				</button>
-
-				<div id="test-accordion-content" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="test-accordion">
-					<p class="pb-4 text-slate-600">
-						Wenn sich dieser Bereich per Klick ein- und ausklappen lässt, funktioniert auch Preline.
-					</p>
-				</div>
-			</div>
-		</div>
-	</main>
-</Layout>
+<SiteTemplate data={resolvedData} />

@@ -25,7 +25,7 @@ const { value, reviewCount, description, stats, eyebrow = 'Calificación en el P
         <div class="rounded-ui-3xl bg-surface p-xl shadow-sm md:p-3xl">
             <div class="grid grid-cols-1 items-center gap-xl lg:grid-cols-12 lg:gap-2xl">
                 <div class="flex flex-col items-center text-center lg:col-span-5 lg:items-start lg:text-left">
-                    <div class="mb-base"><Badge variant="soft" icon="verified">{eyebrow}</Badge></div>
+                    <div class="mb-base"><Badge variant="soft" icon="verified" iconTone="amberStrong">{eyebrow}</Badge></div>
                     <div class="mb-xs flex items-baseline gap-sm"><span class="font-heading text-[4rem] font-bold leading-none text-text-primary">{value.toFixed(1)}</span><span class="font-heading text-card-title text-text-secondary">/ 5.0</span></div>
                     <div class="mb-sm"><Rating value={value} size="md" /></div>
                     <p class="font-body text-body-lg font-semibold text-text-primary">Basado en {reviewCount} reseñas verificadas de Google</p>

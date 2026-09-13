@@ -21,6 +21,6 @@ const stars = Array.from({ length: max }, (_, index) => {
 });
 ---
 
-<div class="inline-flex items-center gap-xs text-amber-500" role="img" aria-label={label ?? `${value} de ${max}`}>
+<div class="inline-flex items-center text-amber-500" role="img" aria-label={label ?? `${value} de ${max}`}>
     {stars.map((star, index) => <Icon name={star} size={iconSize} tone="amber" filled={normalized - index >= 0.25} />)}
 </div>

@@ -25,10 +25,10 @@ const { eyebrow = 'Cómo llegar', title, description, arrivalTitle, arrivalDescr
     <div class="mx-auto max-w-[var(--container-site)] px-lg">
         <div class="grid grid-cols-1 items-center gap-xl lg:grid-cols-12">
             <div class="flex flex-col items-start lg:col-span-5">
-                <div class="mb-sm"><Badge variant="soft" icon="explore">{eyebrow}</Badge></div>
+                <div class="mb-sm"><Badge variant="soft" icon="explore" iconTone="primary">{eyebrow}</Badge></div>
                 <h2 class="mb-md font-heading text-section-title tracking-tight text-text-primary">{title}</h2>
                 <p class="mb-lg font-body text-body-lg text-text-secondary">{description}</p>
-                <div class="mb-xl w-full rounded-ui-sm bg-surface-alt p-lg shadow-xs">
+                <div class="mb-xl w-full rounded-[18px] bg-surface-alt p-lg shadow-xs">
                     <div class="flex items-start gap-base"><Icon name="tips_and_updates" size="lg" tone="primary" /><div><p class="font-body text-label text-text-primary">{arrivalTitle}</p><p class="mt-xs font-body text-body text-text-secondary">{arrivalDescription}</p></div></div>
                 </div>
                 <Button variant="whatsapp" size="lg" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="near_me">{whatsappLabel}</Button>
@@ -36,8 +36,8 @@ const { eyebrow = 'Cómo llegar', title, description, arrivalTitle, arrivalDescr
             <div class="lg:col-span-7">
                 <div class="relative overflow-hidden rounded-ui-2xl bg-surface p-2 shadow-lg sm:p-3">
                     <div class="relative h-[380px] w-full overflow-hidden rounded-ui-lg bg-surface-variant bg-cover bg-center sm:h-[440px]" style={`background-image: url('${mapImage}')`} role="img" aria-label={mapAlt || address}>
-                        <div class="absolute bottom-6 left-6 right-6 max-w-[340px] rounded-ui-sm bg-surface/95 p-base shadow-md backdrop-blur-md sm:right-auto">
-                            <div class="mb-xs flex items-center gap-xs text-primary-container"><Icon name="pin_drop" size="md" tone="primary" /><span class="font-body text-label text-text-primary">{hotelName}</span></div>
+                        <div class="absolute bottom-6 left-6 right-6 max-w-[340px] rounded-[16px] bg-surface/95 p-base shadow-md backdrop-blur-md sm:right-auto">
+                            <div class="mb-xs flex items-center gap-xs"><Icon name="pin_drop" size="md" tone="primary" /><span class="font-body text-label text-text-primary">{hotelName}</span></div>
                             <p class="font-body text-[13px] leading-snug text-text-secondary">{address}</p>
                             <span class="mt-xs inline-block font-body text-[11px] font-semibold uppercase tracking-wider text-whatsapp">{mapNote}</span>
                         </div>

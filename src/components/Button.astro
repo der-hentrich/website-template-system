@@ -3,8 +3,8 @@ import Icon from './Icon.astro';
 
 type ButtonVariant = 'primary' | 'secondary' | 'whatsapp';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
-
 type ButtonTarget = '_self' | '_blank' | '_parent' | '_top';
+type ButtonIconPosition = 'start' | 'end';
 
 interface Props {
     variant?: ButtonVariant;
@@ -14,30 +14,36 @@ interface Props {
     rel?: string;
     type?: 'button' | 'submit' | 'reset';
     icon?: string;
+    iconPosition?: ButtonIconPosition;
     block?: boolean;
     disabled?: boolean;
     ariaLabel?: string;
 }
 
-const { variant = 'primary', size = 'lg', href, target, rel, type = 'button', icon, block = false, disabled = false, ariaLabel } = Astro.props;
-const baseClasses = 'inline-flex items-center justify-center gap-sm rounded-ui-sm font-body text-button shadow-sm transition-all';
+const { variant = 'primary', size = 'lg', href, target, rel, type = 'button', icon, iconPosition = 'start', block = false, disabled = false, ariaLabel } = Astro.props;
+const baseClasses = 'inline-flex items-center justify-center rounded-ui-sm font-body text-button shadow-sm transition-all';
 const variantClasses: Record<ButtonVariant, string> = {
     primary: 'bg-primary text-on-primary hover:bg-primary-strong',
     secondary: 'bg-surface text-primary-container hover:bg-surface-container',
     whatsapp: 'bg-whatsapp text-on-whatsapp hover:bg-whatsapp-hover'
 };
 const sizeClasses: Record<ButtonSize, string> = { sm: 'h-[44px] px-[18px]', md: 'h-[46px] px-[22px]', lg: 'h-[48px] px-[24px]', xl: 'h-[50px] px-[24px]' };
-const classes = [baseClasses, variantClasses[variant], sizeClasses[size], block && 'w-full', disabled && 'pointer-events-none opacity-50'];
+const gapClass = variant === 'secondary' || (variant === 'whatsapp' && size === 'md') ? 'gap-xs' : 'gap-sm';
+const sizeClass = variant === 'secondary' && size === 'lg' ? 'h-[48px] px-[22px]' : sizeClasses[size];
+const iconSize = variant === 'secondary' ? 'sm' : 'md';
+const classes = [baseClasses, variantClasses[variant], gapClass, sizeClass, block && 'w-full', disabled && 'pointer-events-none opacity-50'];
 ---
 
 {href ? (
-    <a class:list={classes} href={href} target={target} rel={rel} aria-label={ariaLabel} aria-disabled={disabled ? 'true' : undefined}>
-        {icon && <Icon name={icon} size="md" />}
-        <slot />
-    </a>
-) : (
-    <button class:list={classes} type={type} disabled={disabled} aria-label={ariaLabel}>
-        {icon && <Icon name={icon} size="md" />}
-        <slot />
-    </button>
-)}
+<a class:list={classes} href={href} target={target} rel={rel} aria-label={ariaLabel} aria-disabled={disabled ? 'true' : undefined}>
+    {icon && iconPosition === 'start' && <Icon name={icon} size={iconSize} />}
+    <slot />
+    {icon && iconPosition === 'end' && <Icon name={icon} size={iconSize} />}
+</a>
+    ) : (
+<button class:list={classes} type={type} disabled={disabled} aria-label={ariaLabel}>
+    {icon && iconPosition === 'start' && <Icon name={icon} size={iconSize} />}
+    <slot />
+    {icon && iconPosition === 'end' && <Icon name={icon} size={iconSize} />}
+</button>
+    )}

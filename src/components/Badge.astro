@@ -2,14 +2,16 @@
 import Icon from './Icon.astro';
 
 type BadgeVariant = 'surface' | 'soft' | 'accent' | 'dark' | 'success' | 'overlay';
+type IconTone = 'current' | 'primary' | 'primaryFixed' | 'secondary' | 'inverse' | 'whatsapp' | 'amber' | 'amberStrong' | 'muted';
 
 interface Props {
     variant?: BadgeVariant;
     icon?: string;
+    iconTone?: IconTone;
     dot?: boolean;
 }
 
-const { variant = 'surface', icon, dot = false } = Astro.props;
+const { variant = 'surface', icon, iconTone = 'current', dot = false } = Astro.props;
 const variantClasses: Record<BadgeVariant, string> = {
     surface: 'bg-surface text-text-primary',
     soft: 'bg-surface-alt text-text-primary',
@@ -22,6 +24,6 @@ const variantClasses: Record<BadgeVariant, string> = {
 
 <span class:list={['inline-flex items-center gap-xs rounded-full px-md py-xs font-body text-label', variantClasses[variant]]}>
     {dot && <span class:list={['h-2 w-2 rounded-full', variant === 'success' ? 'bg-emerald-500 animate-pulse' : 'bg-whatsapp']}></span>}
-    {icon && <Icon name={icon} size="xs" />}
+    {icon && <Icon name={icon} size="xs" tone={iconTone} />}
     <slot />
 </span>
