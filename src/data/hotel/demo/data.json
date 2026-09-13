@@ -1,4 +1,5 @@
 {
+  "demo": true,
   "hotel": {
     "name": "Hotel El Sol",
     "location": "Mesa de Los Santos",
@@ -32,7 +33,6 @@
     }
   },
   "rooms": {
-    "note": "Categorías de habitaciones de ejemplo para esta demostración",
     "rooms": [
       {
         "image": "images/room-standard.jpg",
@@ -173,8 +173,5 @@
   },
   "location": {
     "mapImage": "images/location-map.png"
-  },
-  "footer": {
-    "note": "Sitio web de demostración comercial – Página Web Profesional de El Hentrich"
   }
 }

@@ -17,6 +17,7 @@ interface Props {
 
 const { data } = Astro.props;
 const { hotel } = data;
+const isDemo = data.demo === true;
 const whatsappNumber = hotel.whatsapp.replace(/\D/g, '');
 const getWhatsAppHref = (message?: string) => message ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}` : `https://wa.me/${whatsappNumber}`;
 const locationLabel = `${hotel.region}, Colombia`;
@@ -37,7 +38,8 @@ const rooms = data.rooms.rooms.map((room: any) => ({
     ...room,
     whatsappHref: getWhatsAppHref(`Hola, estoy interesado en ${room.title} de ${hotel.name}.`)
 }));
-const footer = data.footer ?? {};
+const demoRoomsNote = isDemo ? 'Categorías de habitaciones de ejemplo para esta demostración' : undefined;
+const demoFooterNote = isDemo ? 'Sitio web de demostración comercial – Página Web Profesional de El Hentrich' : undefined;
 ---
 
 <Layout>
@@ -51,7 +53,7 @@ const footer = data.footer ?? {};
         <div class="flex w-full flex-col">
             <Hero {...data.hero} imageLocation={locationLabel} whatsappHref={getWhatsAppHref(`Hola, quisiera consultar la disponibilidad de habitaciones en ${hotel.name}.`)} rating={data.googleRating?.value} reviewCount={data.googleRating?.reviewCount} metas={heroMetas} />
             {data.intro && <Intro {...data.intro} />}
-            <Rooms {...data.rooms} rooms={rooms} />
+            <Rooms {...data.rooms} rooms={rooms} note={demoRoomsNote} />
             <Amenities {...data.amenities} />
             {data.googleRating && <GoogleRating {...data.googleRating} roomCount={hotel.roomCount} location={hotel.location} />}
             <Gallery {...data.gallery} />
@@ -60,5 +62,5 @@ const footer = data.footer ?? {};
         </div>
     </main>
 
-    <Footer {...footer} name={hotel.name} address={hotel.address} roomCount={hotel.roomCount} rnt={hotel.rnt} items={navigation} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref()} region={hotel.region} />
+    <Footer name={hotel.name} address={hotel.address} roomCount={hotel.roomCount} rnt={hotel.rnt} items={navigation} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref()} region={hotel.region} note={demoFooterNote} />
 </Layout>
