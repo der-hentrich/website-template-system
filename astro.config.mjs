@@ -34,7 +34,7 @@ export default defineConfig({
   outDir,
   publicDir: existsSync(sitePublicDir) ? sitePublicDir : resolve(root, 'public'),
   build: {
-    assets: 'assets/raw'
+    assets: 'assets'
   },
   vite: {
     plugins: [tailwindcss()],

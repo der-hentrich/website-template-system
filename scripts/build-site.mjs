@@ -1,5 +1,6 @@
+import { createHash } from 'node:crypto';
 import { existsSync } from 'node:fs';
-import { mkdir, readdir, readFile, rename, rm, rmdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rename, rm, rmdir, writeFile } from 'node:fs/promises';
 import { basename, dirname, extname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -8,7 +9,8 @@ const siteTarget = process.argv[2] ?? 'hotel/demo';
 const siteUrl = process.argv[3]?.trim();
 const targetParts = siteTarget.split('/');
 const imageExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp', '.avif', '.gif', '.svg', '.ico']);
-const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.json']);
+const scriptExtensions = new Set(['.js', '.mjs']);
+const textExtensions = new Set(['.html', '.css', '.js', '.mjs', '.xml', '.txt', '.json', '.map']);
 
 if (targetParts.length !== 2 || targetParts.some((part) => !part || part === '.' || part === '..')) {
     throw new Error(`Invalid site target "${siteTarget}". Expected "<template>/<site>", for example "hotel/demo".`);
@@ -16,7 +18,7 @@ if (targetParts.length !== 2 || targetParts.some((part) => !part || part === '.'
 
 const dataFile = resolve(root, 'src/data', ...targetParts, 'data.json');
 const outDir = resolve(root, 'dist', ...targetParts);
-const rawAssetsDir = resolve(outDir, 'assets', 'raw');
+const assetsDir = resolve(outDir, 'assets');
 
 if (!existsSync(dataFile)) {
     throw new Error(`Site data not found: ${dataFile}`);
@@ -30,8 +32,8 @@ if (siteUrl) {
     delete process.env.SITE_URL;
 }
 
-function toPosix(path) {
-    return path.replaceAll('\\', '/');
+function toPosix(value) {
+    return value.replaceAll('\\', '/');
 }
 
 async function collectFiles(directory) {
@@ -53,95 +55,134 @@ async function collectFiles(directory) {
     return files;
 }
 
-function getAssetType(fileName) {
-    const extension = extname(fileName).toLowerCase();
+async function contentHash(file) {
+    return createHash('sha256').update(await readFile(file)).digest('hex').slice(0, 12);
+}
+
+function assetType(file) {
+    const extension = extname(file).toLowerCase();
 
     if (extension === '.css') return 'css';
-    if (extension === '.js' || extension === '.mjs') return 'js';
+    if (scriptExtensions.has(extension)) return 'js';
     if (imageExtensions.has(extension)) return 'image';
 
     return 'other';
 }
 
-function normalizeGeneratedName(fileName, type) {
-    if (type !== 'js' && type !== 'css') return fileName;
+async function referencedByHtml(relativePath) {
+    const htmlFiles = (await collectFiles(outDir)).filter((file) => extname(file).toLowerCase() === '.html');
+    const normalized = toPosix(relativePath);
 
-    const extension = extname(fileName);
-    const stem = basename(fileName, extension);
-    const hashSeparator = stem.lastIndexOf('.');
+    for (const htmlFile of htmlFiles) {
+        const content = await readFile(htmlFile, 'utf8');
 
-    let name = hashSeparator === -1 ? stem : stem.substring(0, hashSeparator);
-    const hash = hashSeparator === -1 ? null : stem.substring(hashSeparator + 1);
-
-    if (type === 'js' && /Layout\.astro_astro_type_script_index_0_lang/i.test(name)) {
-        name = 'preline';
-    } else {
-        name = name
-            .replace(/\.astro.*$/i, '')
-            .replace(/astro/gi, '')
-            .replace(/[^a-zA-Z0-9._-]+/g, '-')
-            .replace(/^[-._]+|[-._]+$/g, '');
+        if (content.includes(`/${normalized}`) || content.includes(normalized)) {
+            return true;
+        }
     }
 
-    if (!name) name = type === 'js' ? 'script' : 'style';
-
-    return hash ? `${name}.${hash}${extension}` : `${name}${extension}`;
+    return false;
 }
 
-async function reorganizeAssets() {
-    const sourceFiles = await collectFiles(rawAssetsDir);
-    const mappings = [];
+async function buildMappings() {
+    const files = await collectFiles(assetsDir);
+    const typedFiles = [];
 
-    for (const sourcePath of sourceFiles) {
-        const originalName = basename(sourcePath);
-        const type = getAssetType(originalName);
-        const targetName = normalizeGeneratedName(originalName, type);
-
-        let targetRelative;
-
-        if (type === 'image') {
-            targetRelative = `assets/images/${targetName}`;
-        } else if (type === 'css') {
-            targetRelative = `assets/css/${targetName}`;
-        } else if (type === 'js') {
-            targetRelative = `assets/js/${targetName}`;
-        } else {
-            targetRelative = `assets/${targetName}`;
-        }
-
-        const oldRelative = toPosix(relative(outDir, sourcePath));
-        const targetPath = resolve(outDir, targetRelative);
-
-        await mkdir(dirname(targetPath), { recursive: true });
-
-        if (existsSync(targetPath)) {
-            throw new Error(`Duplicate generated asset target: ${targetRelative}`);
-        }
-
-        await rename(sourcePath, targetPath);
-
-        mappings.push({
-            oldRelative,
-            newRelative: toPosix(targetRelative)
+    for (const file of files) {
+        typedFiles.push({
+            file,
+            type: assetType(file),
+            oldRelative: toPosix(relative(outDir, file))
         });
     }
 
-    await rm(rawAssetsDir, { recursive: true, force: true });
+    const jsFiles = typedFiles.filter((item) => item.type === 'js');
+    const cssFiles = typedFiles.filter((item) => item.type === 'css');
+    const mappings = [];
 
-    const outputFiles = await collectFiles(outDir);
+    for (const item of typedFiles) {
+        const extension = extname(item.file).toLowerCase();
+        let newRelative;
 
-    for (const file of outputFiles) {
+        if (item.type === 'js' || item.type === 'css') {
+            const filesOfType = item.type === 'js' ? jsFiles : cssFiles;
+            const isMain = filesOfType.length === 1 || await referencedByHtml(item.oldRelative);
+            const name = isMain ? 'main' : 'chunk';
+            const hash = await contentHash(item.file);
+            const directory = item.type === 'js' ? 'js' : 'css';
+
+            newRelative = `assets/${directory}/${name}.${hash}${extension}`;
+        } else if (item.type === 'image') {
+            newRelative = `assets/images/${basename(item.file)}`;
+        } else {
+            continue;
+        }
+
+        mappings.push({
+            source: item.file,
+            oldRelative: item.oldRelative,
+            newRelative
+        });
+    }
+
+    return mappings;
+}
+
+async function moveAssets(mappings) {
+    for (const mapping of mappings) {
+        const destination = resolve(outDir, mapping.newRelative);
+
+        await mkdir(dirname(destination), { recursive: true });
+
+        if (existsSync(destination)) {
+            const sourceHash = await contentHash(mapping.source);
+            const destinationHash = await contentHash(destination);
+
+            if (sourceHash !== destinationHash) {
+                throw new Error(`Duplicate generated asset target: ${mapping.newRelative}`);
+            }
+
+            await rm(mapping.source);
+            continue;
+        }
+
+        await rename(mapping.source, destination);
+    }
+}
+
+function relativeReference(from, to) {
+    let value = toPosix(relative(dirname(from), to));
+
+    if (!value.startsWith('.')) {
+        value = `./${value}`;
+    }
+
+    return value;
+}
+
+async function rewriteReferences(mappings) {
+    const files = await collectFiles(outDir);
+    const reverseMappings = new Map(mappings.map((mapping) => [mapping.newRelative, mapping.oldRelative]));
+
+    for (const file of files) {
         if (!textExtensions.has(extname(file).toLowerCase())) continue;
 
+        const newCurrentRelative = toPosix(relative(outDir, file));
+        const oldCurrentRelative = reverseMappings.get(newCurrentRelative) ?? newCurrentRelative;
         let content = await readFile(file, 'utf8');
-        const originalContent = content;
+        const original = content;
 
         for (const mapping of mappings) {
             content = content.replaceAll(`/${mapping.oldRelative}`, `/${mapping.newRelative}`);
             content = content.replaceAll(mapping.oldRelative, mapping.newRelative);
+
+            const oldReference = relativeReference(oldCurrentRelative, mapping.oldRelative);
+            const newReference = relativeReference(newCurrentRelative, mapping.newRelative);
+
+            content = content.replaceAll(oldReference, newReference);
         }
 
-        if (content !== originalContent) {
+        if (content !== original) {
             await writeFile(file, content, 'utf8');
         }
     }
@@ -164,23 +205,36 @@ async function removeEmptyDirectories(directory, keepRoot = false) {
 }
 
 async function validateOutput() {
-    const outputFiles = await collectFiles(outDir);
+    const files = await collectFiles(outDir);
 
-    const invalidAsset = outputFiles.find((file) => {
+    for (const file of files) {
         const relativePath = toPosix(relative(outDir, file));
         const extension = extname(file).toLowerCase();
+        const fileName = basename(file);
 
-        return relativePath.startsWith('assets/images/') && (extension === '.js' || extension === '.mjs' || extension === '.css');
-    });
+        if (scriptExtensions.has(extension) && !relativePath.startsWith('assets/js/')) {
+            throw new Error(`JavaScript file outside assets/js: ${relativePath}`);
+        }
 
-    if (invalidAsset) {
-        throw new Error(`Invalid asset location: ${toPosix(relative(outDir, invalidAsset))}`);
-    }
+        if (extension === '.css' && !relativePath.startsWith('assets/css/')) {
+            throw new Error(`CSS file outside assets/css: ${relativePath}`);
+        }
 
-    const invalidName = outputFiles.find((file) => /_astro|astro_type_script/i.test(toPosix(relative(outDir, file))));
+        if (imageExtensions.has(extension) && relativePath.startsWith('assets/') && !relativePath.startsWith('assets/images/')) {
+            throw new Error(`Generated image outside assets/images: ${relativePath}`);
+        }
 
-    if (invalidName) {
-        throw new Error(`Invalid generated filename: ${toPosix(relative(outDir, invalidName))}`);
+        if ((scriptExtensions.has(extension) || extension === '.css') && /astro/i.test(fileName)) {
+            throw new Error(`Invalid generated bundle name: ${relativePath}`);
+        }
+
+        if (scriptExtensions.has(extension) && !/^(main|chunk)\.[a-f0-9]{12}\.(js|mjs)$/.test(fileName)) {
+            throw new Error(`Invalid JavaScript bundle name: ${relativePath}`);
+        }
+
+        if (extension === '.css' && !/^(main|chunk)\.[a-f0-9]{12}\.css$/.test(fileName)) {
+            throw new Error(`Invalid CSS bundle name: ${relativePath}`);
+        }
     }
 }
 
@@ -189,6 +243,10 @@ await rm(outDir, { recursive: true, force: true });
 const { build } = await import('astro');
 
 await build({ root });
-await reorganizeAssets();
+
+const mappings = await buildMappings();
+
+await moveAssets(mappings);
+await rewriteReferences(mappings);
 await removeEmptyDirectories(outDir, true);
 await validateOutput();
