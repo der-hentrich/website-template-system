@@ -1,0 +1,336 @@
+{
+  "meta": {
+    "title": "Hotel El Sol - Mesa de Los Santos",
+    "lang": "es"
+  },
+  "navbar": {
+    "name": "Hotel El Sol",
+    "location": "Mesa de Los Santos",
+    "items": [
+      {
+        "label": "Habitaciones",
+        "href": "#rooms-section"
+      },
+      {
+        "label": "Servicios",
+        "href": "#amenities-section"
+      },
+      {
+        "label": "Nosotros",
+        "href": "#about-section"
+      },
+      {
+        "label": "Galería",
+        "href": "#gallery-section"
+      },
+      {
+        "label": "Ubicación",
+        "href": "#location-section"
+      },
+      {
+        "label": "Contacto",
+        "href": "#contact-section"
+      }
+    ],
+    "whatsappHref": "https://wa.me/573116770580",
+    "whatsappLabel": "Contactoar por WhatsApp"
+  },
+  "hero": {
+    "title": "Tranquilidad y calidez natural en Mesa de Los Santos",
+    "description": "Disfruta de un descanso tranquilo en medio de la meseta santandereana. Un alojamiento independiente de 16 habitaciones, pensado para brindar hospitalidad auténtica, aire fresco de montaña y noches serenas.",
+    "image": "images/hero-main.jpg",
+    "imageAlt": "Warm and luminous boutique hotel interior at Hotel El Sol in Mesa de Los Santos Colombia, high wooden beam ceiling, handcrafted woven textiles in terracotta and sand, king bed with crisp white linens, natural morning sunlight pouring across rustic tiled floor with warm greenery outside large picture window",
+    "imageEyebrow": "Alojamiento independiente",
+    "imageTitle": "Descanso tranquilo en los Andes",
+    "imageLocation": "Santander, Colombia",
+    "whatsappHref": "https://wa.me/573116770580?text=Hola%2C%20quisiera%20consultar%20la%20disponibilidad%20de%20habitaciones%20en%20Hotel%20El%20Sol",
+    "whatsappLabel": "Consultar disponibilidad por WhatsApp",
+    "secondaryHref": "#rooms-section",
+    "secondaryLabel": "Ver habitaciones",
+    "rating": 4.6,
+    "reviewCount": 21,
+    "metas": [
+      {
+        "icon": "bed",
+        "text": "16 habitaciones tipo boutique"
+      },
+      {
+        "icon": "landscape",
+        "text": "Meseta santandereana"
+      },
+      {
+        "icon": "verified",
+        "text": "Reserva directa • Sin comisiones"
+      }
+    ],
+    "floatingCard": {
+      "icon": "coffee",
+      "title": "Café artesanal de Santander",
+      "description": "Recién preparado cada mañana en nuestro patio"
+    },
+    "availabilityLabel": "Atención directa del alojamiento"
+  },
+  "intro": null,
+  "rooms": {
+    "eyebrow": "Alojamiento",
+    "title": "Guest Habitaciones & Suites",
+    "description": "Espacios diseñados para descansar con comodidad y tranquilidad en Mesa de Los Santos.",
+    "note": "Categorías de habitaciones de ejemplo, adaptables para Hotel El Sol",
+    "rooms": [
+      {
+        "image": "images/room-standard.jpg",
+        "imageAlt": "Habitación estándar con cama queen en Hotel El Sol, Mesa de Los Santos, con mesas de noche de madera, lámparas artesanales, cabecero beige, ropa de cama blanca y luz cálida",
+        "label": "Habitación Estándar",
+        "guests": "Hasta 2 huéspedes",
+        "beds": "1 cama queen",
+        "title": "Habitación Estándar",
+        "description": "Un espacio sereno y privado, ideal para viajeros solos o parejas que buscan descansar en la tranquilidad de la montaña.",
+        "features": [
+          {
+            "icon": "shower",
+            "text": "Baño privado con ducha de agua caliente"
+          },
+          {
+            "icon": "wifi",
+            "text": "Wi-Fi de alta velocidad"
+          },
+          {
+            "icon": "desk",
+            "text": "Work desk & reading lamp"
+          }
+        ],
+        "whatsappHref": "https://wa.me/573116770580?text=Hola%2C%20estoy%20interesado%20en%20la%20Habitaci%C3%B3n%20Est%C3%A1ndar%20de%20Hotel%20El%20Sol"
+      },
+      {
+        "image": "images/room-double.jpg",
+        "imageAlt": "Habitación doble en Hotel El Sol, Mesa de Los Santos, Santander, con balcón privado y vista a las montañas, cama king, mesa de café y luz suave de la tarde",
+        "label": "Habitación Doble",
+        "guests": "Hasta 3 huéspedes",
+        "beds": "1 cama king o 2 camas queen",
+        "title": "Habitación Doble",
+        "description": "Una habitación amplia con vistas elevadas de la montaña, espacios abiertos y servicio de café por la mañana.",
+        "features": [
+          {
+            "icon": "balcony",
+            "text": "Balcón con vista a la montaña"
+          },
+          {
+            "icon": "coffee",
+            "text": "Café de cortesía por la mañana"
+          },
+          {
+            "icon": "bathtub",
+            "text": "Baño privado amplio"
+          }
+        ],
+        "whatsappHref": "https://wa.me/573116770580?text=Hola%2C%20estoy%20interesado%20en%20la%20Habitaci%C3%B3n%20Doble%20de%20Hotel%20El%20Sol"
+      },
+      {
+        "image": "images/room-family.jpg",
+        "imageAlt": "Habitación familiar amplia en Hotel El Sol, Mesa de Los Santos, con cama queen y dos camas sencillas, zona de estar y acceso directo a un patio con jardín",
+        "label": "Habitación Familiar",
+        "guests": "Hasta 4 huéspedes",
+        "beds": "1 cama queen + 2 camas sencillas",
+        "title": "Habitación Familiar",
+        "description": "Una habitación espaciosa, pensada para familias o grupos que viajan juntos y buscan comodidad.",
+        "features": [
+          {
+            "icon": "chair",
+            "text": "Zona de estar amplia"
+          },
+          {
+            "icon": "yard",
+            "text": "Terraza con vista al jardín"
+          },
+          {
+            "icon": "meeting_room",
+            "text": "Distribución amplia para familias"
+          }
+        ],
+        "whatsappHref": "https://wa.me/573116770580?text=Hola%2C%20estoy%20interesado%20en%20la%20Habitaci%C3%B3n%20Familiar%20de%20Hotel%20El%20Sol",
+        "guestIcon": "family_restroom"
+      }
+    ]
+  },
+  "amenities": {
+    "eyebrow": "Comodidad para huéspedes",
+    "title": "Hotel Services & Comodidad para huéspedes",
+    "description": "Hospitalidad santandereana auténtica para que tu estadía en la montaña sea cómoda, fresca y verdaderamente tranquila.",
+    "amenities": [
+      {
+        "icon": "wifi",
+        "title": "Wi-Fi de alta velocidad",
+        "description": "Conexión a internet estable en las 16 habitaciones, las zonas del patio y los espacios del jardín."
+      },
+      {
+        "icon": "local_parking",
+        "title": "Parqueadero privado",
+        "description": "Parqueadero privado y seguro dentro de las instalaciones, exclusivo para huéspedes durante su estadía en Mesa de Los Santos."
+      },
+      {
+        "icon": "bakery_dining",
+        "title": "Colombian Breakfast & Coffee",
+        "description": "Disfruta café santandereano recién preparado, acompañado de opciones de desayuno tradicionales con productos de la región."
+      },
+      {
+        "icon": "potted_plant",
+        "title": "Peaceful Garden & Courtyard",
+        "description": "Terrazas al aire libre y zonas verdes para sentarse y disfrutar con calma del clima de la montaña."
+      },
+      {
+        "icon": "support_agent",
+        "title": "Atención al huésped 24/7",
+        "description": "Atención cercana de nuestro equipo local de Santander, con comunicación directa por WhatsApp."
+      },
+      {
+        "icon": "cleaning_services",
+        "title": "Limpieza diaria",
+        "description": "Espacios bien cuidados, ropa de cama limpia y servicio diario de aseo en tu habitación."
+      }
+    ]
+  },
+  "googleRating": {
+    "eyebrow": "Calificación en el Perfil de Negocio de Google",
+    "value": 4.6,
+    "reviewCount": 21,
+    "description": "Calificación pública confirmada en el Perfil de Negocio de Google. Reservas directas por WhatsApp sin comisiones de intermediarios.",
+    "stats": [
+      {
+        "icon": "hotel",
+        "title": "16 habitaciones",
+        "description": "Capacidad reducida para una estadía tranquila y sin aglomeraciones"
+      },
+      {
+        "icon": "location_on",
+        "title": "Mesa de Los Santos",
+        "description": "Destino destacado en la zona montañosa de Santander"
+      },
+      {
+        "icon": "handshake",
+        "title": "Equipo local",
+        "description": "Personal dedicado que brinda auténtica hospitalidad colombiana"
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Atmosphere & Spaces",
+    "title": "Momentos del hotel",
+    "description": "Una mirada a nuestros interiores tranquilos, terrazas de montaña y rincones llenos de calma en Santander.",
+    "images": [
+      {
+        "image": "images/gallery-bedroom.jpg",
+        "imageAlt": "Sunlit bedroom interior at Hotel El Sol Mesa de Los Santos, pristine white linen bed with warm ochre throw, open windows looking out over Andean green mountain peaks, gentle morning breeze and morning light",
+        "caption": "Habitación con luz natural"
+      },
+      {
+        "image": "images/gallery-lobby.jpg",
+        "imageAlt": "Welcoming reception and lobby lounge at Hotel El Sol Mesa de Los Santos, rustic natural stone desk, warm handcrafted wooden chairs, indigenous Santander clay pottery vases with wildflowers, warm ambient lighting",
+        "caption": "Welcoming Lobby & Reception"
+      },
+      {
+        "image": "images/gallery-terrace.jpg",
+        "imageAlt": "Outdoor garden terrace at Hotel El Sol Mesa de Los Santos, wicker armchairs with comfortable cushions, expansive view across the rolling Santander plateau, blue sky with soft white clouds, calm peaceful mountain morning",
+        "caption": "Terraza con jardín y vistas a la montaña"
+      },
+      {
+        "image": "images/gallery-reading-lounge.jpg",
+        "imageAlt": "Quiet reading lounge at Hotel El Sol Mesa de Los Santos, warm wooden bookshelf with regional Colombian books, comfortable leather armchair, ceramic mug of steaming coffee on small timber table",
+        "caption": "Sala tranquila de lectura"
+      },
+      {
+        "image": "images/gallery-breakfast.jpg",
+        "imageAlt": "Colombian artisanal breakfast spread at Hotel El Sol, freshly poured dark Santander coffee in clay mug, fresh tropical fruits, traditional warm arepas, served on sunny wooden veranda table",
+        "caption": "Café artesanal de Santander & Breakfast"
+      },
+      {
+        "image": "images/gallery-exterior.jpg",
+        "imageAlt": "Exterior facade of Hotel El Sol in Mesa de Los Santos, warm terracotta and whitewashed Spanish architecture, flowering bougainvillea vines, rustic wooden balconies, bathed in the golden afternoon Santander sun",
+        "caption": "Arquitectura exterior con luz cálida"
+      }
+    ]
+  },
+  "location": {
+    "eyebrow": "Cómo llegar",
+    "title": "Mesa de Los Santos, Santander",
+    "description": "Ubicado en la meseta montañosa de Santander, reconocida por su clima agradable durante todo el año, sus vistas panorámicas y sus paisajes tranquilos.",
+    "arrivalTitle": "Información para tu llegada",
+    "arrivalDescription": "Estamos en Los Santos, Santander. Escríbenos por WhatsApp para recibir la ubicación exacta, puntos de referencia e indicaciones antes de tu viaje.",
+    "whatsappHref": "https://wa.me/573116770580?text=Hello%2C%20could%20you%20please%20send%20me%20directions%20and%20arrival%20tips%20for%20Hotel%20El%20Sol%20in%20Mesa%20de%20Los%20Santos%3F",
+    "whatsappLabel": "Get directions & arrival info on WhatsApp",
+    "mapImage": "images/location-map.png",
+    "mapAlt": "Mesa de Los Santos, Santander, Colombia",
+    "hotelName": "Hotel El Sol",
+    "address": "Mesa de Los Santos / Los Santos, Santander, Colombia",
+    "mapNote": "Indicaciones personalizadas por WhatsApp"
+  },
+  "contact": {
+    "eyebrow": "Línea directa de WhatsApp",
+    "title": "Planea tu estadía con nosotros",
+    "description": "¿Tienes preguntas o quieres reservar tus fechas? Escríbenos directamente por WhatsApp y recibe atención rápida y personalizada, sin intermediarios.",
+    "details": [
+      {
+        "icon": "hotel",
+        "text": "Hotel El Sol - Mesa de Los Santos"
+      },
+      {
+        "icon": "door_front",
+        "text": "16 habitaciones • Mesa de Los Santos, Santander, Colombia"
+      }
+    ],
+    "phone": "+57 311 6770580",
+    "whatsappHref": "https://wa.me/573116770580?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20staying%20at%20Hotel%20El%20Sol",
+    "whatsappLabel": "Escribir por WhatsApp",
+    "availabilityLabel": "Disponible para consultas",
+    "cardTitle": "WhatsApp directo",
+    "cardDescription": "Habla directamente con el personal del hotel para consultar disponibilidad, solicitudes especiales e indicaciones de llegada."
+  },
+  "footer": {
+    "name": "Hotel El Sol",
+    "address": "Mesa de Los Santos / Los Santos, Santander, Colombia",
+    "roomCount": "16 habitaciones",
+    "groups": [
+      {
+        "title": "Explorar",
+        "links": [
+          {
+            "label": "Habitaciones & Suites",
+            "href": "#rooms-section"
+          },
+          {
+            "label": "Servicios & Experiences",
+            "href": "#amenities-section"
+          },
+          {
+            "label": "Galería de fotos",
+            "href": "#gallery-section"
+          },
+          {
+            "label": "Cómo llegar",
+            "href": "#location-section"
+          }
+        ]
+      },
+      {
+        "title": "Información",
+        "links": [
+          {
+            "label": "Sobre el hotel",
+            "href": "#about-section"
+          },
+          {
+            "label": "Contactoo directo",
+            "href": "#contact-section"
+          }
+        ]
+      }
+    ],
+    "hospitalityTitle": "Hospitalidad Directa",
+    "hospitalityDescription": "Reservas personalizadas y atención inmediata a través de nuestro canal directo.",
+    "phone": "+57 311 6770580",
+    "whatsappHref": "https://wa.me/573116770580",
+    "note": "Sitio web de demostración comercial – Página Web Profesional de El Hentrich",
+    "copyright": "© 2025 Hotel El Sol - Mesa de Los Santos. Todos los derechos reservados.",
+    "locationLabel": "Santander, Colombia",
+    "locationHref": "#location-section"
+  }
+}
