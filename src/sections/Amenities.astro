@@ -9,13 +9,13 @@ interface Amenity {
 }
 
 interface Props {
-    eyebrow: string;
-    title: string;
-    description: string;
+    eyebrow?: string;
+    title?: string;
+    description?: string;
     amenities: Amenity[];
 }
 
-const { eyebrow, title, description, amenities } = Astro.props;
+const { eyebrow = 'Comodidad para huéspedes', title = 'Servicios y comodidad para huéspedes', description = 'Servicios pensados para que tu estadía sea cómoda, práctica y tranquila.', amenities } = Astro.props;
 ---
 
 <section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="amenities-section">

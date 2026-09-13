@@ -9,9 +9,13 @@ interface Detail {
 }
 
 interface Props {
+    name: string;
+    location: string;
+    region: string;
+    roomCount: number;
     eyebrow?: string;
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     details?: Detail[];
     phone: string;
     whatsappHref: string;
@@ -21,7 +25,11 @@ interface Props {
     cardDescription?: string;
 }
 
-const { eyebrow = 'Línea directa de WhatsApp', title, description, details = [], phone, whatsappHref, whatsappLabel = 'Escribir por WhatsApp', availabilityLabel = 'Disponible para consultas', cardTitle = 'WhatsApp directo', cardDescription = 'Habla directamente con el personal del hotel para consultar disponibilidad, solicitudes especiales e indicaciones de llegada.' } = Astro.props;
+const { name, location, region, roomCount, eyebrow = 'Línea directa de WhatsApp', title = 'Planea tu estadía con nosotros', description = '¿Tienes preguntas o quieres reservar tus fechas? Escríbenos directamente por WhatsApp y recibe atención rápida y personalizada, sin intermediarios.', details, phone, whatsappHref, whatsappLabel = 'Escribir por WhatsApp', availabilityLabel = 'Disponible para consultas', cardTitle = 'WhatsApp directo', cardDescription = 'Habla directamente con el personal del hotel para consultar disponibilidad, solicitudes especiales e indicaciones de llegada.' } = Astro.props;
+const resolvedDetails = details ?? [
+    { icon: 'hotel', text: `${name} - ${location}` },
+    { icon: 'door_front', text: `${roomCount} habitaciones • ${location}, ${region}, Colombia` }
+];
 ---
 
 <section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="contact-section">
@@ -40,9 +48,9 @@ const { eyebrow = 'Línea directa de WhatsApp', title, description, details = []
 
                     <p class="mb-xl max-w-[560px] font-body text-body-lg text-primary-fixed-dim">{description}</p>
 
-                    {details.length > 0 && (
+                    {resolvedDetails.length > 0 && (
                             <div class="space-y-xs font-body text-body text-primary-fixed-dim">
-                                {details.map((detail) => (
+                                {resolvedDetails.map((detail) => (
                                         <p class="flex items-center gap-xs">
                                             <Icon name={detail.icon} size="sm" tone="primaryFixed" />
                                             <span>{detail.text}</span>

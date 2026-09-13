@@ -12,12 +12,19 @@ interface Stat {
 interface Props {
     value: number;
     reviewCount: number;
-    description: string;
-    stats: Stat[];
+    roomCount: number;
+    location: string;
+    description?: string;
+    stats?: Stat[];
     eyebrow?: string;
 }
 
-const { value, reviewCount, description, stats, eyebrow = 'Calificación en el Perfil de Negocio de Google' } = Astro.props;
+const { value, reviewCount, roomCount, location, description = 'Calificación pública confirmada en el Perfil de Negocio de Google. Reservas directas por WhatsApp sin comisiones de intermediarios.', stats, eyebrow = 'Calificación en el Perfil de Negocio de Google' } = Astro.props;
+const resolvedStats = stats ?? [
+    { icon: 'hotel', title: `${roomCount} habitaciones`, description: 'Capacidad del alojamiento' },
+    { icon: 'location_on', title: location, description: 'Ubicación del alojamiento' },
+    { icon: 'handshake', title: 'Reserva directa', description: 'Atención por WhatsApp sin intermediarios' }
+];
 ---
 
 <section class="w-full bg-surface-bright py-3xl lg:py-4xl" id="google-rating-section">
@@ -32,7 +39,7 @@ const { value, reviewCount, description, stats, eyebrow = 'Calificación en el P
                     <p class="mt-xs max-w-[360px] font-body text-body text-text-secondary">{description}</p>
                 </div>
                 <div class="grid grid-cols-1 gap-base sm:grid-cols-3 lg:col-span-7">
-                    {stats.map((stat) => <StatCard {...stat} />)}
+                    {resolvedStats.map((stat) => <StatCard {...stat} />)}
                 </div>
             </div>
         </div>

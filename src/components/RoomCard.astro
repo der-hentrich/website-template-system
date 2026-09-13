@@ -12,7 +12,7 @@ interface Feature {
 interface Props {
     image: string;
     imageAlt: string;
-    label: string;
+    label?: string;
     guests: string;
     beds: string;
     title: string;
@@ -25,12 +25,13 @@ interface Props {
 }
 
 const { image, imageAlt, label, guests, beds, title, description, features, whatsappHref, buttonLabel = 'Consultar esta habitación por WhatsApp', guestIcon = 'group', bedIcon = 'bed' } = Astro.props;
+const displayLabel = label ?? title;
 ---
 
 <Card as="article" variant="surface" radius="xl" shadow="sm" padding="none" overflow="hidden" interactive>
     <div class="relative h-64 overflow-hidden bg-surface-container">
         <img class="h-full w-full object-cover" src={image} alt={imageAlt} />
-        <div class="absolute left-4 top-4"><Badge variant="overlay">{label}</Badge></div>
+        <div class="absolute left-4 top-4"><Badge variant="overlay">{displayLabel}</Badge></div>
         <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-full bg-primary-strong/75 px-base py-xs text-[13px] font-medium text-on-primary backdrop-blur-sm">
             <span class="flex items-center gap-xs"><Icon name={guestIcon} size="xs" />{guests}</span>
             <span class="flex items-center gap-xs"><Icon name={bedIcon} size="xs" />{beds}</span>

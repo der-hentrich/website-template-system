@@ -11,7 +11,7 @@ interface Feature {
 interface Room {
     image: string;
     imageAlt: string;
-    label: string;
+    label?: string;
     guests: string;
     beds: string;
     title: string;
@@ -23,14 +23,14 @@ interface Room {
 }
 
 interface Props {
-    eyebrow: string;
-    title: string;
-    description: string;
+    eyebrow?: string;
+    title?: string;
+    description?: string;
     note?: string;
     rooms: Room[];
 }
 
-const { eyebrow, title, description, note, rooms } = Astro.props;
+const { eyebrow = 'Alojamiento', title = 'Habitaciones y suites', description = 'Espacios diseñados para descansar con comodidad y tranquilidad.', note, rooms } = Astro.props;
 ---
 
 <section class="w-full bg-surface-bright py-3xl lg:py-4xl" id="rooms-section">

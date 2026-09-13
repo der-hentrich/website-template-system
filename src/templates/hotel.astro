@@ -16,27 +16,49 @@ interface Props {
 }
 
 const { data } = Astro.props;
+const { hotel } = data;
+const whatsappNumber = hotel.whatsapp.replace(/\D/g, '');
+const getWhatsAppHref = (message?: string) => message ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}` : `https://wa.me/${whatsappNumber}`;
+const locationLabel = `${hotel.region}, Colombia`;
+const navigation = [
+    { label: 'Habitaciones', href: '#rooms-section' },
+    { label: 'Servicios', href: '#amenities-section' },
+    ...(data.intro ? [{ label: 'Nosotros', href: '#about-section' }] : []),
+    { label: 'Galería', href: '#gallery-section' },
+    { label: 'Ubicación', href: '#location-section' },
+    { label: 'Contacto', href: '#contact-section' }
+];
+const heroMetas = [
+    { icon: 'bed', text: `${hotel.roomCount} habitaciones` },
+    ...(data.hero.metas ?? []),
+    { icon: 'verified', text: 'Reserva directa • Sin comisiones' }
+];
+const rooms = data.rooms.rooms.map((room: any) => ({
+    ...room,
+    whatsappHref: getWhatsAppHref(`Hola, estoy interesado en ${room.title} de ${hotel.name}.`)
+}));
+const footer = data.footer ?? {};
 ---
 
 <Layout>
     <Fragment slot="head">
-        <title>{data.meta.title}</title>
+        <title>{hotel.name} - {hotel.location}</title>
     </Fragment>
 
-    <Navbar {...data.navbar} items={data.navigation} />
+    <Navbar name={hotel.name} location={hotel.location} items={navigation} whatsappHref={getWhatsAppHref()} />
 
     <main class="min-h-[calc(100vh-80px)] w-full bg-surface-container-low pt-20">
         <div class="flex w-full flex-col">
-            <Hero {...data.hero} />
+            <Hero {...data.hero} imageLocation={locationLabel} whatsappHref={getWhatsAppHref(`Hola, quisiera consultar la disponibilidad de habitaciones en ${hotel.name}.`)} rating={data.googleRating?.value} reviewCount={data.googleRating?.reviewCount} metas={heroMetas} />
             {data.intro && <Intro {...data.intro} />}
-            <Rooms {...data.rooms} />
+            <Rooms {...data.rooms} rooms={rooms} />
             <Amenities {...data.amenities} />
-            {data.googleRating && <GoogleRating {...data.googleRating} />}
+            {data.googleRating && <GoogleRating {...data.googleRating} roomCount={hotel.roomCount} location={hotel.location} />}
             <Gallery {...data.gallery} />
-            <Location {...data.location} />
-            <Contact {...data.contact} />
+            <Location {...data.location} location={hotel.location} region={hotel.region} hotelName={hotel.name} address={hotel.address} whatsappHref={getWhatsAppHref(`Hola, ¿podrían enviarme la ubicación e indicaciones para llegar a ${hotel.name} en ${hotel.location}?`)} />
+            <Contact name={hotel.name} location={hotel.location} region={hotel.region} roomCount={hotel.roomCount} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref(`Hola, quisiera consultar disponibilidad para hospedarme en ${hotel.name}.`)} />
         </div>
     </main>
 
-    <Footer {...data.footer} items={data.navigation} />
+    <Footer {...footer} name={hotel.name} address={hotel.address} roomCount={hotel.roomCount} rnt={hotel.rnt} items={navigation} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref()} region={hotel.region} />
 </Layout>

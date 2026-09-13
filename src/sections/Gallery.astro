@@ -9,13 +9,13 @@ interface GalleryImage {
 }
 
 interface Props {
-    eyebrow: string;
-    title: string;
-    description: string;
+    eyebrow?: string;
+    title?: string;
+    description?: string;
     images: GalleryImage[];
 }
 
-const { eyebrow, title, description, images } = Astro.props;
+const { eyebrow = 'Ambiente y espacios', title = 'Momentos del hotel', description = 'Una mirada a los espacios, ambientes y detalles del alojamiento.', images } = Astro.props;
 ---
 
 <section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="gallery-section">
