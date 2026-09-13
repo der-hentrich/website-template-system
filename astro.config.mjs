@@ -6,8 +6,10 @@ import { resolve } from 'node:path';
 const root = fileURLToPath(new URL('.', import.meta.url));
 const siteTarget = process.env.SITE_TARGET ?? 'hotel/demo';
 const template = siteTarget.split('/')[0];
+const siteUrl = process.env.SITE_URL?.trim();
 
 export default defineConfig({
+  ...(siteUrl ? { site: siteUrl } : {}),
   vite: {
     plugins: [tailwindcss()],
     resolve: {

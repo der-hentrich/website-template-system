@@ -1,5 +1,7 @@
 ---
+// @ts-ignore
 import SiteTemplate from '@siteTemplate';
+// @ts-ignore
 import data from '@siteData/data.json';
 
 type Lang = 'es' | 'en';
@@ -9,6 +11,10 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+
+if (import.meta.env.PROD && data.demo !== true && !Astro.site) {
+    throw new Error('SITE_URL fehlt für den produktiven Build. Setze SITE_URL auf die vollständige öffentliche Domain, z. B. https://example.com.');
+}
 
 const imageModules = import.meta.glob('@siteData/images/*', {
     eager: true,

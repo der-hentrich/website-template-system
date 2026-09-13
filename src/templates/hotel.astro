@@ -24,6 +24,8 @@ const whatsappNumber = hotel.whatsapp.replace(/\D/g, '');
 const getWhatsAppHref = (message?: string) => message ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}` : `https://wa.me/${whatsappNumber}`;
 const locationLabel = `${hotel.region}, Colombia`;
 const languageHref = isEnglish ? '/' : '/en/';
+const seoTitle = data.seo?.title ?? `${hotel.name} | ${isEnglish ? 'Accommodation in' : 'Alojamiento en'} ${hotel.location}`;
+const seoDescription = data.seo?.description ?? data.hero.description;
 const navigation = isEnglish ? [
     { label: 'Rooms', href: '#rooms-section' },
     { label: 'Services', href: '#amenities-section' },
@@ -53,11 +55,7 @@ const demoRoomsNote = isDemo ? (isEnglish ? 'Sample room categories for this dem
 const demoFooterNote = isDemo ? (isEnglish ? 'Commercial demonstration website – Professional Website by El Hentrich' : 'Sitio web de demostración comercial – Página Web Profesional de El Hentrich') : undefined;
 ---
 
-<Layout lang={lang}>
-    <Fragment slot="head">
-        <title>{hotel.name} - {hotel.location}</title>
-    </Fragment>
-
+<Layout lang={lang} title={seoTitle} description={seoDescription} noIndex={isDemo}>
     <Navbar name={hotel.name} location={hotel.location} items={navigation} whatsappHref={getWhatsAppHref(data.navbar?.whatsappText)} lang={lang} languageHref={languageHref} />
 
     <main class="min-h-[calc(100vh-80px)] w-full bg-surface-container-low pt-20">
