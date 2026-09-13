@@ -53,6 +53,7 @@ const rooms = data.rooms.rooms.map((room: any) => ({
 }));
 const demoRoomsNote = isDemo ? (isEnglish ? 'Sample room categories for this demonstration' : 'Categorías de habitaciones de ejemplo para esta demostración') : undefined;
 const demoFooterNote = isDemo ? (isEnglish ? 'Commercial demonstration website – Professional Website by El Hentrich' : 'Sitio web de demostración comercial – Página Web Profesional de El Hentrich') : undefined;
+const rntCertificateHref = '/rnt.pdf';
 ---
 
 <Layout lang={lang} title={seoTitle} description={seoDescription} noIndex={isDemo}>
@@ -71,5 +72,5 @@ const demoFooterNote = isDemo ? (isEnglish ? 'Commercial demonstration website �
         </div>
     </main>
 
-    <Footer lang={lang} name={hotel.name} address={hotel.address} roomCount={hotel.roomCount} rnt={hotel.rnt} items={navigation} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref()} region={hotel.region} note={demoFooterNote} />
+    <Footer lang={lang} name={hotel.name} address={hotel.address} roomCount={hotel.roomCount} rnt={hotel.rnt} rntCertificateHref={rntCertificateHref} items={navigation} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref()} region={hotel.region} note={demoFooterNote} />
 </Layout>

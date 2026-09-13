@@ -11,6 +11,7 @@ interface Props {
     address: string;
     roomCount: number;
     rnt?: string;
+    rntCertificateHref?: string;
     items: NavItem[];
     hospitalityTitle?: string;
     hospitalityDescription?: string;
@@ -22,7 +23,7 @@ interface Props {
     lang?: 'es' | 'en';
 }
 
-const { name, address, roomCount, rnt, items, hospitalityTitle: hospitalityTitleProp, hospitalityDescription: hospitalityDescriptionProp, phone, whatsappHref, note, region, locationHref = '#location-section', lang = 'es' } = Astro.props;
+const { name, address, roomCount, rnt, rntCertificateHref, items, hospitalityTitle: hospitalityTitleProp, hospitalityDescription: hospitalityDescriptionProp, phone, whatsappHref, note, region, locationHref = '#location-section', lang = 'es' } = Astro.props;
 const isEnglish = lang === 'en';
 const hospitalityTitle = hospitalityTitleProp ?? (isEnglish ? 'Direct Hospitality' : 'Hospitalidad Directa');
 const hospitalityDescription = hospitalityDescriptionProp ?? (isEnglish ? 'Personalized bookings and immediate assistance through our direct channel.' : 'Reservas personalizadas y atención inmediata a través de nuestro canal directo.');
@@ -31,6 +32,7 @@ const locationLabel = `${region}, Colombia`;
 const exploreLabel = isEnglish ? 'Explore' : 'Explorar';
 const informationLabel = isEnglish ? 'Information' : 'Información';
 const roomCountLabel = isEnglish ? `${roomCount} rooms` : `${roomCount} habitaciones`;
+const rntCertificateLabel = isEnglish ? 'View certificate' : 'Ver certificado';
 const rightsLabel = isEnglish ? 'All rights reserved.' : 'Todos los derechos reservados.';
 const siteByLabel = isEnglish ? 'Website by El Hentrich' : 'Sitio web por El Hentrich';
 ---
@@ -38,7 +40,7 @@ const siteByLabel = isEnglish ? 'Website by El Hentrich' : 'Sitio web por El Hen
 <footer class="mt-3xl w-full border-t border-border bg-surface-alt text-text-primary">
     <div class="mx-auto max-w-[var(--container-site)] px-lg py-3xl">
         <div class="grid grid-cols-1 gap-xl md:grid-cols-2 lg:grid-cols-4">
-            <div class="space-y-md"><h3 class="font-heading text-card-title text-text-primary">{name}</h3><p class="font-body text-body text-text-secondary">{address}</p><div class="flex flex-wrap gap-xs"><div class="inline-flex items-center gap-xs rounded-full border border-border bg-surface px-md py-xs"><Icon name="hotel" size="xs" tone="primary" /><span class="font-body text-label text-text-primary">{roomCountLabel}</span></div>{rnt && <div class="inline-flex items-center rounded-full border border-border bg-surface px-md py-xs"><span class="font-body text-label text-text-primary">RNT {rnt}</span></div>}</div></div>
+            <div class="space-y-md"><h3 class="font-heading text-card-title text-text-primary">{name}</h3><p class="font-body text-body text-text-secondary">{address}</p><div class="flex flex-wrap gap-xs"><div class="inline-flex items-center gap-xs rounded-full border border-border bg-surface px-md py-xs"><Icon name="hotel" size="xs" tone="primary" /><span class="font-body text-label text-text-primary">{roomCountLabel}</span></div>{rnt && rntCertificateHref && <a class="inline-flex items-center gap-xs rounded-full border border-border bg-surface px-md py-xs font-body text-label text-text-primary transition-colors hover:border-primary hover:text-primary" href={rntCertificateHref} target="_blank" rel="noopener noreferrer"><span>RNT {rnt}</span><span>·</span><span>{rntCertificateLabel}</span></a>}</div></div>
             <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">{exploreLabel}</h4><ul class="space-y-xs font-body text-body">{items.slice(0, 4).map((item) => <li><a class="text-on-surface-variant transition-colors hover:text-on-surface" href={item.href}>{item.label}</a></li>)}</ul></div>
             <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">{hospitalityTitle}</h4><p class="font-body text-body text-text-secondary">{hospitalityDescription}</p><a class="inline-flex items-center gap-xs font-body text-button text-whatsapp hover:underline" href={whatsappHref} rel="noopener noreferrer" target="_blank"><Icon name="call" size="sm" tone="whatsapp" /><span>{phone}</span></a></div>
             <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">{informationLabel}</h4><ul class="space-y-xs font-body text-body">{items.slice(4).map((item) => <li><a class="text-on-surface-variant transition-colors hover:text-on-surface" href={item.href}>{item.label}</a></li>)}</ul>{note && <div class="pt-sm"><p class="rounded-lg border border-border bg-surface p-sm text-[12px] leading-relaxed text-text-secondary">{note}</p></div>}</div>

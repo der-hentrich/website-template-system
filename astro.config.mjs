@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 
@@ -7,6 +8,7 @@ const root = fileURLToPath(new URL('.', import.meta.url));
 const siteTarget = process.env.SITE_TARGET ?? 'hotel/demo';
 const template = siteTarget.split('/')[0];
 const siteUrl = process.env.SITE_URL?.trim();
+const sitePublicDir = resolve(root, 'src/data', siteTarget, 'public');
 
 let site;
 
@@ -28,6 +30,7 @@ if (siteUrl) {
 
 export default defineConfig({
   ...(site ? { site } : {}),
+  publicDir: existsSync(sitePublicDir) ? sitePublicDir : resolve(root, 'public'),
   vite: {
     plugins: [tailwindcss()],
     resolve: {
