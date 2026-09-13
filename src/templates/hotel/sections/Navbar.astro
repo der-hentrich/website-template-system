@@ -27,15 +27,16 @@ const languageAriaLabel = isEnglish ? 'Cambiar a español' : 'Switch to English'
 const languageCode = isEnglish ? 'es' : 'en';
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-md transition-all duration-200">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-surface/75 backdrop-blur-md transition-all duration-200">
     <div class="mx-auto flex h-20 max-w-[var(--container-site)] items-center justify-between gap-base px-lg">
         <a class="group flex shrink-0 flex-col" href="#top">
             <span class="whitespace-nowrap font-heading text-card-title tracking-tight text-text-primary transition-colors group-hover:text-primary-container">{name}</span>
             <span class="-mt-1 whitespace-nowrap text-[11px] font-medium uppercase tracking-wider text-text-secondary">{location}</span>
         </a>
 
-        <nav class="hidden items-center gap-base lg:flex" aria-label={navigationLabel}>
-            {items.map((item) => <a class="px-sm py-xs font-body text-label text-on-surface-variant transition-colors hover:text-on-surface" href={item.href}>{item.label}</a>)}
+        <nav class="hidden items-center gap-base [--scrollspy-offset:96] lg:flex" aria-label={navigationLabel} data-hs-scrollspy="main">
+            <a class="hidden" href="#top" aria-hidden="true" tabindex="-1"></a>
+            {items.map((item) => <a class="relative px-sm py-xs font-body text-label text-on-surface-variant transition-colors hover:text-primary-container hs-scrollspy-active:text-primary-container hs-scrollspy-active:after:absolute hs-scrollspy-active:after:inset-x-sm hs-scrollspy-active:after:-bottom-1 hs-scrollspy-active:after:h-[2px] hs-scrollspy-active:after:rounded-full hs-scrollspy-active:after:bg-primary-container" href={item.href}>{item.label}</a>)}
         </nav>
 
         <div class="flex shrink-0 items-center gap-sm">
@@ -61,16 +62,30 @@ const languageCode = isEnglish ? 'es' : 'en';
                 <span class="hidden whitespace-nowrap lg:inline">{whatsappLabel}</span>
             </Button>
 
-            <details class="group relative lg:hidden">
-                <summary class="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-ui-sm bg-surface text-primary-container shadow-sm transition-colors hover:bg-surface-container" aria-label={menuLabel}>
-                    <span class="group-open:hidden"><Icon name="menu" size="lg" tone="primary" /></span>
-                    <span class="hidden group-open:inline-flex"><Icon name="close" size="lg" tone="primary" /></span>
-                </summary>
+            <div class="relative lg:hidden">
+                <button id="site-navigation-toggle" type="button" class="hs-collapse-toggle flex h-11 w-11 items-center justify-center rounded-ui-sm bg-surface text-primary-container shadow-sm transition-colors hover:bg-surface-container" aria-expanded="false" aria-controls="site-navigation-mobile" aria-label={menuLabel} data-hs-collapse="#site-navigation-mobile">
+                    <span class="hs-collapse-open:hidden"><Icon name="menu" size="lg" tone="primary" /></span>
+                    <span class="hidden hs-collapse-open:inline-flex"><Icon name="close" size="lg" tone="primary" /></span>
+                </button>
 
-                <nav class="absolute right-0 top-[calc(100%+8px)] w-64 overflow-hidden rounded-ui-md border border-border bg-surface p-sm shadow-lg" aria-label={mobileNavigationLabel}>
-                    {items.map((item) => <a class="block rounded-ui-sm px-base py-md font-body text-label text-on-surface-variant transition-colors hover:bg-surface-container hover:text-on-surface" href={item.href}>{item.label}</a>)}
+                <nav id="site-navigation-mobile" class="hidden absolute right-0 top-[calc(100%+8px)] w-64 overflow-hidden rounded-ui-md border border-border bg-surface p-sm shadow-lg transition-[height] duration-300 [--scrollspy-offset:96]" aria-labelledby="site-navigation-toggle" aria-label={mobileNavigationLabel} data-hs-scrollspy="main">
+                    <a class="hidden" href="#top" aria-hidden="true" tabindex="-1"></a>
+                    {items.map((item) => <a class="block rounded-ui-sm px-base py-md font-body text-label text-on-surface-variant transition-colors hover:bg-surface-container hover:text-primary-container hs-scrollspy-active:bg-surface-container hs-scrollspy-active:text-primary-container" href={item.href}>{item.label}</a>)}
                 </nav>
-            </details>
+            </div>
         </div>
     </div>
 </header>
+
+<script>
+    const toggle = document.querySelector<HTMLButtonElement>('#site-navigation-toggle');
+    const mobileNavigation = document.querySelector('#site-navigation-mobile');
+
+    mobileNavigation?.querySelectorAll<HTMLAnchorElement>('a[href^="#"]:not([aria-hidden="true"])').forEach((link) => {
+        link.addEventListener('click', () => {
+            if (toggle?.getAttribute('aria-expanded') === 'true') {
+                toggle.click();
+            }
+        });
+    });
+</script>
