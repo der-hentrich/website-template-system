@@ -9,6 +9,7 @@ const siteTarget = process.env.SITE_TARGET ?? 'hotel/demo';
 const template = siteTarget.split('/')[0];
 const siteUrl = process.env.SITE_URL?.trim();
 const sitePublicDir = resolve(root, 'src/data', siteTarget, 'public');
+const outDir = resolve(root, 'dist', siteTarget);
 
 let site;
 
@@ -30,6 +31,7 @@ if (siteUrl) {
 
 export default defineConfig({
   ...(site ? { site } : {}),
+  outDir,
   publicDir: existsSync(sitePublicDir) ? sitePublicDir : resolve(root, 'public'),
   vite: {
     plugins: [tailwindcss()],
