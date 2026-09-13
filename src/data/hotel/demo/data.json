@@ -3,35 +3,35 @@
     "title": "Hotel El Sol - Mesa de Los Santos",
     "lang": "es"
   },
+  "navigation": [
+    {
+      "label": "Habitaciones",
+      "href": "#rooms-section"
+    },
+    {
+      "label": "Servicios",
+      "href": "#amenities-section"
+    },
+    {
+      "label": "Nosotros",
+      "href": "#about-section"
+    },
+    {
+      "label": "Galería",
+      "href": "#gallery-section"
+    },
+    {
+      "label": "Ubicación",
+      "href": "#location-section"
+    },
+    {
+      "label": "Contacto",
+      "href": "#contact-section"
+    }
+  ],
   "navbar": {
     "name": "Hotel El Sol",
     "location": "Mesa de Los Santos",
-    "items": [
-      {
-        "label": "Habitaciones",
-        "href": "#rooms-section"
-      },
-      {
-        "label": "Servicios",
-        "href": "#amenities-section"
-      },
-      {
-        "label": "Nosotros",
-        "href": "#about-section"
-      },
-      {
-        "label": "Galería",
-        "href": "#gallery-section"
-      },
-      {
-        "label": "Ubicación",
-        "href": "#location-section"
-      },
-      {
-        "label": "Contacto",
-        "href": "#contact-section"
-      }
-    ],
     "whatsappHref": "https://wa.me/573116770580",
     "whatsappLabel": "Contactoar por WhatsApp"
   },
@@ -289,42 +289,6 @@
     "address": "Mesa de Los Santos / Los Santos, Santander, Colombia",
     "roomCount": "16 habitaciones",
     "rnt": "000000",
-    "groups": [
-      {
-        "title": "Explorar",
-        "links": [
-          {
-            "label": "Habitaciones & Suites",
-            "href": "#rooms-section"
-          },
-          {
-            "label": "Servicios & Experiences",
-            "href": "#amenities-section"
-          },
-          {
-            "label": "Galería de fotos",
-            "href": "#gallery-section"
-          },
-          {
-            "label": "Cómo llegar",
-            "href": "#location-section"
-          }
-        ]
-      },
-      {
-        "title": "Información",
-        "links": [
-          {
-            "label": "Sobre el hotel",
-            "href": "#about-section"
-          },
-          {
-            "label": "Contactoo directo",
-            "href": "#contact-section"
-          }
-        ]
-      }
-    ],
     "hospitalityTitle": "Hospitalidad Directa",
     "hospitalityDescription": "Reservas personalizadas y atención inmediata a través de nuestro canal directo.",
     "phone": "+57 311 6770580",

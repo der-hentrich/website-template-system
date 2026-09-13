@@ -1,14 +1,9 @@
 ---
 import Icon from '../components/Icon.astro';
 
-interface LinkItem {
+interface NavItem {
     label: string;
     href: string;
-}
-
-interface LinkGroup {
-    title: string;
-    links: LinkItem[];
 }
 
 interface Props {
@@ -16,7 +11,7 @@ interface Props {
     address: string;
     roomCount: string;
     rnt?: string;
-    groups: LinkGroup[];
+    items: NavItem[];
     hospitalityTitle?: string;
     hospitalityDescription?: string;
     phone: string;
@@ -26,7 +21,7 @@ interface Props {
     locationHref?: string;
 }
 
-const { name, address, roomCount, rnt, groups, hospitalityTitle = 'Hospitalidad Directa', hospitalityDescription = 'Reservas personalizadas y atención inmediata a través de nuestro canal directo.', phone, whatsappHref, note, locationLabel, locationHref = '#location-section' } = Astro.props;
+const { name, address, roomCount, rnt, items, hospitalityTitle = 'Hospitalidad Directa', hospitalityDescription = 'Reservas personalizadas y atención inmediata a través de nuestro canal directo.', phone, whatsappHref, note, locationLabel, locationHref = '#location-section' } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -34,9 +29,9 @@ const currentYear = new Date().getFullYear();
     <div class="mx-auto max-w-[var(--container-site)] px-lg py-3xl">
         <div class="grid grid-cols-1 gap-xl md:grid-cols-2 lg:grid-cols-4">
             <div class="space-y-md"><h3 class="font-heading text-card-title text-text-primary">{name}</h3><p class="font-body text-body text-text-secondary">{address}</p><div class="flex flex-wrap gap-xs"><div class="inline-flex items-center gap-xs rounded-full border border-border bg-surface px-md py-xs"><Icon name="hotel" size="xs" tone="primary" /><span class="font-body text-label text-text-primary">{roomCount}</span></div>{rnt && <div class="inline-flex items-center rounded-full border border-border bg-surface px-md py-xs"><span class="font-body text-label text-text-primary">RNT {rnt}</span></div>}</div></div>
-            {groups.slice(0, 1).map((group) => <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">{group.title}</h4><ul class="space-y-xs font-body text-body">{group.links.map((link) => <li><a class="text-on-surface-variant transition-colors hover:text-on-surface" href={link.href}>{link.label}</a></li>)}</ul></div>)}
+            <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">Explorar</h4><ul class="space-y-xs font-body text-body">{items.slice(0, 4).map((item) => <li><a class="text-on-surface-variant transition-colors hover:text-on-surface" href={item.href}>{item.label}</a></li>)}</ul></div>
             <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">{hospitalityTitle}</h4><p class="font-body text-body text-text-secondary">{hospitalityDescription}</p><a class="inline-flex items-center gap-xs font-body text-button text-whatsapp hover:underline" href={whatsappHref} rel="noopener noreferrer" target="_blank"><Icon name="call" size="sm" tone="whatsapp" /><span>{phone}</span></a></div>
-            {groups.slice(1, 2).map((group) => <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">{group.title}</h4><ul class="space-y-xs font-body text-body">{group.links.map((link) => <li><a class="text-on-surface-variant transition-colors hover:text-on-surface" href={link.href}>{link.label}</a></li>)}</ul>{note && <div class="pt-sm"><p class="rounded-lg border border-border bg-surface p-sm text-[12px] leading-relaxed text-text-secondary">{note}</p></div>}</div>)}
+            <div class="space-y-sm"><h4 class="font-body text-label uppercase tracking-wider text-text-secondary">Información</h4><ul class="space-y-xs font-body text-body">{items.slice(4).map((item) => <li><a class="text-on-surface-variant transition-colors hover:text-on-surface" href={item.href}>{item.label}</a></li>)}</ul>{note && <div class="pt-sm"><p class="rounded-lg border border-border bg-surface p-sm text-[12px] leading-relaxed text-text-secondary">{note}</p></div>}</div>
         </div>
         <div class="mt-2xl flex flex-col items-center justify-between gap-base border-t border-border/70 pt-lg font-body text-label text-text-secondary md:flex-row"><p>© {currentYear} {name}. Todos los derechos reservados.</p><div class="flex flex-wrap items-center justify-center gap-lg md:justify-end"><a class="transition-colors hover:text-text-primary" href="https://elhentrich.com" target="_blank" rel="noopener noreferrer">Sitio web por El Hentrich</a><span class="text-border">•</span><a class="transition-colors hover:text-text-primary" href={locationHref}>{locationLabel}</a><span class="text-border">•</span><a class="transition-colors hover:text-text-primary" href={whatsappHref}>WhatsApp {phone}</a></div></div>
     </div>

@@ -23,7 +23,7 @@ const { data } = Astro.props;
         <title>{data.meta.title}</title>
     </Fragment>
 
-    <Navbar {...data.navbar} />
+    <Navbar {...data.navbar} items={data.navigation} />
 
     <main class="min-h-[calc(100vh-80px)] w-full bg-surface-container-low pt-20">
         <div class="flex w-full flex-col">
@@ -38,5 +38,5 @@ const { data } = Astro.props;
         </div>
     </main>
 
-    <Footer {...data.footer} />
+    <Footer {...data.footer} items={data.navigation} />
 </Layout>
