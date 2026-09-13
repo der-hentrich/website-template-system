@@ -9,5 +9,3 @@ if (document.readyState === 'loading') {
 } else {
     initPreline();
 }
-
-document.addEventListener('astro:page-load', initPreline);
