@@ -20,6 +20,7 @@
     "imageAlt": "Interior cálido y luminoso de Hotel El Sol en Mesa de Los Santos, Colombia, con techo alto de vigas de madera, textiles artesanales en tonos terracota y arena, cama king con ropa de cama blanca, luz natural de la mañana y vegetación visible desde el ventanal",
     "imageEyebrow": "Alojamiento independiente",
     "imageTitle": "Descanso tranquilo en los Andes",
+    "whatsappText": "Hola, quisiera consultar la disponibilidad de habitaciones en Hotel El Sol.",
     "metas": [
       {
         "icon": "landscape",
@@ -41,6 +42,7 @@
         "beds": "1 cama queen",
         "title": "Habitación Estándar",
         "description": "Un espacio sereno y privado, ideal para viajeros solos o parejas que buscan descansar en la tranquilidad de la montaña.",
+        "whatsappText": "Hola, estoy interesado en Habitación Estándar de Hotel El Sol.",
         "features": [
           {
             "icon": "shower",
@@ -63,6 +65,7 @@
         "beds": "1 cama king o 2 camas queen",
         "title": "Habitación Doble",
         "description": "Una habitación amplia con vistas elevadas de la montaña, espacios abiertos y servicio de café por la mañana.",
+        "whatsappText": "Hola, estoy interesado en Habitación Doble de Hotel El Sol.",
         "features": [
           {
             "icon": "balcony",
@@ -85,6 +88,7 @@
         "beds": "1 cama queen + 2 camas sencillas",
         "title": "Habitación Familiar",
         "description": "Una habitación espaciosa, pensada para familias o grupos que viajan juntos y buscan comodidad.",
+        "whatsappText": "Hola, estoy interesado en Habitación Familiar de Hotel El Sol.",
         "features": [
           {
             "icon": "chair",
@@ -172,6 +176,10 @@
     ]
   },
   "location": {
-    "mapImage": "images/location-map.png"
+    "mapImage": "images/location-map.png",
+    "whatsappText": "Hola, ¿podrían enviarme la ubicación e indicaciones para llegar a Hotel El Sol en Mesa de Los Santos?"
+  },
+  "contact": {
+    "whatsappText": "Hola, quisiera consultar disponibilidad para hospedarme en Hotel El Sol."
   }
 }

@@ -36,7 +36,7 @@ const heroMetas = [
 ];
 const rooms = data.rooms.rooms.map((room: any) => ({
     ...room,
-    whatsappHref: getWhatsAppHref(`Hola, estoy interesado en ${room.title} de ${hotel.name}.`)
+    whatsappHref: getWhatsAppHref(room.whatsappText)
 }));
 const demoRoomsNote = isDemo ? 'Categorías de habitaciones de ejemplo para esta demostración' : undefined;
 const demoFooterNote = isDemo ? 'Sitio web de demostración comercial – Página Web Profesional de El Hentrich' : undefined;
@@ -47,18 +47,18 @@ const demoFooterNote = isDemo ? 'Sitio web de demostración comercial – Págin
         <title>{hotel.name} - {hotel.location}</title>
     </Fragment>
 
-    <Navbar name={hotel.name} location={hotel.location} items={navigation} whatsappHref={getWhatsAppHref()} />
+    <Navbar name={hotel.name} location={hotel.location} items={navigation} whatsappHref={getWhatsAppHref(data.navbar?.whatsappText)} />
 
     <main class="min-h-[calc(100vh-80px)] w-full bg-surface-container-low pt-20">
         <div class="flex w-full flex-col">
-            <Hero {...data.hero} imageLocation={locationLabel} whatsappHref={getWhatsAppHref(`Hola, quisiera consultar la disponibilidad de habitaciones en ${hotel.name}.`)} rating={data.googleRating?.value} reviewCount={data.googleRating?.reviewCount} metas={heroMetas} />
+            <Hero {...data.hero} imageLocation={locationLabel} whatsappHref={getWhatsAppHref(data.hero.whatsappText)} rating={data.googleRating?.value} reviewCount={data.googleRating?.reviewCount} metas={heroMetas} />
             {data.intro && <Intro {...data.intro} />}
             <Rooms {...data.rooms} rooms={rooms} note={demoRoomsNote} />
             <Amenities {...data.amenities} />
             {data.googleRating && <GoogleRating {...data.googleRating} roomCount={hotel.roomCount} location={hotel.location} />}
             <Gallery {...data.gallery} />
-            <Location {...data.location} location={hotel.location} region={hotel.region} hotelName={hotel.name} address={hotel.address} whatsappHref={getWhatsAppHref(`Hola, ¿podrían enviarme la ubicación e indicaciones para llegar a ${hotel.name} en ${hotel.location}?`)} />
-            <Contact name={hotel.name} location={hotel.location} region={hotel.region} roomCount={hotel.roomCount} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref(`Hola, quisiera consultar disponibilidad para hospedarme en ${hotel.name}.`)} />
+            <Location {...data.location} location={hotel.location} region={hotel.region} hotelName={hotel.name} address={hotel.address} whatsappHref={getWhatsAppHref(data.location.whatsappText)} />
+            <Contact name={hotel.name} location={hotel.location} region={hotel.region} roomCount={hotel.roomCount} phone={hotel.whatsapp} whatsappHref={getWhatsAppHref(data.contact?.whatsappText)} />
         </div>
     </main>
 
