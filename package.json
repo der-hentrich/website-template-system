@@ -21,6 +21,9 @@
     "esbuild": true
   },
   "devDependencies": {
-    "@types/node": "^22.20.2"
+    "@astrojs/language-server": "^2.16.13",
+    "@astrojs/ts-plugin": "^1.10.10",
+    "@types/node": "^22.20.2",
+    "typescript": "^6.0.3"
   }
 }
