@@ -33,6 +33,9 @@ export default defineConfig({
   ...(site ? { site } : {}),
   outDir,
   publicDir: existsSync(sitePublicDir) ? sitePublicDir : resolve(root, 'public'),
+  redirects: {
+    '/': '/es/'
+  },
   build: {
     assets: 'assets'
   },
