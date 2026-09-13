@@ -71,7 +71,7 @@ const { title, description, image, imageAlt, imageEyebrow, imageTitle, imageLoca
                         </div>
                     </div>
 
-                    {floatingCard && <div class="absolute -bottom-6 -left-6 z-20 hidden max-w-[280px] items-center gap-base rounded-ui-md bg-surface p-base shadow-xl sm:flex"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-container/10"><Icon name={floatingCard.icon} size="lg" tone="primary" /></div><div><p class="font-body text-label text-text-primary">{floatingCard.title}</p><p class="font-body text-[13px] leading-snug text-text-secondary">{floatingCard.description}</p></div></div>}
+                    {floatingCard && <div class="absolute -bottom-6 -left-6 z-20 flex max-w-[280px] items-center gap-base rounded-ui-md bg-surface p-base shadow-xl"><div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-container/10"><Icon name={floatingCard.icon} size="lg" tone="primary" /></div><div><p class="font-body text-label text-text-primary">{floatingCard.title}</p><p class="font-body text-[13px] leading-snug text-text-secondary">{floatingCard.description}</p></div></div>}
 
                     {availabilityLabel && <div class="absolute -right-4 -top-4 z-20 flex items-center gap-xs rounded-full bg-surface-alt px-base py-sm shadow-md"><span class="h-2.5 w-2.5 animate-pulse rounded-full bg-whatsapp"></span><span class="font-body text-label text-text-primary">{availabilityLabel}</span></div>}
                 </div>
