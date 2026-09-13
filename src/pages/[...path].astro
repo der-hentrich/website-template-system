@@ -1,0 +1,18 @@
+---
+import Site from '../site/Site.astro';
+
+export function getStaticPaths() {
+    return [
+        { params: { path: undefined }, props: { lang: 'es' } },
+        { params: { path: 'en' }, props: { lang: 'en' } }
+    ];
+}
+
+interface Props {
+    lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+---
+
+<Site lang={lang} />

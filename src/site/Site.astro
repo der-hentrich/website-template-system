@@ -2,7 +2,7 @@
 import type { ImageMetadata } from 'astro';
 // @ts-expect-error @siteTemplate is resolved dynamically through SITE_TARGET in astro.config.mjs.
 import SiteTemplate from '@siteTemplate';
-import { siteData as data, siteTarget } from '../lib/site-data';
+import { siteData as data, siteTarget } from './data-loader';
 
 type Lang = 'es' | 'en';
 

@@ -41,8 +41,9 @@ export default defineConfig({
     resolve: {
       alias: {
         '@siteData': resolve(root, 'src/data', siteTarget),
-        '@siteTemplate': resolve(root, 'src/templates', `${template}.astro`),
-        '@siteTheme': resolve(root, 'src/themes', `${template}.css`)
+        '@siteTemplate': resolve(root, 'src/templates', template, 'index.astro'),
+        '@siteTheme': resolve(root, 'src/templates', template, 'theme.css'),
+        '@siteSchema': resolve(root, 'src/templates', template, 'schema.ts')
       }
     },
     server: {

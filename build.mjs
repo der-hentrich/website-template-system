@@ -4,7 +4,7 @@ import { mkdir, readFile, readdir, rename, rm, rmdir, writeFile } from 'node:fs/
 import { basename, dirname, extname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = fileURLToPath(new URL('../', import.meta.url));
+const root = fileURLToPath(new URL('.', import.meta.url));
 const siteTarget = process.argv[2] ?? 'hotel/demo';
 const siteUrl = process.argv[3]?.trim();
 const targetParts = siteTarget.split('/');

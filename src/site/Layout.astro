@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import './global.css';
 
 interface Props {
     lang?: 'es' | 'en';
@@ -45,7 +45,7 @@ const robots = noIndex || !site ? 'noindex, nofollow' : 'index, follow';
 <slot />
 
 <script>
-    import '../scripts/preline.ts';
+    import './preline.ts';
 </script>
 </body>
 </html>

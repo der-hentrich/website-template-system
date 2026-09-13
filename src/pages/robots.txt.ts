@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { siteData as data } from '../lib/site-data';
+import { siteData as data } from '../site/data-loader';
 
 export const GET: APIRoute = ({ site }) => {
     const isIndexable = data.demo !== true && Boolean(site);

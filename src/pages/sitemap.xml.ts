@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { siteData as data } from '../lib/site-data';
+import { siteData as data } from '../site/data-loader';
 
 const escapeXml = (value: string) => value.replace(/[<>&'"]/g, (character) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' })[character] ?? character);
 
