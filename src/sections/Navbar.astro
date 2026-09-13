@@ -23,8 +23,7 @@ const whatsappLabel = whatsappLabelProp ?? (isEnglish ? 'Contact via WhatsApp' :
 const navigationLabel = isEnglish ? 'Main navigation' : 'Navegación principal';
 const mobileNavigationLabel = isEnglish ? 'Mobile navigation' : 'Navegación móvil';
 const menuLabel = isEnglish ? 'Open navigation menu' : 'Abrir menú de navegación';
-const languageLabel = isEnglish ? 'ES' : 'EN';
-const languageAriaLabel = isEnglish ? 'Switch to Spanish' : 'Cambiar a inglés';
+const languageAriaLabel = isEnglish ? 'Cambiar a español' : 'Switch to English';
 const languageCode = isEnglish ? 'es' : 'en';
 ---
 
@@ -40,7 +39,23 @@ const languageCode = isEnglish ? 'es' : 'en';
         </nav>
 
         <div class="flex shrink-0 items-center gap-sm">
-            <a class="inline-flex h-11 min-w-11 items-center justify-center rounded-ui-sm border border-border bg-surface px-sm font-body text-label font-semibold text-primary-container transition-colors hover:bg-surface-container" href={languageHref} hreflang={languageCode} aria-label={languageAriaLabel}>{languageLabel}</a>
+            <a class="inline-flex h-11 w-11 shrink-0 items-center justify-center" href={languageHref} hreflang={languageCode} aria-label={languageAriaLabel}>
+                {isEnglish ? (
+                        <svg class="w-9 overflow-hidden rounded-[3px] transition-opacity hover:opacity-75" viewBox="0 0 60 36" aria-hidden="true">
+                            <rect width="60" height="36" fill="#012169" />
+                            <path d="M0 0L60 36M60 0L0 36" stroke="#fff" stroke-width="7.2" />
+                            <path d="M0 0L60 36M60 0L0 36" stroke="#C8102E" stroke-width="4.2" />
+                            <path d="M30 0V36M0 18H60" stroke="#fff" stroke-width="12" />
+                            <path d="M30 0V36M0 18H60" stroke="#C8102E" stroke-width="7.2" />
+                        </svg>
+                ) : (
+                        <svg class="w-9 overflow-hidden rounded-[3px] transition-opacity hover:opacity-75" viewBox="0 0 3 2" aria-hidden="true">
+                            <rect width="3" height="1" fill="#FCD116" />
+                            <rect y="1" width="3" height="0.5" fill="#003893" />
+                            <rect y="1.5" width="3" height="0.5" fill="#CE1126" />
+                        </svg>
+                )}
+            </a>
 
             <Button variant="whatsapp" size="sm" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="chat" ariaLabel={whatsappLabel}>
                 <span class="hidden whitespace-nowrap lg:inline">{whatsappLabel}</span>
