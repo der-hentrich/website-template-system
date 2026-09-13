@@ -8,8 +8,26 @@ const siteTarget = process.env.SITE_TARGET ?? 'hotel/demo';
 const template = siteTarget.split('/')[0];
 const siteUrl = process.env.SITE_URL?.trim();
 
+let site;
+
+if (siteUrl) {
+  let parsedSite;
+
+  try {
+    parsedSite = new URL(siteUrl);
+  } catch {
+    throw new Error(`Invalid SITE_URL "${siteUrl}". Expected a complete URL, for example https://example.com.`);
+  }
+
+  if (parsedSite.protocol !== 'http:' && parsedSite.protocol !== 'https:') {
+    throw new Error(`Invalid SITE_URL "${siteUrl}". Only http:// and https:// are supported.`);
+  }
+
+  site = parsedSite.href;
+}
+
 export default defineConfig({
-  ...(siteUrl ? { site: siteUrl } : {}),
+  ...(site ? { site } : {}),
   vite: {
     plugins: [tailwindcss()],
     resolve: {

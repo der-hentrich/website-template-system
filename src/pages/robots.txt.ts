@@ -1,9 +1,8 @@
 import type { APIRoute } from 'astro';
-// @ts-ignore
-import data from '@siteData/data.json';
+import { siteData as data } from '../lib/site-data';
 
 export const GET: APIRoute = ({ site }) => {
-    const isIndexable = (data as { demo?: boolean }).demo !== true && Boolean(site);
+    const isIndexable = data.demo !== true && Boolean(site);
     const lines = ['User-agent: *', 'Allow: /'];
 
     if (isIndexable && site) {

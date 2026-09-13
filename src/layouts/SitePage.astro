@@ -1,8 +1,7 @@
 ---
-// @ts-ignore
+// @ts-expect-error @siteTemplate is resolved dynamically through SITE_TARGET in astro.config.mjs.
 import SiteTemplate from '@siteTemplate';
-// @ts-ignore
-import data from '@siteData/data.json';
+import { siteData as data, siteTarget } from '../lib/site-data';
 
 type Lang = 'es' | 'en';
 
@@ -13,7 +12,7 @@ interface Props {
 const { lang } = Astro.props;
 
 if (import.meta.env.PROD && data.demo !== true && !Astro.site) {
-    throw new Error('SITE_URL fehlt für den produktiven Build. Setze SITE_URL auf die vollständige öffentliche Domain, z. B. https://example.com.');
+    throw new Error('SITE_URL is required for production builds. Set SITE_URL to the full public URL, for example https://example.com.');
 }
 
 const imageModules = import.meta.glob('@siteData/images/*', {
@@ -63,7 +62,7 @@ function resolveImages(value: unknown): unknown {
         const url = images[filename];
 
         if (!url) {
-            throw new Error(`Bild nicht gefunden: ${value}`);
+            throw new Error(`Image not found for "${siteTarget}": ${value}`);
         }
 
         return url;
