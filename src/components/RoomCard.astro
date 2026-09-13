@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import Badge from './Badge.astro';
 import Button from './Button.astro';
 import Card from './Card.astro';
@@ -10,7 +12,7 @@ interface Feature {
 }
 
 interface Props {
-    image: string;
+    image: ImageMetadata;
     imageAlt: string;
     label?: string;
     guests: string;
@@ -32,7 +34,7 @@ const buttonLabel = buttonLabelProp ?? (lang === 'en' ? 'Ask about this room on 
 
 <Card as="article" variant="surface" radius="xl" shadow="sm" padding="none" overflow="hidden" interactive>
     <div class="relative h-64 overflow-hidden bg-surface-container">
-        <img class="h-full w-full object-cover" src={image} alt={imageAlt} />
+        <Image class="h-full w-full object-cover" src={image} alt={imageAlt} />
         <div class="absolute left-4 top-4"><Badge variant="overlay">{displayLabel}</Badge></div>
         <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-full bg-primary-strong/75 px-base py-xs text-[13px] font-medium text-on-primary backdrop-blur-sm">
             <span class="flex items-center gap-xs"><Icon name={guestIcon} size="xs" />{guests}</span>

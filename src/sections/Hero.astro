@@ -1,4 +1,6 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 import Button from '../components/Button.astro';
 import Icon from '../components/Icon.astro';
 import Rating from '../components/Rating.astro';
@@ -17,7 +19,7 @@ interface FloatingCard {
 interface Props {
     title: string;
     description: string;
-    image: string;
+    image: ImageMetadata;
     imageAlt: string;
     imageEyebrow: string;
     imageTitle: string;
@@ -71,7 +73,7 @@ const ratingAriaLabel = isEnglish ? `${formattedRating} out of 5` : `${formatted
             <div class="relative lg:col-span-5">
                 <div class="relative mx-auto max-w-[480px] lg:max-w-none">
                     <div class="relative z-10 aspect-[4/5] overflow-hidden rounded-ui-2xl bg-surface-variant shadow-xl">
-                        <img class="h-full w-full object-cover" src={image} alt={imageAlt} />
+                        <Image class="h-full w-full object-cover" src={image} alt={imageAlt} loading="eager" fetchpriority="high" />
                         <div class="absolute inset-0 bg-gradient-to-t from-primary-strong/70 via-transparent to-transparent"></div>
                         <div class="absolute bottom-24 left-6 right-6 text-on-primary">
                             <span class="font-body text-label uppercase tracking-wider text-primary-fixed">{imageEyebrow}</span>
