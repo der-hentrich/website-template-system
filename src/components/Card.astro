@@ -20,9 +20,32 @@ const variantClasses: Record<CardVariant, string> = { surface: 'bg-surface text-
 const radiusClasses: Record<CardRadius, string> = { sm: 'rounded-ui-sm', md: 'rounded-ui-md', lg: 'rounded-ui-lg', xl: 'rounded-ui-xl', '2xl': 'rounded-ui-2xl', '3xl': 'rounded-ui-3xl' };
 const shadowClasses: Record<CardShadow, string> = { none: '', sm: 'shadow-sm', md: 'shadow-md', lg: 'shadow-lg', xl: 'shadow-xl' };
 const paddingClasses: Record<CardPadding, string> = { none: '', base: 'p-base', lg: 'p-lg', xl: 'p-xl', '2xl': 'p-2xl', '3xl': 'p-3xl' };
-const classes = [variantClasses[variant], radiusClasses[radius], shadowClasses[shadow], paddingClasses[padding], overflow === 'hidden' && 'overflow-hidden', interactive && 'transition-all duration-300 hover:shadow-md'];
+const classes = [variantClasses[variant], radiusClasses[radius], shadowClasses[shadow], paddingClasses[padding], overflow === 'hidden' && 'overflow-hidden', interactive && 'card-interactive'];
 ---
 
 <Tag class:list={classes}>
     <slot />
 </Tag>
+
+<style>
+    .card-interactive {
+        transform: scale(1);
+        transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+    }
+
+    .card-interactive:hover {
+        transform: scale(1.025);
+        box-shadow: 0 10px 25px rgb(0 0 0 / 0.10);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .card-interactive {
+            transition: none;
+        }
+
+        .card-interactive:hover {
+            transform: none;
+        }
+    }
+</style>
