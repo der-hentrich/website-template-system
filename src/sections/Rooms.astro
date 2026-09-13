@@ -1,0 +1,45 @@
+---
+import Badge from '../components/Badge.astro';
+import RoomCard from '../components/RoomCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+interface Feature {
+    icon: string;
+    text: string;
+}
+
+interface Room {
+    image: string;
+    imageAlt: string;
+    label: string;
+    guests: string;
+    beds: string;
+    title: string;
+    description: string;
+    features: Feature[];
+    whatsappHref: string;
+    guestIcon?: string;
+    bedIcon?: string;
+}
+
+interface Props {
+    eyebrow: string;
+    title: string;
+    description: string;
+    note?: string;
+    rooms: Room[];
+}
+
+const { eyebrow, title, description, note, rooms } = Astro.props;
+---
+
+<section class="w-full bg-surface-bright py-3xl lg:py-4xl" id="rooms-section">
+    <div class="mx-auto max-w-[var(--container-site)] px-lg">
+        <SectionHeader eyebrow={eyebrow} eyebrowIcon="door_front" title={title} description={description}>
+            {note && <Fragment slot="aside"><Badge variant="accent" icon="info">{note}</Badge></Fragment>}
+        </SectionHeader>
+        <div class="grid grid-cols-1 gap-xl lg:grid-cols-3">
+            {rooms.map((room) => <RoomCard {...room} />)}
+        </div>
+    </div>
+</section>

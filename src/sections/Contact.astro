@@ -1,0 +1,51 @@
+---
+import Badge from '../components/Badge.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+
+interface Detail {
+    icon: string;
+    text: string;
+}
+
+interface Props {
+    eyebrow?: string;
+    title: string;
+    description: string;
+    details?: Detail[];
+    phone: string;
+    whatsappHref: string;
+    whatsappLabel?: string;
+    availabilityLabel?: string;
+    cardTitle?: string;
+    cardDescription?: string;
+}
+
+const { eyebrow = 'Línea directa de WhatsApp', title, description, details = [], phone, whatsappHref, whatsappLabel = 'Escribir por WhatsApp', availabilityLabel = 'Disponible para consultas', cardTitle = 'WhatsApp directo', cardDescription = 'Habla directamente con el personal del hotel para consultar disponibilidad, solicitudes especiales e indicaciones de llegada.' } = Astro.props;
+---
+
+<section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="contact-section">
+    <div class="mx-auto max-w-[var(--container-site)] px-lg">
+        <div class="relative overflow-hidden rounded-ui-3xl bg-primary-container p-xl text-on-primary shadow-xl sm:p-2xl lg:p-3xl">
+            <div class="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-primary-strong/50 blur-3xl"></div>
+            <div class="pointer-events-none absolute -left-16 -top-16 h-80 w-80 rounded-full bg-surface-tint/20 blur-2xl"></div>
+            <div class="relative z-10 grid grid-cols-1 items-center gap-xl lg:grid-cols-12 lg:gap-2xl">
+                <div class="lg:col-span-7">
+                    <div class="mb-base"><Badge variant="dark" dot>{eyebrow}</Badge></div>
+                    <h2 class="mb-md font-heading text-section-title tracking-tight text-on-primary">{title}</h2>
+                    <p class="mb-xl max-w-[560px] font-body text-body-lg text-primary-fixed-dim">{description}</p>
+                    {details.length > 0 && <div class="space-y-xs font-body text-body text-primary-fixed-dim">{details.map((detail) => <p class="flex items-center gap-xs"><Icon name={detail.icon} size="sm" tone="inverse" /><span>{detail.text}</span></p>)}</div>}
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="flex flex-col items-start rounded-ui-xl bg-surface p-xl text-text-primary shadow-lg">
+                        <div class="mb-base flex w-full items-center justify-between"><div class="flex h-12 w-12 items-center justify-center rounded-full bg-whatsapp/15 text-whatsapp"><Icon name="chat" size="xl" tone="whatsapp" /></div><Badge variant="success" dot>{availabilityLabel}</Badge></div>
+                        <h3 class="mb-xs font-heading text-card-title text-text-primary">{cardTitle}</h3>
+                        <p class="mb-lg font-body text-body text-text-secondary">{cardDescription}</p>
+                        <div class="mb-xl flex w-full items-center justify-between rounded-ui-sm bg-surface-alt p-base"><div><p class="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Teléfono oficial</p><p class="font-heading text-card-title font-bold text-text-primary">{phone}</p></div><Icon name="phone_iphone" size="2xl" tone="whatsapp" /></div>
+                        <Button variant="whatsapp" size="xl" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="send" block>{whatsappLabel}</Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

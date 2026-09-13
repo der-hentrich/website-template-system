@@ -1,0 +1,35 @@
+---
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+
+interface NavItem {
+    label: string;
+    href: string;
+}
+
+interface Props {
+    name: string;
+    location: string;
+    items: NavItem[];
+    whatsappHref: string;
+    whatsappLabel?: string;
+}
+
+const { name, location, items, whatsappHref, whatsappLabel = 'Contactar por WhatsApp' } = Astro.props;
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-md transition-all duration-200">
+    <div class="mx-auto flex h-20 max-w-[var(--container-site)] items-center justify-between gap-base px-lg">
+        <a class="group flex flex-col" href="#top">
+            <span class="font-heading text-card-title tracking-tight text-text-primary transition-colors group-hover:text-primary-container">{name}</span>
+            <span class="-mt-1 text-[11px] font-medium uppercase tracking-wider text-text-secondary">{location}</span>
+        </a>
+        <nav class="hidden items-center gap-base lg:flex" aria-label="Navegación principal">
+            {items.map((item) => <a class="px-sm py-xs font-body text-label text-on-surface-variant transition-colors hover:text-on-surface" href={item.href}>{item.label}</a>)}
+        </nav>
+        <div class="flex items-center gap-base">
+            <Button variant="whatsapp" size="sm" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="chat">{whatsappLabel}</Button>
+            <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary"><Icon name="person" size="sm" tone="inverse" /></div>
+        </div>
+    </div>
+</header>

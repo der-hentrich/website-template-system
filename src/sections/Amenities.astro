@@ -1,0 +1,28 @@
+---
+import AmenityCard from '../components/AmenityCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+interface Amenity {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+interface Props {
+    eyebrow: string;
+    title: string;
+    description: string;
+    amenities: Amenity[];
+}
+
+const { eyebrow, title, description, amenities } = Astro.props;
+---
+
+<section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="amenities-section">
+    <div class="mx-auto max-w-[var(--container-site)] px-lg">
+        <SectionHeader eyebrow={eyebrow} eyebrowIcon="concierge" title={title} description={description} width="narrow" />
+        <div class="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {amenities.map((amenity) => <AmenityCard {...amenity} />)}
+        </div>
+    </div>
+</section>

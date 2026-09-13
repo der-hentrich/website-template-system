@@ -1,0 +1,30 @@
+---
+import GalleryItem from '../components/GalleryItem.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+interface GalleryImage {
+    image: string;
+    imageAlt: string;
+    caption: string;
+}
+
+interface Props {
+    eyebrow: string;
+    title: string;
+    description: string;
+    images: GalleryImage[];
+}
+
+const { eyebrow, title, description, images } = Astro.props;
+---
+
+<section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="gallery-section">
+    <div class="mx-auto max-w-[var(--container-site)] px-lg">
+        <SectionHeader eyebrow={eyebrow} eyebrowIcon="photo_library" title={title} description={description}>
+            <Fragment slot="aside"><p class="font-body text-label text-text-secondary">{images.length} fotografías seleccionadas</p></Fragment>
+        </SectionHeader>
+        <div class="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {images.map((image) => <GalleryItem {...image} />)}
+        </div>
+    </div>
+</section>
