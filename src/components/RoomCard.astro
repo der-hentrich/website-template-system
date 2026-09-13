@@ -22,10 +22,12 @@ interface Props {
     buttonLabel?: string;
     guestIcon?: string;
     bedIcon?: string;
+    lang?: 'es' | 'en';
 }
 
-const { image, imageAlt, label, guests, beds, title, description, features, whatsappHref, buttonLabel = 'Consultar esta habitación por WhatsApp', guestIcon = 'group', bedIcon = 'bed' } = Astro.props;
+const { image, imageAlt, label, guests, beds, title, description, features, whatsappHref, buttonLabel: buttonLabelProp, guestIcon = 'group', bedIcon = 'bed', lang = 'es' } = Astro.props;
 const displayLabel = label ?? title;
+const buttonLabel = buttonLabelProp ?? (lang === 'en' ? 'Ask about this room on WhatsApp' : 'Consultar esta habitación por WhatsApp');
 ---
 
 <Card as="article" variant="surface" radius="xl" shadow="sm" padding="none" overflow="hidden" interactive>

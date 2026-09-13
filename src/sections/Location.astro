@@ -18,12 +18,18 @@ interface Props {
     hotelName: string;
     address: string;
     mapNote?: string;
+    lang?: 'es' | 'en';
 }
 
-const { location, region, eyebrow = 'Cómo llegar', title, description, arrivalTitle = 'Información para tu llegada', arrivalDescription, whatsappHref, whatsappLabel = 'Obtener indicaciones por WhatsApp', mapImage, mapAlt, hotelName, address, mapNote = 'Indicaciones personalizadas por WhatsApp' } = Astro.props;
+const { location, region, eyebrow: eyebrowProp, title, description, arrivalTitle: arrivalTitleProp, arrivalDescription, whatsappHref, whatsappLabel: whatsappLabelProp, mapImage, mapAlt, hotelName, address, mapNote: mapNoteProp, lang = 'es' } = Astro.props;
+const isEnglish = lang === 'en';
+const eyebrow = eyebrowProp ?? (isEnglish ? 'How to get here' : 'Cómo llegar');
+const arrivalTitle = arrivalTitleProp ?? (isEnglish ? 'Information for your arrival' : 'Información para tu llegada');
+const whatsappLabel = whatsappLabelProp ?? (isEnglish ? 'Get directions on WhatsApp' : 'Obtener indicaciones por WhatsApp');
+const mapNote = mapNoteProp ?? (isEnglish ? 'Personalized directions via WhatsApp' : 'Indicaciones personalizadas por WhatsApp');
 const resolvedTitle = title ?? `${location}, ${region}`;
-const resolvedDescription = description ?? `Encuentra ${hotelName} en ${location}, ${region}. Consulta por WhatsApp la ubicación y las indicaciones antes de tu llegada.`;
-const resolvedArrivalDescription = arrivalDescription ?? `Estamos en ${location}, ${region}. Escríbenos por WhatsApp para recibir la ubicación exacta, puntos de referencia e indicaciones antes de tu viaje.`;
+const resolvedDescription = description ?? (isEnglish ? `Find ${hotelName} in ${location}, ${region}. Contact us on WhatsApp for the location and directions before you arrive.` : `Encuentra ${hotelName} en ${location}, ${region}. Consulta por WhatsApp la ubicación y las indicaciones antes de tu llegada.`);
+const resolvedArrivalDescription = arrivalDescription ?? (isEnglish ? `We are in ${location}, ${region}. Message us on WhatsApp to receive the exact location, landmarks, and directions before your trip.` : `Estamos en ${location}, ${region}. Escríbenos por WhatsApp para recibir la ubicación exacta, puntos de referencia e indicaciones antes de tu viaje.`);
 const resolvedMapAlt = mapAlt ?? `${hotelName}, ${location}, ${region}, Colombia`;
 ---
 

@@ -14,93 +14,201 @@
     "reviewCount": 21
   },
   "hero": {
-    "title": "Tranquilidad y calidez natural en Mesa de Los Santos",
-    "description": "Disfruta de un descanso tranquilo en medio de la meseta santandereana. Un alojamiento independiente, pensado para brindar hospitalidad auténtica, aire fresco de montaña y noches serenas.",
+    "title": {
+      "es": "Tranquilidad y calidez natural en Mesa de Los Santos",
+      "en": "Natural warmth and tranquility in Mesa de Los Santos"
+    },
+    "description": {
+      "es": "Disfruta de un descanso tranquilo en medio de la meseta santandereana. Un alojamiento independiente, pensado para brindar hospitalidad auténtica, aire fresco de montaña y noches serenas.",
+      "en": "Enjoy a peaceful stay in the heart of the Santander plateau. An independent accommodation designed to offer authentic hospitality, fresh mountain air, and quiet nights."
+    },
     "image": "images/hero-main.jpg",
-    "imageAlt": "Interior cálido y luminoso de Hotel El Sol en Mesa de Los Santos, Colombia, con techo alto de vigas de madera, textiles artesanales en tonos terracota y arena, cama king con ropa de cama blanca, luz natural de la mañana y vegetación visible desde el ventanal",
-    "imageEyebrow": "Alojamiento independiente",
-    "imageTitle": "Descanso tranquilo en los Andes",
-    "whatsappText": "Hola, quisiera consultar la disponibilidad de habitaciones en Hotel El Sol.",
+    "imageAlt": {
+      "es": "Interior cálido y luminoso de Hotel El Sol en Mesa de Los Santos, Colombia, con techo alto de vigas de madera, textiles artesanales en tonos terracota y arena, cama king con ropa de cama blanca, luz natural de la mañana y vegetación visible desde el ventanal",
+      "en": "Warm and bright interior at Hotel El Sol in Mesa de Los Santos, Colombia, with a high wooden-beam ceiling, handcrafted textiles in terracotta and sand tones, a king bed with white linens, natural morning light, and greenery visible through the window"
+    },
+    "imageEyebrow": {
+      "es": "Alojamiento independiente",
+      "en": "Independent accommodation"
+    },
+    "imageTitle": {
+      "es": "Descanso tranquilo en los Andes",
+      "en": "Peaceful rest in the Andes"
+    },
+    "whatsappText": {
+      "es": "Hola, quisiera consultar la disponibilidad de habitaciones en Hotel El Sol.",
+      "en": "Hello, I would like to check room availability at Hotel El Sol."
+    },
     "metas": [
       {
         "icon": "landscape",
-        "text": "Meseta santandereana"
+        "text": {
+          "es": "Meseta santandereana",
+          "en": "Santander plateau"
+        }
       }
     ],
     "floatingCard": {
       "icon": "coffee",
-      "title": "Café artesanal de Santander",
-      "description": "Recién preparado cada mañana en nuestro patio"
+      "title": {
+        "es": "Café artesanal de Santander",
+        "en": "Artisan coffee from Santander"
+      },
+      "description": {
+        "es": "Recién preparado cada mañana en nuestro patio",
+        "en": "Freshly prepared every morning in our courtyard"
+      }
     }
   },
   "rooms": {
     "rooms": [
       {
         "image": "images/room-standard.jpg",
-        "imageAlt": "Habitación estándar con cama queen en Hotel El Sol, Mesa de Los Santos, con mesas de noche de madera, lámparas artesanales, cabecero beige, ropa de cama blanca y luz cálida",
-        "guests": "Hasta 2 huéspedes",
-        "beds": "1 cama queen",
-        "title": "Habitación Estándar",
-        "description": "Un espacio sereno y privado, ideal para viajeros solos o parejas que buscan descansar en la tranquilidad de la montaña.",
-        "whatsappText": "Hola, estoy interesado en Habitación Estándar de Hotel El Sol.",
+        "imageAlt": {
+          "es": "Habitación estándar con cama queen en Hotel El Sol, Mesa de Los Santos, con mesas de noche de madera, lámparas artesanales, cabecero beige, ropa de cama blanca y luz cálida",
+          "en": "Standard room with a queen bed at Hotel El Sol in Mesa de Los Santos, with wooden bedside tables, handcrafted lamps, a beige headboard, white linens, and warm lighting"
+        },
+        "guests": {
+          "es": "Hasta 2 huéspedes",
+          "en": "Up to 2 guests"
+        },
+        "beds": {
+          "es": "1 cama queen",
+          "en": "1 queen bed"
+        },
+        "title": {
+          "es": "Habitación Estándar",
+          "en": "Standard Room"
+        },
+        "description": {
+          "es": "Un espacio sereno y privado, ideal para viajeros solos o parejas que buscan descansar en la tranquilidad de la montaña.",
+          "en": "A peaceful and private space, ideal for solo travelers or couples looking to relax in the quiet mountain surroundings."
+        },
+        "whatsappText": {
+          "es": "Hola, estoy interesado en Habitación Estándar de Hotel El Sol.",
+          "en": "Hello, I am interested in the Standard Room at Hotel El Sol."
+        },
         "features": [
           {
             "icon": "shower",
-            "text": "Baño privado con ducha de agua caliente"
+            "text": {
+              "es": "Baño privado con ducha de agua caliente",
+              "en": "Private bathroom with hot shower"
+            }
           },
           {
             "icon": "wifi",
-            "text": "Wi-Fi de alta velocidad"
+            "text": {
+              "es": "Wi-Fi de alta velocidad",
+              "en": "High-speed Wi-Fi"
+            }
           },
           {
             "icon": "desk",
-            "text": "Escritorio y lámpara de lectura"
+            "text": {
+              "es": "Escritorio y lámpara de lectura",
+              "en": "Desk and reading lamp"
+            }
           }
         ]
       },
       {
         "image": "images/room-double.jpg",
-        "imageAlt": "Habitación doble en Hotel El Sol, Mesa de Los Santos, Santander, con balcón privado y vista a las montañas, cama king, mesa de café y luz suave de la tarde",
-        "guests": "Hasta 3 huéspedes",
-        "beds": "1 cama king o 2 camas queen",
-        "title": "Habitación Doble",
-        "description": "Una habitación amplia con vistas elevadas de la montaña, espacios abiertos y servicio de café por la mañana.",
-        "whatsappText": "Hola, estoy interesado en Habitación Doble de Hotel El Sol.",
+        "imageAlt": {
+          "es": "Habitación doble en Hotel El Sol, Mesa de Los Santos, Santander, con balcón privado y vista a las montañas, cama king, mesa de café y luz suave de la tarde",
+          "en": "Double room at Hotel El Sol in Mesa de Los Santos, Santander, with a private balcony, mountain views, a king bed, coffee table, and soft afternoon light"
+        },
+        "guests": {
+          "es": "Hasta 3 huéspedes",
+          "en": "Up to 3 guests"
+        },
+        "beds": {
+          "es": "1 cama king o 2 camas queen",
+          "en": "1 king bed or 2 queen beds"
+        },
+        "title": {
+          "es": "Habitación Doble",
+          "en": "Double Room"
+        },
+        "description": {
+          "es": "Una habitación amplia con vistas elevadas de la montaña, espacios abiertos y servicio de café por la mañana.",
+          "en": "A spacious room with elevated mountain views, open spaces, and morning coffee service."
+        },
+        "whatsappText": {
+          "es": "Hola, estoy interesado en Habitación Doble de Hotel El Sol.",
+          "en": "Hello, I am interested in the Double Room at Hotel El Sol."
+        },
         "features": [
           {
             "icon": "balcony",
-            "text": "Balcón con vista a la montaña"
+            "text": {
+              "es": "Balcón con vista a la montaña",
+              "en": "Balcony with mountain view"
+            }
           },
           {
             "icon": "coffee",
-            "text": "Café de cortesía por la mañana"
+            "text": {
+              "es": "Café de cortesía por la mañana",
+              "en": "Complimentary morning coffee"
+            }
           },
           {
             "icon": "bathtub",
-            "text": "Baño privado amplio"
+            "text": {
+              "es": "Baño privado amplio",
+              "en": "Spacious private bathroom"
+            }
           }
         ]
       },
       {
         "image": "images/room-family.jpg",
-        "imageAlt": "Habitación familiar amplia en Hotel El Sol, Mesa de Los Santos, con cama queen y dos camas sencillas, zona de estar y acceso directo a un patio con jardín",
-        "guests": "Hasta 4 huéspedes",
-        "beds": "1 cama queen + 2 camas sencillas",
-        "title": "Habitación Familiar",
-        "description": "Una habitación espaciosa, pensada para familias o grupos que viajan juntos y buscan comodidad.",
-        "whatsappText": "Hola, estoy interesado en Habitación Familiar de Hotel El Sol.",
+        "imageAlt": {
+          "es": "Habitación familiar amplia en Hotel El Sol, Mesa de Los Santos, con cama queen y dos camas sencillas, zona de estar y acceso directo a un patio con jardín",
+          "en": "Spacious family room at Hotel El Sol in Mesa de Los Santos, with one queen bed and two single beds, a sitting area, and direct access to a garden courtyard"
+        },
+        "guests": {
+          "es": "Hasta 4 huéspedes",
+          "en": "Up to 4 guests"
+        },
+        "beds": {
+          "es": "1 cama queen + 2 camas sencillas",
+          "en": "1 queen bed + 2 single beds"
+        },
+        "title": {
+          "es": "Habitación Familiar",
+          "en": "Family Room"
+        },
+        "description": {
+          "es": "Una habitación espaciosa, pensada para familias o grupos que viajan juntos y buscan comodidad.",
+          "en": "A spacious room designed for families or groups traveling together and looking for comfort."
+        },
+        "whatsappText": {
+          "es": "Hola, estoy interesado en Habitación Familiar de Hotel El Sol.",
+          "en": "Hello, I am interested in the Family Room at Hotel El Sol."
+        },
         "features": [
           {
             "icon": "chair",
-            "text": "Zona de estar amplia"
+            "text": {
+              "es": "Zona de estar amplia",
+              "en": "Spacious sitting area"
+            }
           },
           {
             "icon": "yard",
-            "text": "Terraza con vista al jardín"
+            "text": {
+              "es": "Terraza con vista al jardín",
+              "en": "Terrace with garden view"
+            }
           },
           {
             "icon": "meeting_room",
-            "text": "Distribución amplia para familias"
+            "text": {
+              "es": "Distribución amplia para familias",
+              "en": "Spacious layout for families"
+            }
           }
         ],
         "guestIcon": "family_restroom"
@@ -111,33 +219,69 @@
     "amenities": [
       {
         "icon": "wifi",
-        "title": "Wi-Fi de alta velocidad",
-        "description": "Conexión a internet estable en las habitaciones, las zonas del patio y los espacios del jardín."
+        "title": {
+          "es": "Wi-Fi de alta velocidad",
+          "en": "High-speed Wi-Fi"
+        },
+        "description": {
+          "es": "Conexión a internet estable en las habitaciones, las zonas del patio y los espacios del jardín.",
+          "en": "Reliable internet connection in the rooms, courtyard areas, and garden spaces."
+        }
       },
       {
         "icon": "local_parking",
-        "title": "Parqueadero privado",
-        "description": "Parqueadero privado y seguro dentro de las instalaciones, exclusivo para huéspedes durante su estadía."
+        "title": {
+          "es": "Parqueadero privado",
+          "en": "Private parking"
+        },
+        "description": {
+          "es": "Parqueadero privado y seguro dentro de las instalaciones, exclusivo para huéspedes durante su estadía.",
+          "en": "Private and secure on-site parking exclusively for guests during their stay."
+        }
       },
       {
         "icon": "bakery_dining",
-        "title": "Desayuno colombiano y café",
-        "description": "Disfruta café santandereano recién preparado, acompañado de opciones de desayuno tradicionales con productos de la región."
+        "title": {
+          "es": "Desayuno colombiano y café",
+          "en": "Colombian breakfast and coffee"
+        },
+        "description": {
+          "es": "Disfruta café santandereano recién preparado, acompañado de opciones de desayuno tradicionales con productos de la región.",
+          "en": "Enjoy freshly prepared Santander coffee accompanied by traditional breakfast options made with regional products."
+        }
       },
       {
         "icon": "potted_plant",
-        "title": "Jardín y patio tranquilos",
-        "description": "Terrazas al aire libre y zonas verdes para sentarse y disfrutar con calma del clima."
+        "title": {
+          "es": "Jardín y patio tranquilos",
+          "en": "Peaceful garden and courtyard"
+        },
+        "description": {
+          "es": "Terrazas al aire libre y zonas verdes para sentarse y disfrutar con calma del clima.",
+          "en": "Outdoor terraces and green areas where you can sit back and enjoy the climate."
+        }
       },
       {
         "icon": "support_agent",
-        "title": "Atención al huésped 24/7",
-        "description": "Atención cercana del equipo del alojamiento, con comunicación directa por WhatsApp."
+        "title": {
+          "es": "Atención al huésped 24/7",
+          "en": "24/7 guest assistance"
+        },
+        "description": {
+          "es": "Atención cercana del equipo del alojamiento, con comunicación directa por WhatsApp.",
+          "en": "Personal assistance from the property team, with direct communication via WhatsApp."
+        }
       },
       {
         "icon": "cleaning_services",
-        "title": "Limpieza diaria",
-        "description": "Espacios bien cuidados, ropa de cama limpia y servicio diario de aseo en tu habitación."
+        "title": {
+          "es": "Limpieza diaria",
+          "en": "Daily housekeeping"
+        },
+        "description": {
+          "es": "Espacios bien cuidados, ropa de cama limpia y servicio diario de aseo en tu habitación.",
+          "en": "Well-maintained spaces, fresh bed linen, and daily housekeeping in your room."
+        }
       }
     ]
   },
@@ -145,41 +289,83 @@
     "images": [
       {
         "image": "images/gallery-bedroom.jpg",
-        "imageAlt": "Habitación luminosa de Hotel El Sol en Mesa de Los Santos, con ropa de cama blanca, manta en tono ocre, ventanas abiertas y vista a las montañas andinas",
-        "caption": "Habitación con luz natural"
+        "imageAlt": {
+          "es": "Habitación luminosa de Hotel El Sol en Mesa de Los Santos, con ropa de cama blanca, manta en tono ocre, ventanas abiertas y vista a las montañas andinas",
+          "en": "Bright room at Hotel El Sol in Mesa de Los Santos, with white bedding, an ochre throw, open windows, and views of the Andean mountains"
+        },
+        "caption": {
+          "es": "Habitación con luz natural",
+          "en": "Room with natural light"
+        }
       },
       {
         "image": "images/gallery-lobby.jpg",
-        "imageAlt": "Recepción y lobby de Hotel El Sol en Mesa de Los Santos, con mostrador de piedra natural, sillas de madera, cerámica artesanal y luz cálida",
-        "caption": "Recepción y lobby acogedores"
+        "imageAlt": {
+          "es": "Recepción y lobby de Hotel El Sol en Mesa de Los Santos, con mostrador de piedra natural, sillas de madera, cerámica artesanal y luz cálida",
+          "en": "Reception and lobby at Hotel El Sol in Mesa de Los Santos, with a natural stone desk, wooden chairs, handcrafted ceramics, and warm lighting"
+        },
+        "caption": {
+          "es": "Recepción y lobby acogedores",
+          "en": "Welcoming reception and lobby"
+        }
       },
       {
         "image": "images/gallery-terrace.jpg",
-        "imageAlt": "Terraza exterior con jardín en Hotel El Sol, con sillones de mimbre y vista panorámica de la meseta de Santander",
-        "caption": "Terraza con jardín y vistas a la montaña"
+        "imageAlt": {
+          "es": "Terraza exterior con jardín en Hotel El Sol, con sillones de mimbre y vista panorámica de la meseta de Santander",
+          "en": "Outdoor garden terrace at Hotel El Sol, with wicker chairs and panoramic views of the Santander plateau"
+        },
+        "caption": {
+          "es": "Terraza con jardín y vistas a la montaña",
+          "en": "Garden terrace with mountain views"
+        }
       },
       {
         "image": "images/gallery-reading-lounge.jpg",
-        "imageAlt": "Sala tranquila de lectura en Hotel El Sol, con estantería de madera, sillón de cuero y una taza de café sobre una mesa auxiliar",
-        "caption": "Sala tranquila de lectura"
+        "imageAlt": {
+          "es": "Sala tranquila de lectura en Hotel El Sol, con estantería de madera, sillón de cuero y una taza de café sobre una mesa auxiliar",
+          "en": "Quiet reading lounge at Hotel El Sol, with a wooden bookshelf, leather armchair, and a cup of coffee on a side table"
+        },
+        "caption": {
+          "es": "Sala tranquila de lectura",
+          "en": "Quiet reading lounge"
+        }
       },
       {
         "image": "images/gallery-breakfast.jpg",
-        "imageAlt": "Desayuno colombiano artesanal en Hotel El Sol, con café de Santander, frutas tropicales y arepas servidas en una mesa de madera",
-        "caption": "Café artesanal de Santander y desayuno"
+        "imageAlt": {
+          "es": "Desayuno colombiano artesanal en Hotel El Sol, con café de Santander, frutas tropicales y arepas servidas en una mesa de madera",
+          "en": "Traditional Colombian breakfast at Hotel El Sol, with Santander coffee, tropical fruit, and arepas served on a wooden table"
+        },
+        "caption": {
+          "es": "Café artesanal de Santander y desayuno",
+          "en": "Santander coffee and breakfast"
+        }
       },
       {
         "image": "images/gallery-exterior.jpg",
-        "imageAlt": "Fachada exterior de Hotel El Sol en Mesa de Los Santos, con arquitectura blanca y terracota, balcones de madera y buganvilias",
-        "caption": "Arquitectura exterior con luz cálida"
+        "imageAlt": {
+          "es": "Fachada exterior de Hotel El Sol en Mesa de Los Santos, con arquitectura blanca y terracota, balcones de madera y buganvilias",
+          "en": "Exterior of Hotel El Sol in Mesa de Los Santos, with white and terracotta architecture, wooden balconies, and bougainvillea"
+        },
+        "caption": {
+          "es": "Arquitectura exterior con luz cálida",
+          "en": "Exterior architecture in warm light"
+        }
       }
     ]
   },
   "location": {
     "mapImage": "images/location-map.png",
-    "whatsappText": "Hola, ¿podrían enviarme la ubicación e indicaciones para llegar a Hotel El Sol en Mesa de Los Santos?"
+    "whatsappText": {
+      "es": "Hola, ¿podrían enviarme la ubicación e indicaciones para llegar a Hotel El Sol en Mesa de Los Santos?",
+      "en": "Hello, could you send me the location and directions to Hotel El Sol in Mesa de Los Santos?"
+    }
   },
   "contact": {
-    "whatsappText": "Hola, quisiera consultar disponibilidad para hospedarme en Hotel El Sol."
+    "whatsappText": {
+      "es": "Hola, quisiera consultar disponibilidad para hospedarme en Hotel El Sol.",
+      "en": "Hello, I would like to check availability for a stay at Hotel El Sol."
+    }
   }
 }

@@ -13,9 +13,14 @@ interface Props {
     title?: string;
     description?: string;
     amenities: Amenity[];
+    lang?: 'es' | 'en';
 }
 
-const { eyebrow = 'Comodidad para huéspedes', title = 'Servicios y comodidad para huéspedes', description = 'Servicios pensados para que tu estadía sea cómoda, práctica y tranquila.', amenities } = Astro.props;
+const { eyebrow: eyebrowProp, title: titleProp, description: descriptionProp, amenities, lang = 'es' } = Astro.props;
+const isEnglish = lang === 'en';
+const eyebrow = eyebrowProp ?? (isEnglish ? 'Guest comfort' : 'Comodidad para huéspedes');
+const title = titleProp ?? (isEnglish ? 'Services and guest comfort' : 'Servicios y comodidad para huéspedes');
+const description = descriptionProp ?? (isEnglish ? 'Services designed to make your stay comfortable, practical, and peaceful.' : 'Servicios pensados para que tu estadía sea cómoda, práctica y tranquila.');
 ---
 
 <section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="amenities-section">

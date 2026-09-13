@@ -13,15 +13,21 @@ interface Props {
     title?: string;
     description?: string;
     images: GalleryImage[];
+    lang?: 'es' | 'en';
 }
 
-const { eyebrow = 'Ambiente y espacios', title = 'Momentos del hotel', description = 'Una mirada a los espacios, ambientes y detalles del alojamiento.', images } = Astro.props;
+const { eyebrow: eyebrowProp, title: titleProp, description: descriptionProp, images, lang = 'es' } = Astro.props;
+const isEnglish = lang === 'en';
+const eyebrow = eyebrowProp ?? (isEnglish ? 'Atmosphere and spaces' : 'Ambiente y espacios');
+const title = titleProp ?? (isEnglish ? 'Hotel moments' : 'Momentos del hotel');
+const description = descriptionProp ?? (isEnglish ? 'A look at the property’s spaces, atmosphere, and details.' : 'Una mirada a los espacios, ambientes y detalles del alojamiento.');
+const photoCountLabel = isEnglish ? `${images.length} ${images.length === 1 ? 'selected photo' : 'selected photos'}` : `${images.length} ${images.length === 1 ? 'fotografía seleccionada' : 'fotografías seleccionadas'}`;
 ---
 
 <section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="gallery-section">
     <div class="mx-auto max-w-[var(--container-site)] px-lg">
         <SectionHeader eyebrow={eyebrow} eyebrowIcon="photo_library" title={title} description={description}>
-            <Fragment slot="aside"><p class="font-body text-label text-text-secondary">{images.length} fotografías seleccionadas</p></Fragment>
+            <Fragment slot="aside"><p class="font-body text-label text-text-secondary">{photoCountLabel}</p></Fragment>
         </SectionHeader>
         <div class="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
             {images.map((image) => <GalleryItem {...image} />)}

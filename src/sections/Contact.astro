@@ -23,12 +23,22 @@ interface Props {
     availabilityLabel?: string;
     cardTitle?: string;
     cardDescription?: string;
+    lang?: 'es' | 'en';
 }
 
-const { name, location, region, roomCount, eyebrow = 'Línea directa de WhatsApp', title = 'Planea tu estadía con nosotros', description = '¿Tienes preguntas o quieres reservar tus fechas? Escríbenos directamente por WhatsApp y recibe atención rápida y personalizada, sin intermediarios.', details, phone, whatsappHref, whatsappLabel = 'Escribir por WhatsApp', availabilityLabel = 'Disponible para consultas', cardTitle = 'WhatsApp directo', cardDescription = 'Habla directamente con el personal del hotel para consultar disponibilidad, solicitudes especiales e indicaciones de llegada.' } = Astro.props;
+const { name, location, region, roomCount, eyebrow: eyebrowProp, title: titleProp, description: descriptionProp, details, phone, whatsappHref, whatsappLabel: whatsappLabelProp, availabilityLabel: availabilityLabelProp, cardTitle: cardTitleProp, cardDescription: cardDescriptionProp, lang = 'es' } = Astro.props;
+const isEnglish = lang === 'en';
+const eyebrow = eyebrowProp ?? (isEnglish ? 'Direct WhatsApp line' : 'Línea directa de WhatsApp');
+const title = titleProp ?? (isEnglish ? 'Plan your stay with us' : 'Planea tu estadía con nosotros');
+const description = descriptionProp ?? (isEnglish ? 'Have questions or want to reserve your dates? Message us directly on WhatsApp for fast, personalized assistance with no intermediaries.' : '¿Tienes preguntas o quieres reservar tus fechas? Escríbenos directamente por WhatsApp y recibe atención rápida y personalizada, sin intermediarios.');
+const whatsappLabel = whatsappLabelProp ?? (isEnglish ? 'Message us on WhatsApp' : 'Escribir por WhatsApp');
+const availabilityLabel = availabilityLabelProp ?? (isEnglish ? 'Available for inquiries' : 'Disponible para consultas');
+const cardTitle = cardTitleProp ?? (isEnglish ? 'Direct WhatsApp' : 'WhatsApp directo');
+const cardDescription = cardDescriptionProp ?? (isEnglish ? 'Speak directly with the hotel staff to check availability, special requests, and arrival directions.' : 'Habla directamente con el personal del hotel para consultar disponibilidad, solicitudes especiales e indicaciones de llegada.');
+const phoneLabel = isEnglish ? 'Official phone' : 'Teléfono oficial';
 const resolvedDetails = details ?? [
     { icon: 'hotel', text: `${name} - ${location}` },
-    { icon: 'door_front', text: `${roomCount} habitaciones • ${location}, ${region}, Colombia` }
+    { icon: 'door_front', text: isEnglish ? `${roomCount} rooms • ${location}, ${region}, Colombia` : `${roomCount} habitaciones • ${location}, ${region}, Colombia` }
 ];
 ---
 
@@ -76,7 +86,7 @@ const resolvedDetails = details ?? [
 
                         <div class="mb-xl flex w-full items-center justify-between rounded-ui-sm bg-surface-alt p-base">
                             <div>
-                                <p class="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Teléfono oficial</p>
+                                <p class="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">{phoneLabel}</p>
                                 <p class="font-heading text-card-title font-bold text-text-primary">{phone}</p>
                             </div>
 

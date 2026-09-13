@@ -17,14 +17,23 @@ interface Props {
     description?: string;
     stats?: Stat[];
     eyebrow?: string;
+    lang?: 'es' | 'en';
 }
 
-const { value, reviewCount, roomCount, location, description = 'Calificación pública confirmada en el Perfil de Negocio de Google. Reservas directas por WhatsApp sin comisiones de intermediarios.', stats, eyebrow = 'Calificación en el Perfil de Negocio de Google' } = Astro.props;
+const { value, reviewCount, roomCount, location, description: descriptionProp, stats, eyebrow: eyebrowProp, lang = 'es' } = Astro.props;
+const isEnglish = lang === 'en';
+const locale = isEnglish ? 'en-US' : 'es-CO';
+const description = descriptionProp ?? (isEnglish ? 'Public rating confirmed on the Google Business Profile. Book directly via WhatsApp without intermediary commissions.' : 'Calificación pública confirmada en el Perfil de Negocio de Google. Reservas directas por WhatsApp sin comisiones de intermediarios.');
+const eyebrow = eyebrowProp ?? (isEnglish ? 'Google Business Profile rating' : 'Calificación en el Perfil de Negocio de Google');
 const resolvedStats = stats ?? [
-    { icon: 'hotel', title: `${roomCount} habitaciones`, description: 'Capacidad del alojamiento' },
-    { icon: 'location_on', title: location, description: 'Ubicación del alojamiento' },
-    { icon: 'handshake', title: 'Reserva directa', description: 'Atención por WhatsApp sin intermediarios' }
+    { icon: 'hotel', title: isEnglish ? `${roomCount} rooms` : `${roomCount} habitaciones`, description: isEnglish ? 'Property capacity' : 'Capacidad del alojamiento' },
+    { icon: 'location_on', title: location, description: isEnglish ? 'Property location' : 'Ubicación del alojamiento' },
+    { icon: 'handshake', title: isEnglish ? 'Direct booking' : 'Reserva directa', description: isEnglish ? 'WhatsApp assistance without intermediaries' : 'Atención por WhatsApp sin intermediarios' }
 ];
+const formattedValue = value.toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const formattedMax = (5).toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const reviewSummary = isEnglish ? `Based on ${reviewCount} verified Google ${reviewCount === 1 ? 'review' : 'reviews'}` : `Basado en ${reviewCount} ${reviewCount === 1 ? 'reseña verificada' : 'reseñas verificadas'} de Google`;
+const ratingAriaLabel = isEnglish ? `${formattedValue} out of 5` : `${formattedValue} de 5`;
 ---
 
 <section class="w-full bg-surface-bright py-3xl lg:py-4xl" id="google-rating-section">
@@ -33,9 +42,9 @@ const resolvedStats = stats ?? [
             <div class="grid grid-cols-1 items-center gap-xl lg:grid-cols-12 lg:gap-2xl">
                 <div class="flex flex-col items-center text-center lg:col-span-5 lg:items-start lg:text-left">
                     <div class="mb-base"><Badge variant="soft" icon="verified" iconTone="amberStrong">{eyebrow}</Badge></div>
-                    <div class="mb-xs flex items-baseline gap-sm"><span class="font-heading text-[4rem] font-bold leading-none text-text-primary">{value.toFixed(1)}</span><span class="font-heading text-card-title text-text-secondary">/ 5.0</span></div>
-                    <div class="mb-sm"><Rating value={value} size="md" /></div>
-                    <p class="font-body text-body-lg font-semibold text-text-primary">Basado en {reviewCount} reseñas verificadas de Google</p>
+                    <div class="mb-xs flex items-baseline gap-sm"><span class="font-heading text-[4rem] font-bold leading-none text-text-primary">{formattedValue}</span><span class="font-heading text-card-title text-text-secondary">/ {formattedMax}</span></div>
+                    <div class="mb-sm"><Rating value={value} size="md" label={ratingAriaLabel} /></div>
+                    <p class="font-body text-body-lg font-semibold text-text-primary">{reviewSummary}</p>
                     <p class="mt-xs max-w-[360px] font-body text-body text-text-secondary">{description}</p>
                 </div>
                 <div class="grid grid-cols-1 gap-base sm:grid-cols-3 lg:col-span-7">

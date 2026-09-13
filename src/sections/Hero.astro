@@ -31,9 +31,18 @@ interface Props {
     metas?: MetaItem[];
     floatingCard?: FloatingCard;
     availabilityLabel?: string;
+    lang?: 'es' | 'en';
 }
 
-const { title, description, image, imageAlt, imageEyebrow, imageTitle, imageLocation, whatsappHref, whatsappLabel = 'Consultar disponibilidad por WhatsApp', secondaryHref = '#rooms-section', secondaryLabel = 'Ver habitaciones', rating, reviewCount, metas = [], floatingCard, availabilityLabel = 'Atención directa del alojamiento' } = Astro.props;
+const { title, description, image, imageAlt, imageEyebrow, imageTitle, imageLocation, whatsappHref, whatsappLabel: whatsappLabelProp, secondaryHref = '#rooms-section', secondaryLabel: secondaryLabelProp, rating, reviewCount, metas = [], floatingCard, availabilityLabel: availabilityLabelProp, lang = 'es' } = Astro.props;
+const isEnglish = lang === 'en';
+const whatsappLabel = whatsappLabelProp ?? (isEnglish ? 'Check availability on WhatsApp' : 'Consultar disponibilidad por WhatsApp');
+const secondaryLabel = secondaryLabelProp ?? (isEnglish ? 'View rooms' : 'Ver habitaciones');
+const availabilityLabel = availabilityLabelProp ?? (isEnglish ? 'Direct assistance from the property' : 'Atención directa del alojamiento');
+const locale = isEnglish ? 'en-US' : 'es-CO';
+const formattedRating = rating !== undefined ? rating.toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : '';
+const reviewLabel = reviewCount !== undefined ? (isEnglish ? `${reviewCount} ${reviewCount === 1 ? 'verified review' : 'verified reviews'}` : `${reviewCount} ${reviewCount === 1 ? 'reseña verificada' : 'reseñas verificadas'}`) : '';
+const ratingAriaLabel = isEnglish ? `${formattedRating} out of 5` : `${formattedRating} de 5`;
 ---
 
 <section class="relative -mt-20 w-full overflow-hidden bg-surface-container-low pb-20 pt-32 md:pb-28 lg:pb-36" id="top">
@@ -44,10 +53,10 @@ const { title, description, image, imageAlt, imageEyebrow, imageTitle, imageLoca
             <div class="flex flex-col items-start lg:col-span-7">
                 {rating !== undefined && reviewCount !== undefined && (
                         <div class="mb-lg inline-flex items-center gap-xs rounded-full bg-surface px-md py-xs shadow-sm">
-                            <Rating value={rating} />
-                            <span class="font-body text-label text-text-primary">{rating.toFixed(1).replace('.', ',')} / 5 en Google</span>
+                            <Rating value={rating} label={ratingAriaLabel} />
+                            <span class="font-body text-label text-text-primary">{formattedRating} / 5 {isEnglish ? 'on Google' : 'en Google'}</span>
                             <span class="text-outline-variant">•</span>
-                            <span class="font-body text-label text-text-secondary">{reviewCount} reseñas verificadas</span>
+                            <span class="font-body text-label text-text-secondary">{reviewLabel}</span>
                         </div>
                 )}
                 <h1 class="mb-md font-heading text-display tracking-tight text-text-primary">{title}</h1>

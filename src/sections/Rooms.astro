@@ -20,6 +20,7 @@ interface Room {
     whatsappHref: string;
     guestIcon?: string;
     bedIcon?: string;
+    lang?: 'es' | 'en';
 }
 
 interface Props {
@@ -28,9 +29,14 @@ interface Props {
     description?: string;
     note?: string;
     rooms: Room[];
+    lang?: 'es' | 'en';
 }
 
-const { eyebrow = 'Alojamiento', title = 'Habitaciones y suites', description = 'Espacios diseñados para descansar con comodidad y tranquilidad.', note, rooms } = Astro.props;
+const { eyebrow: eyebrowProp, title: titleProp, description: descriptionProp, note, rooms, lang = 'es' } = Astro.props;
+const isEnglish = lang === 'en';
+const eyebrow = eyebrowProp ?? (isEnglish ? 'Accommodation' : 'Alojamiento');
+const title = titleProp ?? (isEnglish ? 'Rooms and suites' : 'Habitaciones y suites');
+const description = descriptionProp ?? (isEnglish ? 'Spaces designed for a comfortable and peaceful stay.' : 'Espacios diseñados para descansar con comodidad y tranquilidad.');
 ---
 
 <section class="w-full bg-surface-bright py-3xl lg:py-4xl" id="rooms-section">
