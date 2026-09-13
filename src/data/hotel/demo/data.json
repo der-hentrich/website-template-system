@@ -288,6 +288,7 @@
     "name": "Hotel El Sol",
     "address": "Mesa de Los Santos / Los Santos, Santander, Colombia",
     "roomCount": "16 habitaciones",
+    "rnt": "000000",
     "groups": [
       {
         "title": "Explorar",
@@ -329,7 +330,6 @@
     "phone": "+57 311 6770580",
     "whatsappHref": "https://wa.me/573116770580",
     "note": "Sitio web de demostración comercial – Página Web Profesional de El Hentrich",
-    "copyright": "© 2025 Hotel El Sol - Mesa de Los Santos. Todos los derechos reservados.",
     "locationLabel": "Santander, Colombia",
     "locationHref": "#location-section"
   }
