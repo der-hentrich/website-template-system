@@ -1,0 +1,28 @@
+---
+import Badge from './Badge.astro';
+
+type HeaderWidth = 'narrow' | 'default';
+type BadgeVariant = 'surface' | 'soft';
+
+interface Props {
+    eyebrow: string;
+    eyebrowIcon?: string;
+    title: string;
+    description?: string;
+    width?: HeaderWidth;
+    badgeVariant?: BadgeVariant;
+}
+
+const { eyebrow, eyebrowIcon, title, description, width = 'default', badgeVariant = 'surface' } = Astro.props;
+const widthClasses: Record<HeaderWidth, string> = { narrow: 'max-w-[640px]', default: 'max-w-[680px]' };
+const hasAside = Astro.slots.has('aside');
+---
+
+<header class:list={['mb-2xl gap-base', hasAside ? 'flex flex-col justify-between md:flex-row md:items-end' : widthClasses[width]]}>
+    <div class={hasAside ? widthClasses[width] : undefined}>
+        <div class="mb-sm"><Badge variant={badgeVariant} icon={eyebrowIcon}>{eyebrow}</Badge></div>
+        <h2 class="font-heading text-section-title tracking-tight text-text-primary">{title}</h2>
+        {description && <p class="mt-xs font-body text-body-lg text-text-secondary">{description}</p>}
+    </div>
+    {hasAside && <div class="self-start md:self-auto"><slot name="aside" /></div>}
+</header>

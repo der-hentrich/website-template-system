@@ -1,0 +1,80 @@
+@theme {
+    --color-primary: #0a3027;
+    --color-primary-strong: #18342d;
+    --color-primary-container: #23463d;
+    --color-primary-fixed: #c4ebde;
+    --color-primary-fixed-dim: #a9cfc2;
+
+    --color-accent-soft: #e8c2ae;
+
+    --color-surface: #ffffff;
+    --color-surface-alt: #eee6d8;
+    --color-surface-bright: #fdf9f1;
+    --color-surface-container: #f1ede6;
+    --color-surface-container-low: #f7f3eb;
+    --color-surface-variant: #e6e2da;
+    --color-surface-tint: #42655b;
+
+    --color-text-primary: #202521;
+    --color-text-secondary: #626860;
+    --color-on-primary: #ffffff;
+    --color-on-surface: #1c1c17;
+    --color-on-surface-variant: #414845;
+    --color-border: #d8d0c3;
+    --color-outline-variant: #c1c8c4;
+
+    --color-whatsapp: #128c7e;
+    --color-whatsapp-hover: #0e7064;
+    --color-on-whatsapp: #ffffff;
+
+    --font-heading: "Manrope", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    --text-display: 3.5rem;
+    --text-display--line-height: 1.08;
+    --text-display--font-weight: 700;
+
+    --text-section-title: 2.25rem;
+    --text-section-title--line-height: 1.15;
+    --text-section-title--font-weight: 700;
+
+    --text-card-title: 1.35rem;
+    --text-card-title--line-height: 1.25;
+    --text-card-title--font-weight: 650;
+
+    --text-body-lg: 1.125rem;
+    --text-body-lg--line-height: 1.6;
+    --text-body-lg--font-weight: 400;
+
+    --text-body: 1rem;
+    --text-body--line-height: 1.6;
+    --text-body--font-weight: 400;
+
+    --text-label: 0.875rem;
+    --text-label--line-height: 1.35;
+    --text-label--font-weight: 600;
+
+    --text-button: 0.95rem;
+    --text-button--line-height: 1;
+    --text-button--font-weight: 600;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-base: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    --spacing-4xl: 96px;
+
+    --container-site: 1280px;
+
+    --radius-ui-sm: 14px;
+    --radius-ui-md: 20px;
+    --radius-ui-lg: 22px;
+    --radius-ui-xl: 24px;
+    --radius-ui-2xl: 28px;
+    --radius-ui-3xl: 32px;
+    --radius-pill: 9999px;
+}

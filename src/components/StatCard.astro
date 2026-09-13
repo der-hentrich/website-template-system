@@ -1,0 +1,20 @@
+---
+import Card from './Card.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<Card variant="subtle" radius="md" shadow="none" padding="lg">
+    <Icon name={icon} size="2xl" tone="primary" />
+    <div class="mt-base">
+        <p class="font-heading text-card-title text-text-primary">{title}</p>
+        <p class="mt-xs font-body text-[14px] text-text-secondary">{description}</p>
+    </div>
+</Card>

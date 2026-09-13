@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+
+type RatingSize = 'sm' | 'md';
+
+interface Props {
+    value: number;
+    max?: number;
+    size?: RatingSize;
+    label?: string;
+}
+
+const { value, max = 5, size = 'sm', label } = Astro.props;
+const normalized = Math.max(0, Math.min(value, max));
+const iconSize = size === 'sm' ? 'sm' : 'lg';
+const stars = Array.from({ length: max }, (_, index) => {
+    const remaining = normalized - index;
+    if (remaining >= 0.75) return 'star';
+    if (remaining >= 0.25) return 'star_half';
+    return 'star';
+});
+---
+
+<div class="inline-flex items-center gap-xs text-amber-500" role="img" aria-label={label ?? `${value} de ${max}`}>
+    {stars.map((star, index) => <Icon name={star} size={iconSize} tone="amber" filled={normalized - index >= 0.25} />)}
+</div>

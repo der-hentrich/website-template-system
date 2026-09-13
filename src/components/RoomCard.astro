@@ -1,0 +1,47 @@
+---
+import Badge from './Badge.astro';
+import Button from './Button.astro';
+import Card from './Card.astro';
+import Icon from './Icon.astro';
+
+interface Feature {
+    icon: string;
+    text: string;
+}
+
+interface Props {
+    image: string;
+    imageAlt: string;
+    label: string;
+    guests: string;
+    beds: string;
+    title: string;
+    description: string;
+    features: Feature[];
+    whatsappHref: string;
+    buttonLabel?: string;
+    guestIcon?: string;
+    bedIcon?: string;
+}
+
+const { image, imageAlt, label, guests, beds, title, description, features, whatsappHref, buttonLabel = 'Consultar esta habitación por WhatsApp', guestIcon = 'group', bedIcon = 'bed' } = Astro.props;
+---
+
+<Card as="article" variant="surface" radius="xl" shadow="sm" padding="none" overflow="hidden" interactive>
+    <div class="relative h-64 overflow-hidden bg-surface-container">
+        <img class="h-full w-full object-cover" src={image} alt={imageAlt} />
+        <div class="absolute left-4 top-4"><Badge variant="overlay">{label}</Badge></div>
+        <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-full bg-primary-strong/75 px-base py-xs text-[13px] font-medium text-on-primary backdrop-blur-sm">
+            <span class="flex items-center gap-xs"><Icon name={guestIcon} size="xs" />{guests}</span>
+            <span class="flex items-center gap-xs"><Icon name={bedIcon} size="xs" />{beds}</span>
+        </div>
+    </div>
+    <div class="flex flex-grow flex-col p-lg">
+        <h3 class="mb-xs font-heading text-card-title text-text-primary">{title}</h3>
+        <p class="mb-base font-body text-body text-text-secondary">{description}</p>
+        <ul class="mb-xl flex-grow space-y-xs font-body text-[14px] text-text-primary">
+            {features.map((feature) => <li class="flex items-center gap-sm"><Icon name={feature.icon} size="sm" tone="primary" /><span>{feature.text}</span></li>)}
+        </ul>
+        <Button variant="whatsapp" size="md" href={whatsappHref} target="_blank" rel="noopener noreferrer" icon="chat" block>{buttonLabel}</Button>
+    </div>
+</Card>

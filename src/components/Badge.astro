@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+
+type BadgeVariant = 'surface' | 'soft' | 'accent' | 'dark' | 'success' | 'overlay';
+
+interface Props {
+    variant?: BadgeVariant;
+    icon?: string;
+    dot?: boolean;
+}
+
+const { variant = 'surface', icon, dot = false } = Astro.props;
+const variantClasses: Record<BadgeVariant, string> = {
+    surface: 'bg-surface text-text-primary',
+    soft: 'bg-surface-alt text-text-primary',
+    accent: 'bg-accent-soft/40 text-primary-strong',
+    dark: 'bg-primary-strong text-primary-fixed',
+    success: 'bg-emerald-50 text-emerald-800',
+    overlay: 'bg-surface/90 text-text-primary backdrop-blur-md shadow-sm'
+};
+---
+
+<span class:list={['inline-flex items-center gap-xs rounded-full px-md py-xs font-body text-label', variantClasses[variant]]}>
+    {dot && <span class:list={['h-2 w-2 rounded-full', variant === 'success' ? 'bg-emerald-500 animate-pulse' : 'bg-whatsapp']}></span>}
+    {icon && <Icon name={icon} size="xs" />}
+    <slot />
+</span>

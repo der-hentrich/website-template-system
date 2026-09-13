@@ -1,0 +1,28 @@
+---
+type CardTag = 'div' | 'article';
+type CardVariant = 'surface' | 'soft' | 'subtle' | 'media';
+type CardRadius = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+type CardShadow = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+type CardPadding = 'none' | 'base' | 'lg' | 'xl' | '2xl' | '3xl';
+
+interface Props {
+    as?: CardTag;
+    variant?: CardVariant;
+    radius?: CardRadius;
+    shadow?: CardShadow;
+    padding?: CardPadding;
+    interactive?: boolean;
+    overflow?: 'visible' | 'hidden';
+}
+
+const { as: Tag = 'div', variant = 'surface', radius = 'xl', shadow = 'sm', padding = 'none', interactive = false, overflow = 'visible' } = Astro.props;
+const variantClasses: Record<CardVariant, string> = { surface: 'bg-surface text-text-primary', soft: 'bg-surface-alt text-text-primary', subtle: 'bg-surface-container-low text-text-primary', media: 'bg-surface-variant text-text-primary' };
+const radiusClasses: Record<CardRadius, string> = { sm: 'rounded-ui-sm', md: 'rounded-ui-md', lg: 'rounded-ui-lg', xl: 'rounded-ui-xl', '2xl': 'rounded-ui-2xl', '3xl': 'rounded-ui-3xl' };
+const shadowClasses: Record<CardShadow, string> = { none: '', sm: 'shadow-sm', md: 'shadow-md', lg: 'shadow-lg', xl: 'shadow-xl' };
+const paddingClasses: Record<CardPadding, string> = { none: '', base: 'p-base', lg: 'p-lg', xl: 'p-xl', '2xl': 'p-2xl', '3xl': 'p-3xl' };
+const classes = [variantClasses[variant], radiusClasses[radius], shadowClasses[shadow], paddingClasses[padding], overflow === 'hidden' && 'overflow-hidden', interactive && 'transition-all duration-300 hover:shadow-md'];
+---
+
+<Tag class:list={classes}>
+    <slot />
+</Tag>

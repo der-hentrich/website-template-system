@@ -1,0 +1,18 @@
+---
+type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+type IconTone = 'current' | 'primary' | 'secondary' | 'inverse' | 'whatsapp' | 'amber' | 'muted';
+
+interface Props {
+    name: string;
+    size?: IconSize;
+    tone?: IconTone;
+    filled?: boolean;
+    label?: string;
+}
+
+const { name, size = 'md', tone = 'current', filled = false, label } = Astro.props;
+const sizeClasses: Record<IconSize, string> = { xs: 'text-[16px]', sm: 'text-[18px]', md: 'text-[20px]', lg: 'text-[24px]', xl: 'text-[26px]', '2xl': 'text-[28px]' };
+const toneClasses: Record<IconTone, string> = { current: 'text-current', primary: 'text-primary-container', secondary: 'text-text-secondary', inverse: 'text-on-primary', whatsapp: 'text-whatsapp', amber: 'text-amber-500', muted: 'text-outline-variant' };
+---
+
+<span class:list={['material-symbols-outlined', sizeClasses[size], toneClasses[tone]]} style={filled ? "font-variation-settings: 'FILL' 1;" : undefined} aria-hidden={label ? undefined : 'true'} aria-label={label}>{name}</span>
