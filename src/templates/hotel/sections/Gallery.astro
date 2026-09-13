@@ -22,16 +22,51 @@ const isEnglish = lang === 'en';
 const eyebrow = eyebrowProp ?? (isEnglish ? 'Atmosphere and spaces' : 'Ambiente y espacios');
 const title = titleProp ?? (isEnglish ? 'Hotel moments' : 'Momentos del hotel');
 const description = descriptionProp ?? (isEnglish ? 'A look at the property’s spaces, atmosphere, and details.' : 'Una mirada a los espacios, ambientes y detalles del alojamiento.');
-const photoCountLabel = isEnglish ? `${images.length} ${images.length === 1 ? 'selected photo' : 'selected photos'}` : `${images.length} ${images.length === 1 ? 'fotografía seleccionada' : 'fotografías seleccionadas'}`;
+const previousLabel = isEnglish ? 'Previous photos' : 'Fotos anteriores';
+const nextLabel = isEnglish ? 'Next photos' : 'Fotos siguientes';
+const carouselOptions = JSON.stringify({
+    loadingClasses: 'opacity-0',
+    dotsItemClasses: 'hs-carousel-active:bg-primary-container hs-carousel-active:border-primary-container h-2.5 w-2.5 cursor-pointer rounded-full border border-border bg-surface transition-colors',
+    isAutoPlay: false,
+    isDraggable: true,
+    isInfiniteLoop: images.length > 3,
+    hasSnapSpacers: false,
+    slidesQty: { xs: 1, md: 2, lg: 3 }
+});
 ---
 
 <section class="w-full bg-surface-container-low py-3xl lg:py-4xl" id="gallery-section">
     <div class="mx-auto max-w-[var(--container-site)] px-lg">
-        <SectionHeader eyebrow={eyebrow} eyebrowIcon="photo_library" title={title} description={description}>
-            <Fragment slot="aside"><p class="font-body text-label text-text-secondary">{photoCountLabel}</p></Fragment>
-        </SectionHeader>
-        <div class="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
-            {images.map((image) => <GalleryItem {...image} />)}
+        <SectionHeader eyebrow={eyebrow} eyebrowIcon="photo_library" title={title} description={description} />
+
+        <div class="relative" data-hs-carousel={carouselOptions}>
+            <div class="hs-carousel w-full overflow-hidden">
+                <div class="hs-carousel-body flex flex-nowrap gap-lg opacity-0 transition-transform duration-700 ease-out cursor-grab hs-carousel-dragging:cursor-grabbing hs-carousel-dragging:transition-none">
+                    {images.map((image) => (
+                            <div class="hs-carousel-slide">
+                                <GalleryItem {...image} />
+                            </div>
+                    ))}
+                </div>
+            </div>
+
+            {images.length > 1 && (
+                    <Fragment>
+                        <button type="button" class="hs-carousel-prev hs-carousel-disabled:pointer-events-none hs-carousel-disabled:opacity-30 absolute left-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border/70 bg-surface/85 text-primary-container shadow-md backdrop-blur-md transition-all hover:bg-surface hover:shadow-lg" aria-label={previousLabel}>
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="m15 18-6-6 6-6"></path>
+                            </svg>
+                        </button>
+
+                        <button type="button" class="hs-carousel-next hs-carousel-disabled:pointer-events-none hs-carousel-disabled:opacity-30 absolute right-3 top-1/2 z-10 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border/70 bg-surface/85 text-primary-container shadow-md backdrop-blur-md transition-all hover:bg-surface hover:shadow-lg" aria-label={nextLabel}>
+                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </button>
+
+                        <div class="hs-carousel-pagination mt-lg flex justify-center gap-xs"></div>
+                    </Fragment>
+            )}
         </div>
     </div>
 </section>
