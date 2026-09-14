@@ -16,14 +16,28 @@ if (import.meta.env.PROD && data.demo !== true && !Astro.site) {
     throw new Error('SITE_URL is required for production builds. Set SITE_URL to the full public URL, for example https://example.com.');
 }
 
-const imageModules = import.meta.glob('@siteData/images/*', {
+const fallbackImageModules = import.meta.glob('@imageFallbackData/images/*', {
     eager: true,
     import: 'default'
 }) as Record<string, ImageMetadata>;
 
-const images = Object.fromEntries(
-    Object.entries(imageModules).map(([path, image]) => [path.split('/').pop(), image])
+const siteImageModules = import.meta.glob('@siteData/images/*', {
+    eager: true,
+    import: 'default'
+}) as Record<string, ImageMetadata>;
+
+const fallbackImages = Object.fromEntries(
+    Object.entries(fallbackImageModules).map(([path, image]) => [path.split('/').pop(), image])
 );
+
+const siteImages = Object.fromEntries(
+    Object.entries(siteImageModules).map(([path, image]) => [path.split('/').pop(), image])
+);
+
+const images = {
+    ...fallbackImages,
+    ...siteImages
+};
 
 function resolveLocalized(value: unknown): unknown {
     if (Array.isArray(value)) {

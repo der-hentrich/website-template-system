@@ -8,7 +8,10 @@ const root = fileURLToPath(new URL('.', import.meta.url));
 const siteTarget = process.env.SITE_TARGET ?? 'hotel/demo';
 const template = siteTarget.split('/')[0];
 const siteUrl = process.env.SITE_URL?.trim();
-const sitePublicDir = resolve(root, 'src/data', siteTarget, 'public');
+const siteDataDir = resolve(root, 'src/data', siteTarget);
+const demoDataDir = resolve(root, 'src/data', template, 'demo');
+const imageFallbackDataDir = existsSync(resolve(siteDataDir, 'data.json')) ? siteDataDir : demoDataDir;
+const sitePublicDir = resolve(siteDataDir, 'public');
 const outDir = resolve(root, 'dist', siteTarget);
 
 let site;
@@ -43,7 +46,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@siteData': resolve(root, 'src/data', siteTarget),
+        '@demoData': demoDataDir,
+        '@siteData': siteDataDir,
+        '@imageFallbackData': imageFallbackDataDir,
         '@siteTemplate': resolve(root, 'src/templates', template, 'index.astro'),
         '@siteTheme': resolve(root, 'src/templates', template, 'theme.css'),
         '@siteSchema': resolve(root, 'src/templates', template, 'schema.ts')

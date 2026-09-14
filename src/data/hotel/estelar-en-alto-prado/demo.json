@@ -1,0 +1,105 @@
+{
+  "hotel": {
+    "name": "ESTELAR en Alto Prado Hotel",
+    "location": "Barranquilla",
+    "region": "Atlántico",
+    "address": "Cl. 76 #No. 56 29, Nte. Centro Historico, Barranquilla, Atlántico, Colombia"
+  },
+  "googleRating": {
+    "value": 4.8,
+    "reviewCount": 6058
+  },
+  "hero": {
+    "title": {
+      "es": "ESTELAR en Alto Prado Hotel en Barranquilla",
+      "en": "ESTELAR en Alto Prado Hotel in Barranquilla"
+    },
+    "description": {
+      "es": "Habitaciones y suites cómodas en un hotel de categoría superior con bar, restaurante, gimnasio y piscina en la azotea.",
+      "en": "Comfortable rooms and suites in an upscale hotel with a bar, restaurant, fitness center, and rooftop pool."
+    },
+    "imageEyebrow": {
+      "es": "Hotel en Barranquilla",
+      "en": "Hotel in Barranquilla"
+    },
+    "imageTitle": {
+      "es": "ESTELAR en Alto Prado Hotel",
+      "en": "ESTELAR en Alto Prado Hotel"
+    },
+    "whatsappText": "Hola, quisiera consultar la disponibilidad de habitaciones en ESTELAR en Alto Prado Hotel.",
+    "metas": [
+      {
+        "icon": "location_on",
+        "text": {
+          "es": "Barranquilla, Atlántico",
+          "en": "Barranquilla, Atlántico"
+        }
+      }
+    ],
+    "floatingCard": {
+      "icon": "pool",
+      "title": {
+        "es": "Piscina en la azotea",
+        "en": "Rooftop pool"
+      },
+      "description": {
+        "es": "El hotel indica piscina en la azotea entre sus servicios.",
+        "en": "The hotel lists a rooftop pool among its amenities."
+      }
+    }
+  },
+  "amenities": {
+    "amenities": [
+      {
+        "icon": "restaurant",
+        "title": {
+          "es": "Restaurante",
+          "en": "Restaurant"
+        },
+        "description": {
+          "es": "El hotel indica restaurante entre sus servicios.",
+          "en": "The hotel lists a restaurant among its amenities."
+        }
+      },
+      {
+        "icon": "local_bar",
+        "title": {
+          "es": "Bar",
+          "en": "Bar"
+        },
+        "description": {
+          "es": "El hotel indica bar entre sus servicios.",
+          "en": "The hotel lists a bar among its amenities."
+        }
+      },
+      {
+        "icon": "fitness_center",
+        "title": {
+          "es": "Gimnasio",
+          "en": "Fitness center"
+        },
+        "description": {
+          "es": "El hotel indica gimnasio entre sus servicios.",
+          "en": "The hotel lists a fitness center among its amenities."
+        }
+      },
+      {
+        "icon": "pool",
+        "title": {
+          "es": "Piscina en la azotea",
+          "en": "Rooftop pool"
+        },
+        "description": {
+          "es": "El hotel indica piscina en la azotea entre sus servicios.",
+          "en": "The hotel lists a rooftop pool among its amenities."
+        }
+      }
+    ]
+  },
+  "location": {
+    "whatsappText": "Hola, ¿podrían enviarme la ubicación e indicaciones para llegar a ESTELAR en Alto Prado Hotel en Barranquilla?"
+  },
+  "contact": {
+    "whatsappText": "Hola, quisiera consultar disponibilidad para hospedarme en ESTELAR en Alto Prado Hotel."
+  }
+}

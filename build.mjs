@@ -16,12 +16,24 @@ if (targetParts.length !== 2 || targetParts.some((part) => !part || part === '.'
     throw new Error(`Invalid site target "${siteTarget}". Expected "<template>/<site>", for example "hotel/demo".`);
 }
 
-const dataFile = resolve(root, 'src/data', ...targetParts, 'data.json');
+const [template, site] = targetParts;
+const siteDataDir = resolve(root, 'src/data', ...targetParts);
+const liveDataFile = resolve(siteDataDir, 'data.json');
+const demoOverrideFile = resolve(siteDataDir, 'demo.json');
+const templateDemoDataFile = resolve(root, 'src/data', template, 'demo', 'data.json');
 const outDir = resolve(root, 'dist', ...targetParts);
 const assetsDir = resolve(outDir, 'assets');
 
-if (!existsSync(dataFile)) {
-    throw new Error(`Site data not found: ${dataFile}`);
+if (site === 'demo' && !existsSync(liveDataFile)) {
+    throw new Error(`Template demo data not found: ${liveDataFile}`);
+}
+
+if (site !== 'demo' && !existsSync(liveDataFile) && !existsSync(demoOverrideFile)) {
+    throw new Error(`Site data not found. Expected ${liveDataFile} or ${demoOverrideFile}`);
+}
+
+if (site !== 'demo' && !existsSync(liveDataFile) && !existsSync(templateDemoDataFile)) {
+    throw new Error(`Template demo data not found: ${templateDemoDataFile}`);
 }
 
 process.env.SITE_TARGET = siteTarget;
