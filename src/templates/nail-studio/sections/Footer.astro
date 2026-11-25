@@ -1,0 +1,22 @@
+---
+import Icon from '../../../components/Icon.astro';
+interface NavItem { label: string; href: string; }
+interface Hour { days: string; time: string; }
+interface Props {
+    logoAlt: string; name: string; shortName: string; description: string; area: string; location: string; navigationTitle: string; hoursTitle: string; connectTitle: string;
+    whatsappLabel: string; copyright: string; demoNote?: string; items: NavItem[]; hours: Hour[]; instagramHref: string; instagramHandle: string; whatsappHref: string;
+}
+const { logoAlt, name, shortName, description, area, location, navigationTitle, hoursTitle, connectTitle, whatsappLabel, copyright, demoNote, items, hours, instagramHref, instagramHandle, whatsappHref } = Astro.props;
+---
+
+<footer class="w-full bg-surface-container text-text-primary">
+    <div class="mx-auto max-w-[var(--container-site)] px-base py-2xl sm:px-lg">
+        <div class="grid grid-cols-1 gap-xl border-b border-primary/10 pb-xl md:grid-cols-2 lg:grid-cols-12">
+            <div class="flex flex-col items-start gap-sm lg:col-span-4"><span class="flex items-center gap-sm"><span class="flex h-9 w-9 items-center justify-center rounded-full bg-primary font-heading text-lg text-on-primary" role="img" aria-label={logoAlt}>{shortName.charAt(0)}</span><span class="font-heading text-card-title text-primary">{name}</span></span><p class="max-w-sm font-body text-[15px] italic text-text-secondary">{description}</p><span class="flex items-center gap-xs font-body text-[12px] text-text-secondary"><Icon name="pin_drop" size="sm" tone="primary" />{area} · {location}</span></div>
+            <div class="lg:col-span-3"><h3 class="font-body text-[12px] font-semibold uppercase tracking-[0.12em] text-primary">{navigationTitle}</h3><ul class="mt-sm space-y-xs">{items.map((item) => <li><a class="font-body text-[13px] text-text-secondary transition-colors hover:text-primary" href={item.href}>{item.label}</a></li>)}</ul></div>
+            <div class="lg:col-span-3"><h3 class="font-body text-[12px] font-semibold uppercase tracking-[0.12em] text-primary">{hoursTitle}</h3><div class="mt-sm space-y-sm">{hours.map((hour) => <p class="font-body text-[13px] text-text-secondary"><strong class="block text-text-primary">{hour.days}</strong>{hour.time}</p>)}</div></div>
+            <div class="lg:col-span-2"><h3 class="font-body text-[12px] font-semibold uppercase tracking-[0.12em] text-primary">{connectTitle}</h3><div class="mt-sm flex flex-col gap-sm"><a class="flex items-center gap-xs font-body text-[13px] text-text-secondary hover:text-primary" href={instagramHref} target="_blank" rel="noopener noreferrer"><Icon name="photo_camera" size="sm" />{instagramHandle}</a><a class="flex items-center gap-xs font-body text-[13px] text-text-secondary hover:text-primary" href={whatsappHref} target="_blank" rel="noopener noreferrer"><Icon name="chat" size="sm" />{whatsappLabel}</a></div></div>
+        </div>
+        <div class="flex flex-col items-center justify-between gap-sm pt-lg text-center font-body text-[11px] text-text-secondary sm:flex-row sm:text-left"><p>{copyright}</p>{demoNote && <p>{demoNote}</p>}</div>
+    </div>
+</footer>

@@ -1,0 +1,85 @@
+@theme {
+    --color-primary: #863c5a;
+    --color-primary-strong: #752e4b;
+    --color-primary-container: #a35472;
+    --color-primary-fixed: #ffd9e3;
+    --color-primary-fixed-dim: #ffb0ca;
+
+    --color-accent-soft: #fdcad5;
+
+    --color-surface: #fff8f8;
+    --color-surface-alt: #fce9f0;
+    --color-surface-bright: #ffffff;
+    --color-surface-container: #fff0f4;
+    --color-surface-container-low: #fff8f8;
+    --color-surface-container-high: #f7e3ea;
+    --color-surface-container-highest: #f1dee4;
+    --color-surface-variant: #f1dee4;
+    --color-surface-tint: #914563;
+
+    --color-text-primary: #23191d;
+    --color-text-secondary: #524347;
+    --color-on-primary: #ffffff;
+    --color-on-surface: #23191d;
+    --color-on-surface-variant: #524347;
+    --color-border: #d7c1c6;
+    --color-outline-variant: #d7c1c6;
+    --color-inverse-surface: #392d32;
+
+    --color-whatsapp: #1ebe5d;
+    --color-whatsapp-hover: #169d4b;
+    --color-on-whatsapp: #ffffff;
+
+    --font-heading: "Playfair Display", serif;
+    --font-body: "DM Sans", sans-serif;
+
+    --text-display: 3.5rem;
+    --text-display--line-height: 1.14;
+    --text-display--letter-spacing: -0.02em;
+    --text-display--font-weight: 400;
+    --text-section-title: 2.5rem;
+    --text-section-title--line-height: 1.2;
+    --text-section-title--letter-spacing: -0.01em;
+    --text-section-title--font-weight: 400;
+    --text-card-title: 1.375rem;
+    --text-card-title--line-height: 1.35;
+    --text-card-title--font-weight: 600;
+    --text-body-lg: 1.125rem;
+    --text-body-lg--line-height: 1.55;
+    --text-body: 1rem;
+    --text-body--line-height: 1.6;
+    --text-label: 0.875rem;
+    --text-label--line-height: 1.4;
+    --text-label--font-weight: 600;
+    --text-button: 0.875rem;
+    --text-button--line-height: 1;
+    --text-button--font-weight: 600;
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 12px;
+    --spacing-base: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 40px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 80px;
+    --spacing-4xl: 112px;
+
+    --container-site: 1280px;
+    --radius-ui-sm: 9999px;
+    --radius-ui-md: 12px;
+    --radius-ui-lg: 16px;
+    --radius-ui-xl: 16px;
+    --radius-ui-2xl: 20px;
+    --radius-ui-3xl: 24px;
+    --radius-pill: 9999px;
+}
+
+@media (max-width: 639px) {
+    :root {
+        --text-display: 2.375rem;
+        --text-section-title: 1.875rem;
+        --spacing-3xl: 64px;
+        --spacing-4xl: 80px;
+    }
+}

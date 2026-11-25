@@ -1,0 +1,28 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Button from '../../../components/Button.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+
+interface Service { image: ImageMetadata; imageAlt: string; title: string; price: string; description: string; buttonLabel: string; whatsappHref: string; }
+interface Props { eyebrow: string; title: string; description: string; items: Service[]; }
+const { eyebrow, title, description, items } = Astro.props;
+---
+
+<section class="w-full bg-surface-container py-3xl lg:py-4xl" id="servicios">
+    <div class="mx-auto max-w-[var(--container-site)] px-base sm:px-lg">
+        <div class="mx-auto max-w-[680px] text-center"><SectionHeader eyebrow={eyebrow} title={title} description={description} width="narrow" /></div>
+        <div class="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
+            {items.map((item) => (
+                <article class="group flex flex-col overflow-hidden rounded-ui-xl border border-primary/10 bg-surface-bright transition-transform duration-300 hover:-translate-y-1">
+                    <div class="h-56 overflow-hidden bg-surface-variant"><Image class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src={item.image} alt={item.imageAlt} /></div>
+                    <div class="flex flex-1 flex-col p-lg">
+                        <div class="mb-sm flex items-start justify-between gap-base"><h3 class="font-heading text-card-title text-text-primary">{item.title}</h3><span class="shrink-0 font-body text-[12px] font-bold text-primary">{item.price}</span></div>
+                        <p class="mb-lg flex-1 font-body text-[15px] leading-relaxed text-text-secondary">{item.description}</p>
+                        <Button variant="secondary" size="md" href={item.whatsappHref} target="_blank" rel="noopener noreferrer" block>{item.buttonLabel}</Button>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>

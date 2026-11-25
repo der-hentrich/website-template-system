@@ -1,0 +1,62 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Button from '../../../components/Button.astro';
+import Icon from '../../../components/Icon.astro';
+
+interface Meta { icon: string; text: string; }
+interface Props {
+    badge: string;
+    title: string;
+    description: string;
+    image: ImageMetadata;
+    imageAlt: string;
+    imageEyebrow: string;
+    imageTitle: string;
+    whatsappLabel: string;
+    whatsappHref: string;
+    secondaryLabel: string;
+    secondaryHref: string;
+    metas: Meta[];
+}
+const { badge, title, description, image, imageAlt, imageEyebrow, imageTitle, whatsappLabel, whatsappHref, secondaryLabel, secondaryHref, metas } = Astro.props;
+---
+
+<section class="relative w-full overflow-hidden bg-surface py-3xl lg:py-4xl" id="inicio">
+    <div class="mx-auto grid max-w-[var(--container-site)] grid-cols-1 items-center gap-2xl px-base sm:px-lg lg:grid-cols-12">
+        <div class="flex flex-col items-start lg:col-span-6">
+            <div class="hero-enter hero-enter-1 mb-base inline-flex items-center gap-xs rounded-full bg-surface-alt px-base py-sm font-body text-[12px] font-semibold uppercase tracking-[0.08em] text-primary"><Icon name="location_on" size="xs" tone="primary" />{badge}</div>
+            <h1 class="hero-enter hero-enter-2 max-w-[650px] font-heading text-display text-text-primary">{title}</h1>
+            <p class="hero-enter hero-enter-3 mt-base max-w-[620px] font-body text-body-lg text-text-secondary">{description}</p>
+            <div class="hero-enter hero-enter-4 mt-lg flex w-full flex-col gap-base sm:w-auto sm:flex-row">
+                <Button variant="whatsapp" size="xl" href={whatsappHref} target="_blank" rel="noopener noreferrer">{whatsappLabel}</Button>
+                <Button variant="secondary" size="xl" href={secondaryHref}>{secondaryLabel}</Button>
+            </div>
+            <div class="hero-enter hero-enter-5 mt-xl flex flex-wrap items-center gap-x-lg gap-y-sm font-body text-label text-text-secondary">
+                {metas.map((meta) => <span class="flex items-center gap-xs"><Icon name={meta.icon} size="sm" tone="primary" />{meta.text}</span>)}
+            </div>
+        </div>
+
+        <div class="hero-visual relative lg:col-span-6">
+            <div class="relative mx-auto max-w-[520px]">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-ui-2xl bg-surface-variant shadow-xl">
+                    <Image class="h-full w-full object-cover" src={image} alt={imageAlt} loading="eager" fetchpriority="high" />
+                    <div class="absolute inset-x-6 bottom-6 flex items-center gap-sm rounded-ui-lg bg-surface/90 p-base shadow-md backdrop-blur-md">
+                        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-primary"><Icon name="spa" size="md" tone="primary" /></span>
+                        <span class="flex flex-col"><span class="font-body text-[11px] font-semibold uppercase tracking-[0.1em] text-primary">{imageEyebrow}</span><span class="font-heading text-[17px] leading-snug text-text-primary">{imageTitle}</span></span>
+                    </div>
+                </div>
+                <div class="pointer-events-none absolute -right-8 -top-8 -z-10 h-40 w-40 rounded-full bg-accent-soft/50 blur-3xl"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-enter { opacity: 0; transform: translateY(10px); animation: nail-enter 480ms cubic-bezier(.22,1,.36,1) forwards; }
+    .hero-enter-1 { animation-delay: 40ms; } .hero-enter-2 { animation-delay: 90ms; } .hero-enter-3 { animation-delay: 140ms; } .hero-enter-4 { animation-delay: 190ms; } .hero-enter-5 { animation-delay: 240ms; }
+    .hero-visual { opacity: 0; transform: translateY(8px) scale(.985); animation: nail-visual 560ms cubic-bezier(.22,1,.36,1) 100ms forwards; }
+    @keyframes nail-enter { to { opacity: 1; transform: none; } }
+    @keyframes nail-visual { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .hero-enter, .hero-visual { opacity: 1; transform: none; animation: none; } }
+</style>

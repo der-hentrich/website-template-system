@@ -1,0 +1,262 @@
+{
+  "demo": true,
+  "studio": {
+    "name": "Luna Nail Studio",
+    "shortName": "Luna",
+    "category": { "es": "Nail Studio", "en": "Nail Studio" },
+    "location": "Cali",
+    "region": "Valle del Cauca",
+    "country": "Colombia",
+    "area": "Barrio Granada",
+    "address": "Av. 9N # 14-28, Cali, Valle del Cauca",
+    "whatsapp": "+57 318 450 9821",
+    "phoneDisplay": "+57 (318) 450-9821",
+    "instagramHref": "https://instagram.com/lunanailstudio.cali",
+    "instagramHandle": "@lunanailstudio.cali",
+    "mapHref": "https://maps.google.com/?q=Barrio+Granada+Cali"
+  },
+  "seo": {
+    "title": {
+      "es": "Luna Nail Studio | Nail Art Boutique en Cali",
+      "en": "Luna Nail Studio | Boutique Nail Art in Cali"
+    },
+    "description": {
+      "es": "Manicure, pedicure, uñas acrílicas, gel y nail art personalizado en Barrio Granada, Cali.",
+      "en": "Manicures, pedicures, acrylics, gel nails and custom nail art in Granada, Cali."
+    }
+  },
+  "navbar": {
+    "items": [
+      { "label": { "es": "Inicio", "en": "Home" }, "href": "#inicio" },
+      { "label": { "es": "Servicios", "en": "Services" }, "href": "#servicios" },
+      { "label": { "es": "Galería", "en": "Gallery" }, "href": "#galeria" },
+      { "label": { "es": "Nosotros", "en": "About" }, "href": "#nosotros" },
+      { "label": { "es": "Contacto", "en": "Contact" }, "href": "#contacto" }
+    ],
+    "locationLabel": { "es": "Cali, Colombia", "en": "Cali, Colombia" },
+    "ctaLabel": { "es": "Agenda tu cita", "en": "Book an appointment" },
+    "whatsappText": "Hola Luna Nail Studio, deseo agendar una cita.",
+    "menuLabel": { "es": "Navegación principal", "en": "Main navigation" }
+  },
+  "hero": {
+    "badge": {
+      "es": "Cali, Colombia · Barrio Granada / Peñón",
+      "en": "Cali, Colombia · Granada / Peñón"
+    },
+    "title": { "es": "El arte de cuidar tus uñas", "en": "The art of caring for your nails" },
+    "description": {
+      "es": "Descubre un espacio dedicado a tu belleza, donde cada detalle refleja tu estilo y personalidad. Un santuario de calma, precisión y estética contemporánea.",
+      "en": "Discover a space devoted to your beauty, where every detail reflects your style and personality. A sanctuary of calm, precision and contemporary aesthetics."
+    },
+    "image": "images/hero.jpg",
+    "imageAlt": {
+      "es": "Manos con manicura nude y delicados detalles dorados sosteniendo una taza en un ambiente cálido",
+      "en": "Hands with a nude manicure and delicate gold details holding a cup in a warm setting"
+    },
+    "imageEyebrow": { "es": "Luna Studio Cali", "en": "Luna Studio Cali" },
+    "imageTitle": { "es": "Cuidado delicado y nail art en tendencia", "en": "Delicate care and on-trend nail art" },
+    "whatsappLabel": { "es": "Agenda tu cita por WhatsApp", "en": "Book via WhatsApp" },
+    "whatsappText": "Hola Luna Nail Studio, deseo agendar mi cita.",
+    "secondaryLabel": { "es": "Conoce nuestros servicios", "en": "Explore our services" },
+    "secondaryHref": "#servicios",
+    "metas": [
+      { "icon": "person_check", "text": { "es": "Atención personalizada", "en": "Personal attention" } },
+      { "icon": "palette", "text": { "es": "Diseños de autor", "en": "Signature designs" } }
+    ]
+  },
+  "services": {
+    "eyebrow": { "es": "Cuidado experto para tus manos y pies", "en": "Expert care for your hands and feet" },
+    "title": { "es": "Nuestros servicios", "en": "Our services" },
+    "description": {
+      "es": "Tratamientos realizados por especialistas con atención al detalle y productos seleccionados.",
+      "en": "Treatments performed by specialists with close attention to detail and carefully selected products."
+    },
+    "items": [
+      {
+        "image": "images/service-traditional.jpg",
+        "imageAlt": { "es": "Manicura natural con acabado brillante", "en": "Natural manicure with a glossy finish" },
+        "title": { "es": "Manicure tradicional", "en": "Classic manicure" },
+        "price": { "es": "Desde $28.000 COP", "en": "From COP 28,000" },
+        "description": { "es": "Limpieza de cutícula, exfoliación suave, limado anatómico y esmaltado tradicional con acabado brillante.", "en": "Cuticle care, gentle exfoliation, anatomical shaping and classic polish with a glossy finish." },
+        "whatsappText": "Hola, deseo agendar Manicure tradicional en Luna Nail Studio.",
+        "buttonLabel": { "es": "Agendar servicio", "en": "Book service" }
+      },
+      {
+        "image": "images/service-gel.jpg",
+        "imageAlt": { "es": "Manicure semipermanente en tono beige rosado", "en": "Gel manicure in a soft beige-pink shade" },
+        "title": { "es": "Manicure semipermanente", "en": "Gel manicure" },
+        "price": { "es": "Desde $55.000 COP", "en": "From COP 55,000" },
+        "description": { "es": "Esmaltado curado en lámpara LED con acabado uniforme y brillo duradero.", "en": "LED-cured polish with an even finish and lasting shine." },
+        "whatsappText": "Hola, deseo agendar Manicure semipermanente en Luna Nail Studio.",
+        "buttonLabel": { "es": "Agendar servicio", "en": "Book service" }
+      },
+      {
+        "image": "images/service-pedicure.jpg",
+        "imageAlt": { "es": "Sesión de pedicure spa con baño aromático", "en": "Spa pedicure session with an aromatic soak" },
+        "title": { "es": "Pedicure spa relajante", "en": "Relaxing spa pedicure" },
+        "price": { "es": "Desde $42.000 COP", "en": "From COP 42,000" },
+        "description": { "es": "Baño de sales aromáticas, exfoliación, hidratación y esmaltado para una experiencia de cuidado completa.", "en": "Aromatic salt soak, exfoliation, hydration and polish for a complete care experience." },
+        "whatsappText": "Hola, deseo agendar Pedicure spa relajante en Luna Nail Studio.",
+        "buttonLabel": { "es": "Agendar servicio", "en": "Book service" }
+      },
+      {
+        "image": "images/service-acrylic.jpg",
+        "imageAlt": { "es": "Extensiones acrílicas almendradas con diseño minimalista", "en": "Almond-shaped acrylic extensions with minimalist art" },
+        "title": { "es": "Uñas acrílicas esculpidas", "en": "Sculpted acrylic nails" },
+        "price": { "es": "Desde $95.000 COP", "en": "From COP 95,000" },
+        "description": { "es": "Extensiones adaptadas a la forma de tus manos con estructura definida y acabado natural.", "en": "Extensions tailored to the shape of your hands with a defined structure and natural finish." },
+        "whatsappText": "Hola, deseo agendar Uñas acrílicas esculpidas en Luna Nail Studio.",
+        "buttonLabel": { "es": "Agendar servicio", "en": "Book service" }
+      },
+      {
+        "image": "images/service-polygel.jpg",
+        "imageAlt": { "es": "Uñas en gel de aspecto natural y translúcido", "en": "Natural-looking translucent gel nails" },
+        "title": { "es": "Uñas en gel", "en": "Gel nail extensions" },
+        "price": { "es": "Desde $90.000 COP", "en": "From COP 90,000" },
+        "description": { "es": "Técnicas Soft Gel y Polygel para una extensión ligera, flexible y de apariencia natural.", "en": "Soft Gel and Polygel techniques for lightweight, flexible, natural-looking extensions." },
+        "whatsappText": "Hola, deseo agendar Uñas en gel en Luna Nail Studio.",
+        "buttonLabel": { "es": "Agendar servicio", "en": "Book service" }
+      },
+      {
+        "image": "images/service-nail-art.jpg",
+        "imageAlt": { "es": "Nail art con efecto cromo, perlas y líneas finas", "en": "Nail art with chrome, pearl and fine-line details" },
+        "title": { "es": "Nail art personalizado", "en": "Custom nail art" },
+        "price": { "es": "Desde $15.000 COP adic.", "en": "From COP 15,000 extra" },
+        "description": { "es": "Diseños a mano alzada, francesitas modernas, efectos cromo, cristales y detalles según tu referencia.", "en": "Freehand designs, modern French tips, chrome effects, crystals and details inspired by your reference." },
+        "whatsappText": "Hola, deseo agendar Nail art personalizado en Luna Nail Studio.",
+        "buttonLabel": { "es": "Agendar servicio", "en": "Book service" }
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": { "es": "Portafolio de creaciones", "en": "A portfolio of our work" },
+    "title": { "es": "Inspírate con nuestros diseños", "en": "Find inspiration in our designs" },
+    "description": { "es": "Explora una muestra del talento y detalle de nuestras nail artists en Cali.", "en": "Explore a selection of detailed work by our nail artists in Cali." },
+    "filters": [
+      { "key": "all", "label": { "es": "Todos", "en": "All" } },
+      { "key": "nude", "label": { "es": "Nude & Clean", "en": "Nude & Clean" } },
+      { "key": "french", "label": { "es": "Francesitas", "en": "French" } },
+      { "key": "nail-art", "label": { "es": "Nail Art", "en": "Nail Art" } },
+      { "key": "acrylic", "label": { "es": "Acrílicas", "en": "Acrylics" } }
+    ],
+    "items": [
+      {
+        "image": "images/gallery-nude.jpg",
+        "imageAlt": { "es": "Uñas nude con finos detalles dorados", "en": "Nude nails with fine gold details" },
+        "category": "nude",
+        "eyebrow": { "es": "Nude & Minimalista", "en": "Nude & Minimal" },
+        "title": { "es": "Elegancia nude y minimalista", "en": "Nude, minimalist elegance" },
+        "description": { "es": "Tonos blush, líneas sutiles y detalles dorados", "en": "Blush tones, fine lines and gold details" }
+      },
+      {
+        "image": "images/gallery-french.jpg",
+        "imageAlt": { "es": "Manicura francesa doble en tonos pastel", "en": "Double French manicure in pastel tones" },
+        "category": "french",
+        "eyebrow": { "es": "Francesitas", "en": "French" },
+        "title": { "es": "French manicure contemporánea", "en": "Contemporary French manicure" },
+        "description": { "es": "Variantes modernas con micro-líneas y colores pastel", "en": "Modern variations with micro-lines and pastel colors" }
+      },
+      {
+        "image": "images/gallery-burgundy.jpg",
+        "imageAlt": { "es": "Manicura brillante en rojo granate", "en": "Glossy deep burgundy manicure" },
+        "category": "nude",
+        "eyebrow": { "es": "Clásicos", "en": "Classics" },
+        "title": { "es": "Rojos y granates clásicos", "en": "Classic reds and burgundies" },
+        "description": { "es": "Acabado brillante, intenso y sofisticado", "en": "A glossy, rich and sophisticated finish" }
+      },
+      {
+        "image": "images/gallery-chrome.jpg",
+        "imageAlt": { "es": "Uñas con efecto cromo perlado", "en": "Nails with a pearlescent chrome effect" },
+        "category": "nail-art",
+        "eyebrow": { "es": "Tendencia", "en": "Trend" },
+        "title": { "es": "Nail art y efecto cromo glazed", "en": "Nail art and glazed chrome" },
+        "description": { "es": "Efecto perla y detalles tridimensionales sutiles", "en": "Pearl effects and subtle three-dimensional details" }
+      },
+      {
+        "image": "images/gallery-acrylic.jpg",
+        "imageAlt": { "es": "Extensiones acrílicas almendradas en degradado", "en": "Almond acrylic extensions with an ombré finish" },
+        "category": "acrylic",
+        "eyebrow": { "es": "Acrílicas", "en": "Acrylics" },
+        "title": { "es": "Extensiones acrílicas almendradas", "en": "Almond acrylic extensions" },
+        "description": { "es": "Estructura definida en una forma almendra estilizada", "en": "Defined structure in a refined almond shape" }
+      },
+      {
+        "image": "images/gallery-botanical.jpg",
+        "imageAlt": { "es": "Ilustraciones botánicas pintadas sobre uñas translúcidas", "en": "Botanical illustrations painted on sheer nails" },
+        "category": "nail-art",
+        "eyebrow": { "es": "Botanical Art", "en": "Botanical Art" },
+        "title": { "es": "Diseños de temporada y flores", "en": "Seasonal and floral designs" },
+        "description": { "es": "Ilustración botánica delicada pintada a mano alzada", "en": "Delicate botanical illustration painted freehand" }
+      }
+    ],
+    "instagramLabel": {
+      "es": "Síguenos en Instagram @lunanailstudio.cali para ver nuevos sets",
+      "en": "Follow @lunanailstudio.cali on Instagram to see new sets"
+    }
+  },
+  "about": {
+    "image": "images/studio.jpg",
+    "imageAlt": { "es": "Interior contemporáneo de un estudio de uñas con mobiliario claro y sillones rosados", "en": "Contemporary nail studio interior with light furniture and rose-colored chairs" },
+    "imageBadge": { "es": "Barrio Granada · Cali", "en": "Granada · Cali" },
+    "eyebrow": { "es": "Bienvenida a nuestro espacio de belleza", "en": "Welcome to our beauty space" },
+    "title": { "es": "Un espacio pensado para ti", "en": "A space designed for you" },
+    "description": { "es": "En Luna Nail Studio combinamos creatividad, cuidado y atención personalizada para que disfrutes cada visita. Nuestro estudio en Cali nació para transformar la manicura en una experiencia de bienestar, calma y estilo propio.", "en": "At Luna Nail Studio we combine creativity, care and personal attention so you can enjoy every visit. Our Cali studio was created to turn a manicure into an experience of wellbeing, calm and personal style." },
+    "features": [
+      { "icon": "person_check", "title": { "es": "Atención personalizada", "en": "Personal attention" }, "description": { "es": "Cada cita cuenta con tiempo suficiente para trabajar con dedicación y detalle.", "en": "Every appointment includes enough time for dedicated, detailed work." } },
+      { "icon": "sanitizer", "title": { "es": "Higiene y cuidado", "en": "Hygiene and care" }, "description": { "es": "Herramientas, superficies y materiales se preparan cuidadosamente para cada cita.", "en": "Tools, surfaces and materials are carefully prepared for every appointment." } },
+      { "icon": "brush", "title": { "es": "Diseños para cada estilo", "en": "Designs for every style" }, "description": { "es": "Desde manicuras limpias y discretas hasta arte contemporáneo de mayor detalle.", "en": "From clean, understated manicures to more detailed contemporary art." } },
+      { "icon": "coffee", "title": { "es": "Ambiente cómodo", "en": "A comfortable setting" }, "description": { "es": "Un entorno cálido y tranquilo para disfrutar tu momento de cuidado.", "en": "A warm, calm setting in which to enjoy your moment of care." } }
+    ]
+  },
+  "faq": {
+    "eyebrow": { "es": "Resolvemos tus dudas", "en": "Your questions answered" },
+    "title": { "es": "Preguntas frecuentes", "en": "Frequently asked questions" },
+    "description": { "es": "Información útil antes de tu cita.", "en": "Useful information before your appointment." },
+    "items": [
+      { "question": { "es": "¿Cómo puedo agendar una cita?", "en": "How can I book an appointment?" }, "answer": { "es": "Toca cualquiera de los botones de WhatsApp, indícanos el servicio y la fecha que prefieres, y te confirmaremos la disponibilidad.", "en": "Tap any WhatsApp button, tell us which service and date you prefer, and we will confirm availability." } },
+      { "question": { "es": "¿Cuánto tiempo dura una manicure?", "en": "How long does a manicure take?" }, "answer": { "es": "Una manicure tradicional toma aproximadamente 45 minutos. La semipermanente puede tomar alrededor de 1 hora y 15 minutos, mientras los sistemas de extensión o el nail art detallado requieren más tiempo.", "en": "A classic manicure takes about 45 minutes. Gel polish may take around 1 hour and 15 minutes, while extensions or detailed nail art require more time." } },
+      { "question": { "es": "¿Puedo llevar mi propio diseño?", "en": "Can I bring my own design?" }, "answer": { "es": "Sí. Puedes enviarnos tu imagen de referencia por WhatsApp antes de la cita o mostrársela a tu nail artist al llegar para elegir la técnica adecuada.", "en": "Yes. Send your reference image via WhatsApp before your visit or show it to your nail artist when you arrive so the right technique can be selected." } },
+      { "question": { "es": "¿Qué métodos de pago aceptan?", "en": "Which payment methods do you accept?" }, "answer": { "es": "Aceptamos transferencias Bancolombia, Nequi, Daviplata, tarjetas de crédito o débito y efectivo.", "en": "We accept Bancolombia transfers, Nequi, Daviplata, credit or debit cards and cash." } },
+      { "question": { "es": "¿Cómo puedo cambiar o cancelar mi cita?", "en": "How can I change or cancel my appointment?" }, "answer": { "es": "Escríbenos por WhatsApp con al menos cuatro horas de anticipación para reprogramar tu espacio.", "en": "Message us on WhatsApp at least four hours in advance to reschedule your appointment." } }
+    ]
+  },
+  "contact": {
+    "eyebrow": { "es": "Encuéntranos fácilmente", "en": "Find us easily" },
+    "title": { "es": "Visítanos en Cali", "en": "Visit us in Cali" },
+    "locationLabel": { "es": "Ubicación física", "en": "Studio location" },
+    "hoursLabel": { "es": "Horarios de atención", "en": "Opening hours" },
+    "contactLabel": { "es": "Contacto directo", "en": "Direct contact" },
+    "parkingNote": { "es": "Zona de parqueo vigilado cercana y fácil acceso peatonal.", "en": "Nearby monitored parking and easy pedestrian access." },
+    "directionsLabel": { "es": "Cómo llegar en Google Maps", "en": "Directions in Google Maps" },
+    "mapImage": "images/location-map.png",
+    "mapAlt": { "es": "Mapa de referencia de Barrio Granada en Cali", "en": "Reference map of the Granada neighborhood in Cali" },
+    "mapEyebrow": { "es": "Estudio principal", "en": "Main studio" },
+    "mapDescription": { "es": "Cali · Zona gastronómica y comercial de Granada", "en": "Cali · Granada dining and shopping district" },
+    "mapBadge": { "es": "Parqueo disponible", "en": "Parking available" },
+    "hours": [
+      { "days": { "es": "Lunes a sábado", "en": "Monday to Saturday" }, "time": { "es": "8:30 a.m. – 7:00 p.m.", "en": "8:30 a.m. – 7:00 p.m." } },
+      { "days": { "es": "Domingos y festivos", "en": "Sundays and holidays" }, "time": { "es": "10:00 a.m. – 4:00 p.m. · Con cita previa", "en": "10:00 a.m. – 4:00 p.m. · By appointment" } }
+    ]
+  },
+  "cta": {
+    "eyebrow": { "es": "Tu momento de cuidado", "en": "Your moment of care" },
+    "title": { "es": "¿Lista para estrenar uñas?", "en": "Ready for a fresh set?" },
+    "description": { "es": "Cuéntanos qué servicio o diseño tienes en mente y consulta la próxima cita disponible.", "en": "Tell us which service or design you have in mind and ask about the next available appointment." },
+    "buttonLabel": { "es": "Consultar disponibilidad", "en": "Check availability" },
+    "whatsappText": "Hola Luna Nail Studio, quisiera consultar disponibilidad para una cita."
+  },
+  "footer": {
+    "description": { "es": "El arte de cuidar tus uñas en Cali. Manicura contemporánea, nail art y momentos de bienestar.", "en": "The art of caring for your nails in Cali. Contemporary manicures, nail art and moments of wellbeing." },
+    "navigationTitle": { "es": "Navegación", "en": "Navigation" },
+    "hoursTitle": { "es": "Horarios", "en": "Hours" },
+    "connectTitle": { "es": "Conecta", "en": "Connect" },
+    "whatsappLabel": { "es": "WhatsApp directo", "en": "WhatsApp direct" },
+    "copyright": { "es": "© 2026 Luna Nail Studio. Todos los derechos reservados.", "en": "© 2026 Luna Nail Studio. All rights reserved." },
+    "demoNote": { "es": "Sitio web de demostración comercial", "en": "Commercial demonstration website" }
+  },
+  "floatingWhatsapp": {
+    "label": { "es": "Escríbenos", "en": "Message us" },
+    "ariaLabel": { "es": "Escríbenos por WhatsApp", "en": "Message us on WhatsApp" },
+    "whatsappText": "Hola Luna Nail Studio, quisiera consultar disponibilidad."
+  }
+}

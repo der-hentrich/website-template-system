@@ -1,0 +1,63 @@
+---
+import Button from '../../../components/Button.astro';
+import Icon from '../../../components/Icon.astro';
+
+interface NavItem { label: string; href: string; }
+interface Props {
+    logoAlt: string;
+    shortName: string;
+    category: string;
+    locationLabel: string;
+    items: NavItem[];
+    whatsappHref: string;
+    ctaLabel: string;
+    menuLabel: string;
+    languageHref: string;
+    lang: 'es' | 'en';
+}
+
+const { logoAlt, shortName, category, locationLabel, items, whatsappHref, ctaLabel, menuLabel, languageHref, lang } = Astro.props;
+const languageCode = lang === 'es' ? 'en' : 'es';
+const languageLabel = lang === 'es' ? 'Switch to English' : 'Cambiar a español';
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-primary/10 bg-surface/85 backdrop-blur-md">
+    <div class="mx-auto flex h-20 max-w-[var(--container-site)] items-center justify-between gap-base px-base sm:px-lg">
+        <div class="flex min-w-0 items-center gap-base">
+            <a class="group flex min-w-0 items-center gap-sm" href="#inicio">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary font-heading text-xl text-on-primary transition-transform group-hover:scale-105" role="img" aria-label={logoAlt}>{shortName.charAt(0)}</span>
+                <span class="flex min-w-0 flex-col">
+                    <span class="truncate font-heading text-[22px] leading-none text-primary">{shortName}</span>
+                    <span class="truncate font-body text-[11px] font-medium uppercase tracking-[0.12em] text-text-secondary">{category}</span>
+                </span>
+            </a>
+            <span class="hidden items-center gap-xs rounded-full bg-surface-alt px-sm py-1 font-body text-[12px] font-semibold text-text-secondary xl:flex"><Icon name="location_on" size="xs" tone="primary" />{locationLabel}</span>
+        </div>
+
+        <nav class="hidden items-center gap-lg [--scrollspy-offset:96] lg:flex" aria-label={menuLabel} data-hs-scrollspy="main">
+            {items.map((item) => <a class="font-body text-label uppercase tracking-[0.08em] text-text-secondary transition-colors hover:text-primary hs-scrollspy-active:text-primary" href={item.href}>{item.label}</a>)}
+        </nav>
+
+        <div class="flex shrink-0 items-center gap-sm">
+            <a class="inline-flex h-10 min-w-10 items-center justify-center rounded-full px-sm font-body text-[12px] font-bold uppercase text-primary transition-colors hover:bg-surface-alt" href={languageHref} hreflang={languageCode} aria-label={languageLabel}>{languageCode}</a>
+            <span class="hidden sm:inline-flex"><Button variant="primary" size="sm" href={whatsappHref} target="_blank" rel="noopener noreferrer">{ctaLabel}</Button></span>
+            <div class="relative lg:hidden">
+                <button id="nail-navigation-toggle" type="button" class="hs-collapse-toggle flex h-11 w-11 items-center justify-center rounded-full bg-surface-alt text-primary" aria-expanded="false" aria-controls="nail-navigation-mobile" aria-label={menuLabel} data-hs-collapse="#nail-navigation-mobile">
+                    <span class="hs-collapse-open:hidden"><Icon name="menu" size="lg" tone="primary" /></span>
+                    <span class="hidden hs-collapse-open:inline-flex"><Icon name="close" size="lg" tone="primary" /></span>
+                </button>
+                <nav id="nail-navigation-mobile" class="absolute right-0 top-[calc(100%+8px)] hidden w-64 overflow-hidden rounded-ui-lg border border-primary/10 bg-surface-bright p-sm shadow-lg" aria-labelledby="nail-navigation-toggle">
+                    {items.map((item) => <a class="block rounded-ui-md px-base py-md font-body text-label text-text-secondary transition-colors hover:bg-surface-alt hover:text-primary" href={item.href}>{item.label}</a>)}
+                    <div class="mt-sm sm:hidden"><Button variant="primary" size="md" href={whatsappHref} target="_blank" rel="noopener noreferrer" block>{ctaLabel}</Button></div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    const navigationToggle = document.querySelector<HTMLButtonElement>('#nail-navigation-toggle');
+    document.querySelectorAll<HTMLAnchorElement>('#nail-navigation-mobile a[href^="#"]').forEach((link) => link.addEventListener('click', () => {
+        if (navigationToggle?.getAttribute('aria-expanded') === 'true') navigationToggle.click();
+    }));
+</script>

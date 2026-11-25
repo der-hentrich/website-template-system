@@ -1,0 +1,39 @@
+---
+import Layout from '../../site/Layout.astro';
+import FAQ from '../../sections/FAQ.astro';
+import Navbar from './sections/Navbar.astro';
+import Hero from './sections/Hero.astro';
+import Services from './sections/Services.astro';
+import Gallery from './sections/Gallery.astro';
+import About from './sections/About.astro';
+import Contact from './sections/Contact.astro';
+import Cta from './sections/Cta.astro';
+import Footer from './sections/Footer.astro';
+import FloatingWhatsapp from './sections/FloatingWhatsapp.astro';
+
+interface Props { data: any; lang: 'es' | 'en'; }
+const { data, lang } = Astro.props;
+const isDemo = data.demo === true;
+const number = data.studio.whatsapp.replace(/\D/g, '');
+const whatsappHref = (message: string) => `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+const languageHref = lang === 'es' ? '/en/' : '/es/';
+const services = data.services.items.map((item: any) => ({ ...item, whatsappHref: whatsappHref(item.whatsappText) }));
+---
+
+<Layout lang={lang} title={data.seo.title} description={data.seo.description} noIndex={isDemo}>
+    <Fragment slot="head">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+    </Fragment>
+    <Navbar logoAlt={data.studio.name} shortName={data.studio.shortName} category={data.studio.category} locationLabel={data.navbar.locationLabel} items={data.navbar.items} whatsappHref={whatsappHref(data.navbar.whatsappText)} ctaLabel={data.navbar.ctaLabel} menuLabel={data.navbar.menuLabel} languageHref={languageHref} lang={lang} />
+    <main class="min-h-[calc(100vh-80px)] w-full bg-surface pt-20">
+        <Hero {...data.hero} whatsappHref={whatsappHref(data.hero.whatsappText)} />
+        <Services {...data.services} items={services} />
+        <Gallery {...data.gallery} instagramHref={data.studio.instagramHref} />
+        <About {...data.about} />
+        <FAQ {...data.faq} id="faq" />
+        <Contact {...data.contact} area={data.studio.area} address={data.studio.address} phoneDisplay={data.studio.phoneDisplay} mapHref={data.studio.mapHref} />
+        <Cta {...data.cta} whatsappHref={whatsappHref(data.cta.whatsappText)} />
+    </main>
+    <Footer logoAlt={data.studio.name} name={data.studio.name} shortName={data.studio.shortName} description={data.footer.description} area={data.studio.area} location={`${data.studio.location}, ${data.studio.country}`} navigationTitle={data.footer.navigationTitle} hoursTitle={data.footer.hoursTitle} connectTitle={data.footer.connectTitle} whatsappLabel={data.footer.whatsappLabel} copyright={data.footer.copyright} demoNote={isDemo ? data.footer.demoNote : undefined} items={data.navbar.items} hours={data.contact.hours} instagramHref={data.studio.instagramHref} instagramHandle={data.studio.instagramHandle} whatsappHref={whatsappHref(data.floatingWhatsapp.whatsappText)} />
+    <FloatingWhatsapp {...data.floatingWhatsapp} whatsappHref={whatsappHref(data.floatingWhatsapp.whatsappText)} />
+</Layout>
