@@ -189,9 +189,13 @@
         "description": { "es": "Ilustración botánica delicada pintada a mano alzada", "en": "Delicate botanical illustration painted freehand" }
       }
     ],
-    "instagramLabel": {
-      "es": "Síguenos en Instagram @lunanailstudio.cali para ver nuevos sets",
-      "en": "Follow @lunanailstudio.cali on Instagram to see new sets"
+    "instagramTitle": {
+      "es": "Más inspiración en Instagram",
+      "en": "More inspiration on Instagram"
+    },
+    "instagramDescription": {
+      "es": "Descubre nuevos diseños, tendencias y sets recién creados.",
+      "en": "Discover new designs, trends and freshly created sets."
     }
   },
   "about": {

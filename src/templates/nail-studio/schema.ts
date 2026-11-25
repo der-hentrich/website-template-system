@@ -85,7 +85,8 @@ const nailStudioSchema = z.strictObject({
         description: localizedText,
         filters: z.array(galleryFilterSchema).min(1),
         items: z.array(galleryItemSchema).min(1),
-        instagramLabel: localizedText
+        instagramTitle: localizedText,
+        instagramDescription: localizedText
     }),
     about: z.strictObject({
         image: imagePath,
