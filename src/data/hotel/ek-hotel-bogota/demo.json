@@ -1,0 +1,14 @@
+{
+  "hotel": {
+    "name": "EK hotel Bogota",
+    "location": "Bogotá",
+    "region": "Bogota",
+    "address": "Cl. 90 #11 - 13, Bogotá, Kolumbien",
+    "roomCount": 70,
+    "rnt": "31376"
+  },
+  "googleRating": {
+    "value": 4.8,
+    "reviewCount": 414
+  }
+}
