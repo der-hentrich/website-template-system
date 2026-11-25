@@ -26,7 +26,7 @@ const services = data.services.items.map((item: any) => ({ ...item, whatsappHref
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Playfair+Display:wght@400;500;600&amp;display=swap" rel="stylesheet" />
     </Fragment>
     <Navbar logoAlt={data.studio.name} shortName={data.studio.shortName} category={data.studio.category} locationLabel={data.navbar.locationLabel} items={data.navbar.items} whatsappHref={whatsappHref(data.navbar.whatsappText)} ctaLabel={data.navbar.ctaLabel} menuLabel={data.navbar.menuLabel} languageHref={languageHref} lang={lang} />
-    <main class="min-h-[calc(100vh-80px)] w-full bg-surface pt-20">
+    <main class="min-h-[calc(100vh-80px)] w-full bg-surface pt-20" data-reveal-profile="nail-studio">
         <Hero {...data.hero} whatsappHref={whatsappHref(data.hero.whatsappText)} />
         <Services {...data.services} items={services} />
         <Gallery {...data.gallery} instagramHref={data.studio.instagramHref} />
