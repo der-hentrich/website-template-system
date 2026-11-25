@@ -1,0 +1,46 @@
+---
+import Card from '../../../components/Card.astro';
+import Rating from '../../../components/Rating.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+
+interface Review {
+    rating: number;
+    quote: string;
+    author: string;
+    label?: string;
+    initials?: string;
+}
+
+interface Props {
+    eyebrow: string;
+    title: string;
+    description?: string;
+    items: Review[];
+    lang?: 'es' | 'en';
+}
+
+const { eyebrow, title, description, items, lang = 'es' } = Astro.props;
+---
+
+<section class="w-full bg-surface py-3xl lg:py-4xl" id="testimonios">
+    <div class="mx-auto max-w-[var(--container-site)] px-base sm:px-lg">
+        <div class="mx-auto max-w-[680px] text-center"><SectionHeader eyebrow={eyebrow} title={title} description={description} width="narrow" /></div>
+        <div class="grid grid-cols-1 gap-lg md:grid-cols-3">
+            {items.map((review) => (
+                <Card as="article" variant="soft" radius="xl" shadow="sm" padding="lg" class="flex h-full flex-col justify-between gap-base">
+                    <div>
+                        <Rating value={review.rating} size="md" label={lang === 'en' ? `${review.rating} out of 5` : `${review.rating} de 5`} />
+                        <blockquote class="mt-sm font-body text-body italic text-text-primary">&ldquo;{review.quote}&rdquo;</blockquote>
+                    </div>
+                    <div class="flex items-center gap-sm pt-xs">
+                        {review.initials && <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-container font-body text-[14px] font-bold text-on-primary">{review.initials}</span>}
+                        <div class="flex flex-col">
+                            <span class="font-body text-label text-text-primary">{review.author}</span>
+                            {review.label && <span class="font-body text-[13px] leading-relaxed text-text-secondary">{review.label}</span>}
+                        </div>
+                    </div>
+                </Card>
+            ))}
+        </div>
+    </div>
+</section>

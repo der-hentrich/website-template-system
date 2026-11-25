@@ -1,14 +1,14 @@
 ---
 import Button from '../../../components/Button.astro';
+import Card from '../../../components/Card.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
 interface Props { eyebrow: string; title: string; description: string; buttonLabel: string; whatsappHref: string; }
 const { eyebrow, title, description, buttonLabel, whatsappHref } = Astro.props;
 ---
 
 <section class="w-full bg-surface px-base py-3xl sm:px-lg">
-    <div class="mx-auto flex max-w-[var(--container-site)] flex-col items-center rounded-ui-3xl bg-primary px-lg py-2xl text-center text-on-primary lg:py-3xl">
-        <span class="font-body text-[12px] font-semibold uppercase tracking-[0.12em] text-primary-fixed">{eyebrow}</span>
-        <h2 class="mt-sm max-w-3xl font-heading text-section-title text-on-primary">{title}</h2>
-        <p class="mt-sm max-w-2xl font-body text-body-lg text-primary-fixed">{description}</p>
-        <div class="mt-lg"><Button variant="whatsapp" size="xl" href={whatsappHref} target="_blank" rel="noopener noreferrer">{buttonLabel}</Button></div>
-    </div>
+    <Card variant="primary" radius="3xl" shadow="none" padding="none" class="mx-auto flex max-w-[var(--container-site)] flex-col items-center px-lg py-2xl text-center lg:py-3xl">
+        <div class="mx-auto max-w-[680px]"><SectionHeader eyebrow={eyebrow} title={title} description={description} width="narrow" badgeVariant="dark" tone="inverse" spacing="compact" /></div>
+        <Button variant="whatsapp" size="xl" href={whatsappHref} target="_blank" rel="noopener noreferrer">{buttonLabel}</Button>
+    </Card>
 </section>

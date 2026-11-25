@@ -1,7 +1,9 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import Badge from '../../../components/Badge.astro';
 import Button from '../../../components/Button.astro';
+import Card from '../../../components/Card.astro';
 import Icon from '../../../components/Icon.astro';
 
 interface Meta { icon: string; text: string; }
@@ -25,7 +27,7 @@ const { badge, title, description, image, imageAlt, imageEyebrow, imageTitle, wh
 <section class="relative w-full overflow-hidden bg-surface py-3xl lg:py-4xl" id="inicio">
     <div class="mx-auto grid max-w-[var(--container-site)] grid-cols-1 items-center gap-2xl px-base sm:px-lg lg:grid-cols-12">
         <div class="flex flex-col items-start lg:col-span-6">
-            <div class="hero-enter hero-enter-1 mb-base inline-flex items-center gap-xs rounded-full bg-surface-alt px-base py-sm font-body text-[12px] font-semibold uppercase tracking-[0.08em] text-primary"><Icon name="location_on" size="xs" tone="primary" />{badge}</div>
+            <div class="hero-enter hero-enter-1 mb-base"><Badge variant="soft" icon="location_on" iconTone="primary">{badge}</Badge></div>
             <h1 class="hero-enter hero-enter-2 max-w-[650px] font-heading text-display text-text-primary">{title}</h1>
             <p class="hero-enter hero-enter-3 mt-base max-w-[620px] font-body text-body-lg text-text-secondary">{description}</p>
             <div class="hero-enter hero-enter-4 mt-lg flex w-full flex-col gap-base sm:w-auto sm:flex-row">
@@ -39,13 +41,13 @@ const { badge, title, description, image, imageAlt, imageEyebrow, imageTitle, wh
 
         <div class="hero-visual relative lg:col-span-6">
             <div class="relative mx-auto max-w-[520px]">
-                <div class="relative aspect-[4/5] overflow-hidden rounded-ui-2xl bg-surface-variant shadow-xl">
+                <Card variant="media" radius="2xl" shadow="xl" padding="none" overflow="hidden" class="relative aspect-[4/5]">
                     <Image class="h-full w-full object-cover" src={image} alt={imageAlt} loading="eager" fetchpriority="high" />
-                    <div class="absolute inset-x-6 bottom-6 flex items-center gap-sm rounded-ui-lg bg-surface/90 p-base shadow-md backdrop-blur-md">
+                    <Card variant="surface" radius="lg" shadow="md" padding="base" class="absolute inset-x-6 bottom-6 flex items-center gap-sm bg-surface/90 backdrop-blur-md">
                         <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-primary"><Icon name="spa" size="md" tone="primary" /></span>
                         <span class="flex flex-col"><span class="font-body text-[11px] font-semibold uppercase tracking-[0.1em] text-primary">{imageEyebrow}</span><span class="font-heading text-[17px] leading-snug text-text-primary">{imageTitle}</span></span>
-                    </div>
-                </div>
+                    </Card>
+                </Card>
                 <div class="pointer-events-none absolute -right-8 -top-8 -z-10 h-40 w-40 rounded-full bg-accent-soft/50 blur-3xl"></div>
             </div>
         </div>

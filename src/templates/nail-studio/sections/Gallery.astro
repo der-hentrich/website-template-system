@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
-import Icon from '../../../components/Icon.astro';
+import Button from '../../../components/Button.astro';
+import GalleryItem from '../../../components/GalleryItem.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 
 interface Filter { key: string; label: string; }
@@ -14,38 +14,25 @@ const { eyebrow, title, description, filters, items, instagramHref, instagramLab
     <div class="mx-auto max-w-[var(--container-site)] px-base sm:px-lg">
         <div class="mx-auto max-w-[680px] text-center"><SectionHeader eyebrow={eyebrow} title={title} description={description} width="narrow" /></div>
         <div class="mb-xl flex flex-wrap items-center justify-center gap-sm" id="nail-gallery-filters">
-            {filters.map((filter, index) => <button class:list={['nail-gallery-filter rounded-full px-base py-sm font-body text-[12px] font-semibold transition-colors', index === 0 ? 'bg-primary text-on-primary' : 'bg-surface-alt text-text-secondary hover:text-text-primary']} type="button" data-category={filter.key} aria-pressed={index === 0 ? 'true' : 'false'}>{filter.label}</button>)}
+            {filters.map((filter, index) => <Button class="nail-gallery-filter" variant="filter" size="xs" dataCategory={filter.key} pressed={index === 0}>{filter.label}</Button>)}
         </div>
         <div class="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3" id="nail-gallery-items">
-            {items.map((item) => (
-                <article class="nail-gallery-item group relative aspect-[3/4] overflow-hidden rounded-ui-xl bg-surface-variant" data-category={item.category}>
-                    <Image class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" src={item.image} alt={item.imageAlt} />
-                    <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-inverse-surface/85 via-transparent to-transparent p-lg text-white">
-                        <span class="font-body text-[11px] font-semibold uppercase tracking-[0.12em] text-primary-fixed">{item.eyebrow}</span>
-                        <h3 class="font-heading text-[21px] text-white">{item.title}</h3>
-                        <p class="font-body text-[13px] leading-relaxed text-white/80">{item.description}</p>
-                    </div>
-                </article>
-            ))}
+            {items.map((item) => <GalleryItem {...item} variant="editorial" />)}
         </div>
-        <div class="mx-auto mt-xl flex max-w-xl items-center justify-center rounded-ui-xl bg-surface-container p-base text-center">
-            <a class="flex items-center gap-xs font-body text-[13px] font-semibold text-primary hover:underline" href={instagramHref} target="_blank" rel="noopener noreferrer"><Icon name="photo_camera" size="md" tone="primary" />{instagramLabel}</a>
+        <div class="mx-auto mt-lg flex max-w-gallery-cta justify-center">
+            <Button class="max-w-full whitespace-normal text-center sm:whitespace-nowrap" variant="secondary" size="content" href={instagramHref} target="_blank" rel="noopener noreferrer" icon="photo_camera">{instagramLabel}</Button>
         </div>
     </div>
 </section>
 
 <script>
     const galleryFilters = document.querySelectorAll<HTMLButtonElement>('.nail-gallery-filter');
-    const galleryItems = document.querySelectorAll<HTMLElement>('.nail-gallery-item');
+    const galleryItems = document.querySelectorAll<HTMLElement>('#nail-gallery-items .gallery-item');
     galleryFilters.forEach((button) => button.addEventListener('click', () => {
         const category = button.dataset.category;
         galleryFilters.forEach((filter) => {
             const active = filter === button;
             filter.setAttribute('aria-pressed', active ? 'true' : 'false');
-            filter.classList.toggle('bg-primary', active);
-            filter.classList.toggle('text-on-primary', active);
-            filter.classList.toggle('bg-surface-alt', !active);
-            filter.classList.toggle('text-text-secondary', !active);
         });
         galleryItems.forEach((item) => item.hidden = category !== 'all' && item.dataset.category !== category);
     }));

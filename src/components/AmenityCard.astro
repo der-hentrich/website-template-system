@@ -6,17 +6,20 @@ interface Props {
     icon: string;
     title: string;
     description: string;
+    density?: 'default' | 'compact';
+    surface?: 'soft' | 'bright';
 }
 
-const { icon, title, description } = Astro.props;
+const { icon, title, description, density = 'default', surface = 'soft' } = Astro.props;
+const compact = density === 'compact';
 ---
 
-<Card variant="soft" radius="md" shadow="sm" padding="xl">
-    <div class="mb-base flex h-12 w-12 items-center justify-center rounded-xl bg-surface shadow-sm">
-        <Icon name={icon} size="xl" tone="primary" />
+<Card variant={surface} radius="md" shadow="sm" padding={compact ? 'base' : 'xl'}>
+    <div class:list={[compact ? 'mb-sm h-10 w-10 rounded-full bg-accent-soft' : 'mb-base h-12 w-12 rounded-xl bg-surface shadow-sm', 'flex items-center justify-center']}>
+        <Icon name={icon} size={compact ? 'md' : 'xl'} tone="primary" />
     </div>
     <div>
-        <h3 class="mb-xs font-heading text-card-title text-text-primary">{title}</h3>
-        <p class="font-body text-body text-text-secondary">{description}</p>
+        <h3 class:list={['mb-xs font-heading text-text-primary', compact ? 'text-[18px] font-semibold' : 'text-card-title']}>{title}</h3>
+        <p class:list={['font-body text-text-secondary', compact ? 'text-[13px] leading-relaxed' : 'text-body']}>{description}</p>
     </div>
 </Card>

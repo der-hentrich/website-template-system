@@ -208,6 +208,46 @@
       { "icon": "coffee", "title": { "es": "Ambiente cómodo", "en": "A comfortable setting" }, "description": { "es": "Un entorno cálido y tranquilo para disfrutar tu momento de cuidado.", "en": "A warm, calm setting in which to enjoy your moment of care." } }
     ]
   },
+  "reviews": {
+    "eyebrow": { "es": "Ejemplos de reseñas · Demo", "en": "Sample reviews · Demo" },
+    "title": { "es": "Lo que podrían decir nuestras clientas", "en": "What our clients might say" },
+    "description": {
+      "es": "Reseñas ficticias creadas exclusivamente como contenido de ejemplo para esta demostración.",
+      "en": "Fictional reviews created exclusively as sample content for this demonstration."
+    },
+    "items": [
+      {
+        "rating": 5,
+        "quote": {
+          "es": "El cuidado fue muy delicado y el acabado semipermanente quedó uniforme y brillante. El ambiente se sintió tranquilo de principio a fin.",
+          "en": "The care was very gentle and the gel finish looked smooth and glossy. The atmosphere felt calm from start to finish."
+        },
+        "author": { "es": "Camila R. (ejemplo)", "en": "Camila R. (sample)" },
+        "label": { "es": "Clienta frecuente · Perfil ficticio", "en": "Regular client · Fictional profile" },
+        "initials": "CR"
+      },
+      {
+        "rating": 5,
+        "quote": {
+          "es": "Llevé una referencia para un evento y adaptaron el diseño a mis uñas con muchísimo detalle. El resultado se sintió completamente mío.",
+          "en": "I brought a reference for an event and they adapted the design to my nails with so much detail. The result felt completely personal."
+        },
+        "author": { "es": "Valentina M. (ejemplo)", "en": "Valentina M. (sample)" },
+        "label": { "es": "Evento especial · Perfil ficticio", "en": "Special event · Fictional profile" },
+        "initials": "VM"
+      },
+      {
+        "rating": 5,
+        "quote": {
+          "es": "El pedicure spa fue muy relajante y el resultado quedó impecable. La atención se sintió amable, puntual y profesional.",
+          "en": "The spa pedicure was very relaxing and the result looked flawless. The service felt friendly, punctual and professional."
+        },
+        "author": { "es": "Sofía G. (ejemplo)", "en": "Sofía G. (sample)" },
+        "label": { "es": "Manicure y pedicure · Perfil ficticio", "en": "Manicure and pedicure · Fictional profile" },
+        "initials": "SG"
+      }
+    ]
+  },
   "faq": {
     "eyebrow": { "es": "Resolvemos tus dudas", "en": "Your questions answered" },
     "title": { "es": "Preguntas frecuentes", "en": "Frequently asked questions" },

@@ -26,6 +26,13 @@ const galleryItemSchema = z.strictObject({
 });
 const featureSchema = z.strictObject({ icon: requiredText, title: localizedText, description: localizedText });
 const faqItemSchema = z.strictObject({ question: localizedText, answer: localizedText });
+const reviewSchema = z.strictObject({
+    rating: z.number().min(0).max(5),
+    quote: localizedText,
+    author: localizedText,
+    label: localizedText.optional(),
+    initials: requiredText.optional()
+});
 
 const nailStudioSchema = z.strictObject({
     demo: z.literal(true).optional(),
@@ -89,6 +96,12 @@ const nailStudioSchema = z.strictObject({
         description: localizedText,
         features: z.array(featureSchema).min(1)
     }),
+    reviews: z.strictObject({
+        eyebrow: localizedText,
+        title: localizedText,
+        description: localizedText.optional(),
+        items: z.array(reviewSchema)
+    }).optional(),
     faq: z.strictObject({
         eyebrow: localizedText,
         title: localizedText,

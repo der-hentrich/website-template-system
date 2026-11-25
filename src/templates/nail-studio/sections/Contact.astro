@@ -1,6 +1,8 @@
 ---
 import type { ImageMetadata } from 'astro';
+import Badge from '../../../components/Badge.astro';
 import Button from '../../../components/Button.astro';
+import Card from '../../../components/Card.astro';
 import Icon from '../../../components/Icon.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 
@@ -17,20 +19,21 @@ const { eyebrow, title, locationLabel, hoursLabel, contactLabel, parkingNote, di
     <div class="mx-auto max-w-[var(--container-site)] px-base sm:px-lg">
         <div class="mx-auto max-w-[680px] text-center"><SectionHeader eyebrow={eyebrow} title={title} width="narrow" /></div>
         <div class="grid grid-cols-1 items-stretch gap-lg lg:grid-cols-12">
-            <div class="flex flex-col justify-between gap-lg rounded-ui-xl border border-primary/10 bg-surface-alt p-lg lg:col-span-5">
+            <Card variant="soft" radius="xl" shadow="sm" padding="lg" class="flex flex-col justify-between gap-lg border border-primary/10 lg:col-span-5">
                 <div class="space-y-lg">
                     <div><span class="font-body text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">{locationLabel}</span><h3 class="mt-xs font-heading text-[21px] text-text-primary">{area}</h3><p class="font-body text-body text-text-secondary">{address}</p></div>
                     <div><span class="font-body text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">{hoursLabel}</span><div class="mt-xs space-y-sm font-body text-[14px] text-text-secondary">{hours.map((hour) => <p><strong class="block text-text-primary">{hour.days}</strong>{hour.time}</p>)}</div></div>
                     <div><span class="font-body text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">{contactLabel}</span><p class="mt-xs font-body text-body font-semibold text-text-primary">{phoneDisplay}</p><p class="font-body text-[13px] text-text-secondary">{parkingNote}</p></div>
                 </div>
                 <Button variant="secondary" size="lg" href={mapHref} target="_blank" rel="noopener noreferrer" icon="directions">{directionsLabel}</Button>
-            </div>
-            <div class="relative min-h-[380px] overflow-hidden rounded-ui-xl bg-surface-variant bg-cover bg-center lg:col-span-7" style={`background-image:url('${mapImage.src}')`} role="img" aria-label={mapAlt}>
-                <div class="absolute inset-x-6 bottom-6 flex flex-wrap items-center justify-between gap-sm rounded-ui-lg bg-surface/95 p-base shadow-md backdrop-blur-md">
+            </Card>
+            <Card variant="media" radius="xl" shadow="sm" padding="none" overflow="hidden" class="relative min-h-[380px] lg:col-span-7">
+                <div class="absolute inset-0 bg-cover bg-center" style={`background-image:url('${mapImage.src}')`} role="img" aria-label={mapAlt}></div>
+                <Card variant="surface" radius="lg" shadow="md" padding="base" class="absolute inset-x-6 bottom-6 flex flex-wrap items-center justify-between gap-sm bg-surface/95 backdrop-blur-md">
                     <span class="flex items-center gap-sm"><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-soft"><Icon name="pin_drop" size="md" tone="primary" /></span><span class="flex flex-col"><span class="font-body text-[11px] font-bold uppercase tracking-[0.08em] text-primary">{mapEyebrow}</span><span class="font-body text-[13px] text-text-primary">{mapDescription}</span></span></span>
-                    <span class="rounded-full bg-primary-fixed px-md py-xs font-body text-[11px] font-semibold text-primary-strong">{mapBadge}</span>
-                </div>
-            </div>
+                    <Badge variant="accent" icon="local_parking">{mapBadge}</Badge>
+                </Card>
+            </Card>
         </div>
     </div>
 </section>

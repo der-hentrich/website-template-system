@@ -6,6 +6,7 @@ import Hero from './sections/Hero.astro';
 import Services from './sections/Services.astro';
 import Gallery from './sections/Gallery.astro';
 import About from './sections/About.astro';
+import Reviews from './sections/Reviews.astro';
 import Contact from './sections/Contact.astro';
 import Cta from './sections/Cta.astro';
 import Footer from './sections/Footer.astro';
@@ -30,10 +31,11 @@ const services = data.services.items.map((item: any) => ({ ...item, whatsappHref
         <Services {...data.services} items={services} />
         <Gallery {...data.gallery} instagramHref={data.studio.instagramHref} />
         <About {...data.about} />
+        {data.reviews?.items?.length > 0 && <Reviews {...data.reviews} lang={lang} />}
         <FAQ {...data.faq} id="faq" />
         <Contact {...data.contact} area={data.studio.area} address={data.studio.address} phoneDisplay={data.studio.phoneDisplay} mapHref={data.studio.mapHref} />
         <Cta {...data.cta} whatsappHref={whatsappHref(data.cta.whatsappText)} />
     </main>
-    <Footer logoAlt={data.studio.name} name={data.studio.name} shortName={data.studio.shortName} description={data.footer.description} area={data.studio.area} location={`${data.studio.location}, ${data.studio.country}`} navigationTitle={data.footer.navigationTitle} hoursTitle={data.footer.hoursTitle} connectTitle={data.footer.connectTitle} whatsappLabel={data.footer.whatsappLabel} copyright={data.footer.copyright} demoNote={isDemo ? data.footer.demoNote : undefined} items={data.navbar.items} hours={data.contact.hours} instagramHref={data.studio.instagramHref} instagramHandle={data.studio.instagramHandle} whatsappHref={whatsappHref(data.floatingWhatsapp.whatsappText)} />
+    <Footer logoAlt={data.studio.name} name={data.studio.name} shortName={data.studio.shortName} description={data.footer.description} area={data.studio.area} location={`${data.studio.location}, ${data.studio.country}`} navigationTitle={data.footer.navigationTitle} hoursTitle={data.footer.hoursTitle} connectTitle={data.footer.connectTitle} whatsappLabel={data.footer.whatsappLabel} copyright={data.footer.copyright} demoNote={isDemo ? data.footer.demoNote : undefined} items={data.navbar.items} hours={data.contact.hours} instagramHref={data.studio.instagramHref} instagramHandle={data.studio.instagramHandle} whatsappHref={whatsappHref(data.floatingWhatsapp.whatsappText)} lang={lang} />
     <FloatingWhatsapp {...data.floatingWhatsapp} whatsappHref={whatsappHref(data.floatingWhatsapp.whatsappText)} />
 </Layout>

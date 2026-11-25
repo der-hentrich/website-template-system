@@ -8,6 +8,17 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Architecture and component reuse
+
+- Before every implementation, analyze all existing shared components.
+- Existing components must be reused.
+- Do not reimplement existing UI components inside industry-specific sections.
+- Industry-specific sections are responsible for composing existing components.
+- Express visual differences between industries primarily through their respective `theme.css` files.
+- Add missing component variants backwards-compatibly within the existing shared components.
+- Create new shared components only with explicit approval.
+- The existing system architecture is mandatory.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

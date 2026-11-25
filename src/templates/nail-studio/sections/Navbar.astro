@@ -39,13 +39,13 @@ const languageLabel = lang === 'es' ? 'Switch to English' : 'Cambiar a español'
         </nav>
 
         <div class="flex shrink-0 items-center gap-sm">
-            <a class="inline-flex h-10 min-w-10 items-center justify-center rounded-full px-sm font-body text-[12px] font-bold uppercase text-primary transition-colors hover:bg-surface-alt" href={languageHref} hreflang={languageCode} aria-label={languageLabel}>{languageCode}</a>
+            <Button variant="secondary" size="sm" shape="circle" href={languageHref} hreflang={languageCode} ariaLabel={languageLabel}>{languageCode}</Button>
             <span class="hidden sm:inline-flex"><Button variant="primary" size="sm" href={whatsappHref} target="_blank" rel="noopener noreferrer">{ctaLabel}</Button></span>
             <div class="relative lg:hidden">
-                <button id="nail-navigation-toggle" type="button" class="hs-collapse-toggle flex h-11 w-11 items-center justify-center rounded-full bg-surface-alt text-primary" aria-expanded="false" aria-controls="nail-navigation-mobile" aria-label={menuLabel} data-hs-collapse="#nail-navigation-mobile">
+                <Button id="nail-navigation-toggle" class="hs-collapse-toggle" variant="secondary" size="sm" shape="circle" expanded={false} ariaControls="nail-navigation-mobile" ariaLabel={menuLabel} dataHsCollapse="#nail-navigation-mobile">
                     <span class="hs-collapse-open:hidden"><Icon name="menu" size="lg" tone="primary" /></span>
                     <span class="hidden hs-collapse-open:inline-flex"><Icon name="close" size="lg" tone="primary" /></span>
-                </button>
+                </Button>
                 <nav id="nail-navigation-mobile" class="absolute right-0 top-[calc(100%+8px)] hidden w-64 overflow-hidden rounded-ui-lg border border-primary/10 bg-surface-bright p-sm shadow-lg" aria-labelledby="nail-navigation-toggle">
                     {items.map((item) => <a class="block rounded-ui-md px-base py-md font-body text-label text-text-secondary transition-colors hover:bg-surface-alt hover:text-primary" href={item.href}>{item.label}</a>)}
                     <div class="mt-sm sm:hidden"><Button variant="primary" size="md" href={whatsappHref} target="_blank" rel="noopener noreferrer" block>{ctaLabel}</Button></div>
